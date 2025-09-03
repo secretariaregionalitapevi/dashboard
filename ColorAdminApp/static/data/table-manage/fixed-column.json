@@ -1,0 +1,35 @@
+&lt;!-- required files --&gt;
+&lt;link href="{% static 'plugins/datatables.net-bs5/css/dataTables.bootstrap5.min.css' %}" rel="stylesheet" /&gt;
+&lt;link href="{% static 'plugins/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css' %}" rel="stylesheet" /&gt;
+&lt;link href="{% static 'plugins/datatables.net-fixedcolumns-bs5/css/fixedColumns.bootstrap5.min.css' %}" rel="stylesheet" /&gt;
+&lt;script src="{% static 'plugins/datatables.net/js/dataTables.min.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/datatables.net-bs5/js/dataTables.bootstrap5.min.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/datatables.net-responsive/js/dataTables.responsive.min.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/datatables.net-fixedcolumns/js/dataTables.fixedColumns.min.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/datatables.net-fixedcolumns-bs5/js/fixedColumns.bootstrap5.min.js' %}"&gt;&lt;/script&gt;
+
+&lt;!-- html --&gt;
+&lt;table id="data-table-fixed-columns" width="100%" class="table table-striped table-bordered align-middle text-nowrap"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th width="1%"&gt;&lt;/th&gt;
+      &lt;th width="1%" data-orderable="false"&gt;&lt;/th&gt;
+      ...
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    ...
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;!-- script --&gt;
+&lt;script&gt;
+  $('#data-table-fixed-columns').DataTable({
+    scrollY:        300,
+    scrollX:        true,
+    scrollCollapse: true,
+    paging:         false,
+    fixedColumns:   true
+  });
+&lt;/script&gt;

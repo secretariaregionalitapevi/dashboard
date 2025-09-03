@@ -1,0 +1,7 @@
+&lt;div class="fa-3x"&gt;
+  &lt;i class="fas fa-spinner fa-spin"&gt;&lt;/i&gt;
+  &lt;i class="fas fa-circle-notch fa-spin"&gt;&lt;/i&gt;
+  &lt;i class="fas fa-sync fa-spin"&gt;&lt;/i&gt;
+  &lt;i class="fas fa-cog fa-spin"&gt;&lt;/i&gt;
+  &lt;i class="fas fa-spinner fa-pulse"&gt;&lt;/i&gt;
+&lt;/div&gt;

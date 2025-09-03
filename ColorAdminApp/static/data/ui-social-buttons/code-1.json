@@ -1,0 +1,7 @@
+&lt;!-- required files --&gt;
+&lt;link href="{% static 'plugins/bootstrap-social/bootstrap-social.css' %}" rel="stylesheet" /&gt;
+
+&lt;!-- html --&gt;
+&lt;a href="javascript:;" class="btn btn-social btn-adn"&gt;
+  &lt;span class="fab fa-adn"&gt;&lt;/span&gt; Sign in with App.net
+&lt;/a&gt;

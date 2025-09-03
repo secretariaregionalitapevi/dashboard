@@ -1,0 +1,24 @@
+&lt;!-- required files --&gt;
+&lt;script src="{% static 'plugins/clipboard/dist/clipboard.min.js' %}"&gt;&lt;/script&gt;
+
+&lt;!-- html --&gt;
+&lt;div class="input-group"&gt;
+  &lt;input id="clipboard-default" type="text" class="form-control" value="https://github.com/zenorocha/clipboard.js.git" /&gt;
+  &lt;button class="btn btn-dark" type="button" data-toggle="clipboard" data-clipboard-target="#clipboard-default"&gt;&lt;i class="fa fa-clipboard"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- script --&gt;
+&lt;script&gt;
+  var clipboard = new ClipboardJS("[data-toggle='clipboard']");
+  
+  clipboard.on("success", function(e) {
+    $(e.trigger).tooltip({
+      title: "Copied",
+      placement: "top"
+    });
+    $(e.trigger).tooltip("show");
+    setTimeout(function() {
+      $(e.trigger).tooltip("dispose");
+    }, 500);
+  });
+&lt;/script&gt;

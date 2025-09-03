@@ -1,0 +1,32 @@
+.app-content {
+	margin-inline-start: $app-sidebar-width;
+	padding: $app-content-padding-y $app-content-padding-x;
+	
+	@include media-breakpoint-down(md) {
+		margin-inline-start: 0;
+		padding: $app-content-padding-y-sm $app-content-padding-x-sm;
+	}
+	& .app-content-container {
+		margin: (-$app-content-padding-y) (-$app-content-padding-x);
+		padding: $app-content-padding-y $app-content-padding-x;
+		
+		@include media-breakpoint-down(md) {
+			margin: (-$app-content-padding-y-sm) (-$app-content-padding-x-sm);
+			padding: $app-content-padding-y-sm $app-content-padding-x-sm;
+		}
+	}
+	& .app-content-margin {
+		margin: (-$app-content-padding-y) (-$app-content-padding-x);
+		
+		@include media-breakpoint-down(md) {
+			margin: (-$app-content-padding-y-sm) (-$app-content-padding-x-sm);
+		}
+	}
+	& .app-content-padding {
+		padding: $app-content-padding-y $app-content-padding-x;
+		
+		@include media-breakpoint-down(md) {
+			padding: $app-content-padding-y-sm $app-content-padding-x-sm;
+		}
+	}
+}

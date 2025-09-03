@@ -1,0 +1,50 @@
+&lt;!-- required files --&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.canvaswrapper.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.colorhelpers.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.saturated.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.browser.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.drawSeries.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.uiConstants.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.pie.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.time.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.resize.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.touchNavigate.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.hover.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.touch.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.selection.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.symbol.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.legend.js' %}"&gt;&lt;/script&gt;
+
+&lt;div id="donut-chart" class="h-250px"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  var data = [];
+  var series = 3;
+  var colorArray = [app.color.gray900, app.color.gray500, app.color.red];
+  var nameArray = ['Unique Visitor', 'Bounce Rate', 'Total Page Views', 'Avg Time On Site', '% New Visits'];
+  var dataArray = [20,14,12,31,23];
+  
+  for( var i = 0; i < series; i++) {
+    data[i] = { label: nameArray[i], data: dataArray[i], color: colorArray[i] };
+  }
+
+  $.plot($('#donut-chart'), data, {
+    series: {
+      pie: { 
+        innerRadius: 0.5,
+        show: true,
+        combine: {
+          threshold: 0.1
+        },
+        stroke: {
+          color: app.color.componentBg
+        }
+      }
+    },
+    grid:{borderWidth:0, hoverable: true, clickable: true},
+    legend: {
+      show: false
+    }
+  });
+&lt;/script&gt;

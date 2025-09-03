@@ -1,0 +1,37 @@
+&lt;!-- required files --&gt;
+&lt;link href="{% static 'plugins/nvd3/build/nv.d3.css' %}" rel="stylesheet" /&gt;
+&lt;script src="{% static 'plugins/d3/d3.min.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/nvd3/build/nv.d3.min.js' %}"&gt;&lt;/script&gt;
+
+&lt;div id="nv-donut-chart" class="h-250px"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  var pieChartData = [
+    { 'label': 'One', 'value' : 29, 'color': app.color.red }, 
+    { 'label': 'Two', 'value' : 12, 'color': app.color.orange }, 
+    { 'label': 'Three', 'value' : 32, 'color': app.color.success }, 
+    { 'label': 'Four', 'value' : 196, 'color': app.color.cyan }, 
+    { 'label': 'Five', 'value' : 17, 'color': app.color.blue }, 
+    { 'label': 'Six', 'value' : 98, 'color': app.color.purple }, 
+    { 'label': 'Seven', 'value' : 13, 'color': app.color.gray500 }, 
+    { 'label': 'Eight', 'value' : 5, 'color': app.color.componentColor }
+  ];
+
+  nv.addGraph(function() {
+    var chart = nv.models.pieChart()
+      .x(function(d) { return d.label })
+      .y(function(d) { return d.value })
+      .showLabels(true)
+      .labelThreshold(.05)
+      .labelType("percent")
+      .donut(true) 
+      .donutRatio(0.35);
+
+    d3.select('#nv-donut-chart').append('svg')
+      .datum(pieChartData)
+      .transition().duration(350)
+      .call(chart);
+
+    return chart;
+  });
+&lt;/script&gt;

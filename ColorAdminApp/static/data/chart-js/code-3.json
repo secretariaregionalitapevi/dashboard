@@ -1,0 +1,39 @@
+&lt;!-- required files --&gt;
+&lt;script src="{% static 'plugins/chart.js/dist/chart.umd.js' %}"&gt;&lt;/script&gt;
+
+&lt;!-- html --&gt;
+&lt;canvas id="radar-chart"&gt;&lt;/canvas&gt;
+
+&lt;!-- script --&gt;
+&lt;script&gt;
+  Chart.defaults.color = 'rgba('+ app.color.componentColorRgb + ', .65)';
+  Chart.defaults.font.family = app.font.family;
+  Chart.defaults.font.weight = 500;
+  Chart.defaults.scale.grid.color = 'rgba('+ app.color.componentColorRgb + ', .15)';
+  Chart.defaults.scale.ticks.backdropColor = 'rgba('+ app.color.componentColorRgb + ', 0)';
+
+  var ctx3 = document.getElementById('radar-chart').getContext('2d');
+  var radarChart = new Chart(ctx3, {
+    type: 'radar',
+    data: {
+      labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
+      datasets: [{
+        label: 'Dataset 1',
+        borderWidth: 2,
+        borderColor: app.color.red,
+        pointBackgroundColor: app.color.red,
+        pointRadius: 2,
+        backgroundColor: 'rgba('+ app.color.redRgb + ', .2)',
+        data: [65,59,90,81,56,55,40]
+      }, {
+        label: 'Dataset 2',
+        borderWidth: 2,
+        borderColor: app.color.componentColor,
+        pointBackgroundColor: app.color.componentColor,
+        pointRadius: 2,
+        backgroundColor: 'rgba('+ app.color.componentColorRgb + ', .2)',
+        data: [28,48,40,19,96,27,100]
+      }]
+    }
+	});
+&lt;/script&gt;

@@ -1,0 +1,11 @@
+&lt;div class="d-flex"&gt;
+  &lt;a class="w-60px" href="javascript:;"&gt;
+    &lt;img src="{% static 'img/user/user-1.jpg' %}" alt="" class="mw-100 rounded" /&gt;
+  &lt;/a&gt;
+  &lt;div class="ps-3 flex-1"&gt;
+    &lt;h5 class="mb-1"&gt;...&lt;/h5&gt;
+    &lt;p class="mb-0"&gt;...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;hr class="bg-gray-500" /&gt;

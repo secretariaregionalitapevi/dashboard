@@ -1,0 +1,19 @@
+&lt;!-- required files --&gt;
+&lt;script src="{% static 'plugins/parsleyjs/dist/parsley.min.js' %}"&gt;&lt;/script&gt;
+
+&lt;form data-parsley-validate="true"&gt;
+  &lt;!-- alphanumeric string --&gt;
+  &lt;input type="text" data-parsley-type="alphanum" /&gt;
+
+  &lt;!-- dropdown --&gt;
+  &lt;select data-parsley-required="true"&gt;...&lt;/select&gt;
+
+  &lt;!-- radio --&gt;
+  &lt;input type="radio" data-parsley-required="true" /&gt;
+
+  &lt;!-- checkbox --&gt;
+  &lt;input type="checkbox" data-parsley-mincheck="2" /&gt;
+
+  &lt;!-- reg expression --&gt;
+  &lt;input type="text" data-parsley-pattern="#[A-Fa-f0-9]{6}" /&gt;
+&lt;/form&gt;

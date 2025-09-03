@@ -1,0 +1,512 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Page with Mixed Menu{% endblock %}
+
+{% block css %}
+	<link href="{% static 'plugins/lity/dist/lity.min.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block js %}
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+	<script src="{% static 'plugins/lity/dist/lity.min.js' %}"></script>
+	<script src="{% static 'js/demo/timeline.demo.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+	<!-- BEGIN breadcrumb -->
+	<ol class="breadcrumb float-xl-end">
+		<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+		<li class="breadcrumb-item"><a href="javascript:;">Extra</a></li>
+		<li class="breadcrumb-item active">Timeline</li>
+	</ol>
+	<!-- END breadcrumb -->
+	<!-- BEGIN page-header -->
+	<h1 class="page-header">Timeline <small>header small text goes here...</small></h1>
+	<!-- END page-header -->
+	<!-- BEGIN timeline -->
+	<div class="timeline">
+		<!-- BEGIN timeline-item -->
+		<div class="timeline-item">
+			<!-- BEGIN timeline-time -->
+			<div class="timeline-time">
+				<span class="date">today</span>
+				<span class="time">04:20</span>
+			</div>
+			<!-- END timeline-time -->
+			<!-- BEGIN timeline-icon -->
+			<div class="timeline-icon">
+				<a href="javascript:;">&nbsp;</a>
+			</div>
+			<!-- END timeline-icon -->
+			<!-- BEGIN timeline-content -->
+			<div class="timeline-content">
+				<!-- BEGIN timeline-header -->
+				<div class="timeline-header">
+					<div class="userimage"><img src="{% static 'img/user/user-1.jpg' %}" alt="" /></div>
+					<div class="username">
+						<a href="javascript:;">John Smith <i class="fa fa-check-circle text-blue ms-1"></i></a>
+						<div class="text-muted fs-12px">8 mins <i class="fa fa-globe-americas opacity-5 ms-1"></i></div>
+					</div>
+					<div>
+						<a href="#" class="btn btn-lg border-0 rounded-pill w-40px h-40px p-0 d-flex align-items-center justify-content-center" data-bs-toggle="dropdown">
+							<i class="fa fa-ellipsis-h text-gray-600"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-end">
+							<a href="#" class="dropdown-item d-flex align-items-center">
+								<i class="fa fa-fw fa-bookmark fa-lg"></i> 
+								<div class="flex-1 ps-1">
+									<div>Save Post</div>
+									<div class="mt-n1 text-gray-500"><small>Add this to your saved items</small></div>
+								</div>
+							</a>
+							<div class="dropdown-divider"></div>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-edit fa-lg me-1"></i> Edit post</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-user fa-lg me-1"></i> Edit audience</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-bell fa-lg me-1"></i> Turn off notifications for this post</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-language fa-lg me-1"></i> Turn off translations</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-calendar-alt fa-lg me-1"></i> Turn date</a>
+							<div class="dropdown-divider"></div>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-archive fa-lg me-1"></i> Move to archive</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-trash-alt fa-lg me-1"></i> Move to Recycle bin</a>
+						</div>
+					</div>
+				</div>
+				<!-- END timeline-header -->
+	
+				<!-- BEGIN timeline-body -->
+				<div class="timeline-body">
+					<!-- timeline-post -->
+					<div class="mb-3">
+						<div class="mb-2">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus turpis quis tincidunt luctus.
+							Nam sagittis dui in nunc consequat, in imperdiet nunc sagittis.
+						</div>
+						<div class="row gx-1">
+							<div class="col-6">
+								<div class="ratio ratio-4x3">
+									<a href="{% static 'img/gallery/gallery-14.jpg' %}" data-lity class="bg-size-cover bg-position-center" style="background-image: url({% static 'img/gallery/gallery-14.jpg' %})"></a>
+								</div>
+							</div>
+							<div class="col-3">
+								<div class="ratio ratio-4x3 mb-3px">
+									<a href="{% static 'img/gallery/gallery-12.jpg' %}" data-lity class="bg-size-cover bg-position-center" style="background-image: url({% static 'img/gallery/gallery-12.jpg' %})"></a>
+								</div>
+								<div class="ratio ratio-4x3">
+									<a href="{% static 'img/gallery/gallery-16.jpg' %}" data-lity class="bg-size-cover bg-position-center" style="background-image: url({% static 'img/gallery/gallery-16.jpg' %})"></a>
+								</div>
+							</div>
+							<div class="col-3">
+								<div class="ratio ratio-4x3 mb-3px">
+									<a href="{% static 'img/gallery/gallery-15.jpg' %}" data-lity class="bg-size-cover bg-position-center" style="background-image: url({% static 'img/gallery/gallery-15.jpg' %})"></a>
+								</div>
+								<div class="ratio ratio-4x3">
+									<a href="{% static 'img/gallery/gallery-11.jpg' %}" data-lity class="bg-size-cover bg-position-center" style="background-image: url({% static 'img/gallery/gallery-11.jpg' %})"></a>
+								</div>
+							</div>
+						</div>
+					</div>
+		
+					<!-- timeline-stats -->
+					<div class="d-flex align-items-center text-dark mb-2">
+						<div class="d-flex align-items-center">
+							<span class="fa-stack fs-10px">
+								<i class="fa fa-circle fa-stack-2x text-danger"></i>
+								<i class="fa fa-heart fa-stack-1x fa-inverse fs-11px"></i>
+							</span>
+							<span class="fa-stack fs-10px">
+								<i class="fa fa-circle fa-stack-2x text-blue"></i>
+								<i class="fa fa-thumbs-up fa-stack-1x fa-inverse fs-11px bottom-0 mb-1px"></i>
+							</span>
+							<span class="ms-1">4.3k</span>
+						</div>
+						<div class="d-flex align-items-center ms-auto">
+							<div>259 Shares</div>
+							<div class="ms-3">21 Comments</div>
+						</div>
+					</div>
+		
+					<!-- timeline-action -->
+					<hr class="my-10px" />
+					<div class="d-flex align-items-center fw-bold">
+						<a href="javascript:;" class="flex-fill text-decoration-none text-center text-gray-600">
+							<i class="fa fa-thumbs-up fa-fw me-3px"></i> Like
+						</a>
+						<a href="javascript:;" class="flex-fill text-decoration-none text-center text-gray-600">
+							<i class="fa fa-comments fa-fw me-3px"></i> Comment
+						</a> 
+						<a href="javascript:;" class="flex-fill text-decoration-none text-center text-gray-600">
+							<i class="fa fa-share fa-fw me-3px"></i> Share
+						</a>
+					</div>
+					<hr class="mt-10px mb-3" />
+		
+					<!-- timeline-input -->
+					<form action="" class="d-flex align-items-center">
+						<div><img src="{% static 'img/user/user-13.jpg' %}" height="35" class="rounded-pill" /></div>
+						<div class="ps-2 flex-1">
+							<div class="position-relative">
+								<input type="text" class="form-control rounded-pill ps-3 py-2 fs-13px bg-light" placeholder="Write a comment..." />
+								<div class="position-absolute end-0 top-0 bottom-0 d-flex align-items-center px-2">
+									<a href="#" class="btn bg-none text-gray-600 shadow-none px-1"><i class="far fa-smile fa-fw fa-lg d-block"></i></a>
+									<a href="#" class="btn bg-none text-gray-600 shadow-none px-1"><i class="fa fa-camera fa-fw fa-lg d-block"></i></a>
+									<a href="#" class="btn bg-none text-gray-600 shadow-none px-1"><i class="fa fa-film fa-fw fa-lg d-block"></i></a>
+									<a href="#" class="btn bg-none text-gray-600 shadow-none px-1"><i class="far fa-sticky-note fa-fw fa-lg d-block"></i></a>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- END timeline-body -->
+			</div>
+			<!-- END timeline-content -->
+		</div>
+		<!-- END timeline-item -->
+		<!-- BEGIN timeline-item -->
+		<div class="timeline-item">
+			<!-- BEGIN timeline-time -->
+			<div class="timeline-time">
+				<span class="date">yesterday</span>
+				<span class="time">20:17</span>
+			</div>
+			<!-- END timeline-time -->
+			<!-- BEGIN timeline-icon -->
+			<div class="timeline-icon">
+				<a href="javascript:;">&nbsp;</a>
+			</div>
+			<!-- END timeline-icon -->
+			<!-- BEGIN timeline-content -->
+			<div class="timeline-content">
+				<!-- BEGIN timeline-header -->
+				<div class="timeline-header">
+					<div class="userimage"><img src="{% static 'img/user/user-2.jpg' %}" alt="" /></div>
+					<div class="username">
+						<a href="javascript:;">Darren Parrase</a>
+						<div class="text-muted fs-12px">24 mins <i class="fa fa-globe-americas opacity-5 ms-1"></i></div>
+					</div>
+					<div>
+						<a href="#" class="btn btn-lg border-0 rounded-pill w-40px h-40px p-0 d-flex align-items-center justify-content-center" data-bs-toggle="dropdown">
+							<i class="fa fa-ellipsis-h text-gray-600"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-end">
+							<a href="#" class="dropdown-item d-flex align-items-center">
+								<i class="fa fa-fw fa-bookmark fa-lg"></i> 
+								<div class="flex-1 ps-1">
+									<div>Save Post</div>
+									<div class="mt-n1 text-gray-500"><small>Add this to your saved items</small></div>
+								</div>
+							</a>
+							<div class="dropdown-divider"></div>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-edit fa-lg me-1"></i> Edit post</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-user fa-lg me-1"></i> Edit audience</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-bell fa-lg me-1"></i> Turn off notifications for this post</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-language fa-lg me-1"></i> Turn off translations</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-calendar-alt fa-lg me-1"></i> Turn date</a>
+							<div class="dropdown-divider"></div>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-archive fa-lg me-1"></i> Move to archive</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-trash-alt fa-lg me-1"></i> Move to Recycle bin</a>
+						</div>
+					</div>
+				</div>
+				<!-- END timeline-header -->
+	
+				<!-- BEGIN timeline-body -->
+				<div class="timeline-body">
+					<!-- timeline-post -->
+					<div class="mb-3">
+						<div class="mb-2">Location: United States</div>
+						<div id="google-map" class="h-250px"></div>
+					</div>
+		
+					<!-- timeline-stats -->
+					<div class="d-flex align-items-center text-dark mb-2">
+						<div class="d-flex align-items-center">
+							<span class="fa-stack fs-10px">
+								<i class="fa fa-circle fa-stack-2x text-danger"></i>
+								<i class="fa fa-heart fa-stack-1x fa-inverse fs-11px"></i>
+							</span>
+							<span class="fa-stack fs-10px">
+								<i class="fa fa-circle fa-stack-2x text-blue"></i>
+								<i class="fa fa-thumbs-up fa-stack-1x fa-inverse fs-11px bottom-0 mb-1px"></i>
+							</span>
+							<span class="ms-1">269</span>
+						</div>
+						<div class="d-flex align-items-center ms-auto">
+							<div>2 Shares</div>
+							<div class="ms-3">9 Comments</div>
+						</div>
+					</div>
+		
+					<!-- timeline-action -->
+					<hr class="my-10px" />
+					<div class="d-flex align-items-center fw-bold">
+						<a href="javascript:;" class="flex-fill text-decoration-none text-center text-gray-600">
+							<i class="fa fa-thumbs-up fa-fw me-3px"></i> Like
+						</a>
+						<a href="javascript:;" class="flex-fill text-decoration-none text-center text-gray-600">
+							<i class="fa fa-comments fa-fw me-3px"></i> Comment</a> 
+						<a href="javascript:;" class="flex-fill text-decoration-none text-center text-gray-600">
+							<i class="fa fa-share fa-fw me-3px"></i> Share
+						</a>
+					</div>
+					<hr class="mt-10px mb-3" />
+		
+					<!-- timeline-input -->
+					<form action="" class="d-flex align-items-center">
+						<div><img src="{% static 'img/user/user-13.jpg' %}" height="35" class="rounded-pill" /></div>
+						<div class="ps-2 flex-1">
+							<div class="position-relative">
+								<input type="text" class="form-control rounded-pill ps-3 py-2 fs-13px bg-light" placeholder="Write a comment..." />
+								<div class="position-absolute end-0 top-0 bottom-0 d-flex align-items-center px-2">
+									<a href="#" class="btn bg-none text-gray-600 shadow-none px-1"><i class="far fa-smile fa-fw fa-lg d-block"></i></a>
+									<a href="#" class="btn bg-none text-gray-600 shadow-none px-1"><i class="fa fa-camera fa-fw fa-lg d-block"></i></a>
+									<a href="#" class="btn bg-none text-gray-600 shadow-none px-1"><i class="fa fa-film fa-fw fa-lg d-block"></i></a>
+									<a href="#" class="btn bg-none text-gray-600 shadow-none px-1"><i class="far fa-sticky-note fa-fw fa-lg d-block"></i></a>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- END timeline-body -->
+			</div>
+			<!-- END timeline-content -->
+		</div>
+		<!-- END timeline-item -->
+		<!-- BEGIN timeline-item -->
+		<div class="timeline-item">
+			<!-- BEGIN timeline-time -->
+			<div class="timeline-time">
+				<span class="date">24 February 2025</span>
+				<span class="time">08:17</span>
+			</div>
+			<!-- END timeline-time -->
+			<!-- BEGIN timeline-icon -->
+			<div class="timeline-icon">
+				<a href="javascript:;">&nbsp;</a>
+			</div>
+			<!-- END timeline-icon -->
+			<!-- BEGIN timeline-content -->
+			<div class="timeline-content">
+				<!-- BEGIN timeline-header -->
+				<div class="timeline-header">
+					<div class="userimage"><img src="{% static 'img/user/user-3.jpg' %}" alt="" /></div>
+					<div class="username">
+						<a href="javascript:;">Richard Leong <i class="fa fa-check-circle text-blue ms-1"></i></a>
+						<div class="text-muted fs-12px">12 hours <i class="fa fa-globe-americas opacity-5 ms-1"></i></div>
+					</div>
+					<div>
+						<a href="#" class="btn btn-lg border-0 rounded-pill w-40px h-40px p-0 d-flex align-items-center justify-content-center" data-bs-toggle="dropdown">
+							<i class="fa fa-ellipsis-h text-gray-600"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-end">
+							<a href="#" class="dropdown-item d-flex align-items-center">
+								<i class="fa fa-fw fa-bookmark fa-lg"></i> 
+								<div class="flex-1 ps-1">
+									<div>Save Post</div>
+									<div class="mt-n1 text-gray-500"><small>Add this to your saved items</small></div>
+								</div>
+							</a>
+							<div class="dropdown-divider"></div>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-edit fa-lg me-1"></i> Edit post</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-user fa-lg me-1"></i> Edit audience</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-bell fa-lg me-1"></i> Turn off notifications for this post</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-language fa-lg me-1"></i> Turn off translations</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-calendar-alt fa-lg me-1"></i> Turn date</a>
+							<div class="dropdown-divider"></div>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-archive fa-lg me-1"></i> Move to archive</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-trash-alt fa-lg me-1"></i> Move to Recycle bin</a>
+						</div>
+					</div>
+				</div>
+				<!-- END timeline-header -->
+				<!-- BEGIN timeline-body -->
+				<div class="timeline-body">
+					<!-- timeline-post -->
+					<div class="lead mb-3">
+						<i class="fa fa-quote-left fa-fw float-start opacity-5 me-3 mb-3 mt-3 fa-lg"></i>
+						Quisque sed varius nisl. Nulla facilisi. Phasellus consequat sapien sit amet nibh molestie placerat. Donec nulla quam, ullamcorper ut velit vitae, lobortis condimentum magna. Suspendisse mollis in sem vel mollis.
+						<i class="fa fa-quote-right fa-fw float-end opacity-5 ms-3 mt-n3 fa-lg"></i>
+					</div>
+		
+					<!-- timeline-stats -->
+					<div class="d-flex align-items-center text-dark mb-2">
+						<div class="d-flex align-items-center">
+							<span class="fa-stack fs-10px">
+								<i class="fa fa-circle fa-stack-2x text-danger"></i>
+								<i class="fa fa-heart fa-stack-1x fa-inverse fs-11px"></i>
+							</span>
+							<span class="fa-stack fs-10px">
+								<i class="fa fa-circle fa-stack-2x text-blue"></i>
+								<i class="fa fa-thumbs-up fa-stack-1x fa-inverse fs-11px bottom-0 mb-1px"></i>
+							</span>
+							<span class="ms-1">550</span>
+						</div>
+						<div class="d-flex align-items-center ms-auto">
+							<div>121 Shares</div>
+							<div class="ms-3">40 Comments</div>
+						</div>
+					</div>
+		
+					<!-- timeline-action -->
+					<hr class="my-10px" />
+					<div class="d-flex align-items-center fw-bold">
+						<a href="javascript:;" class="flex-fill text-decoration-none text-center text-gray-600">
+							<i class="fa fa-thumbs-up fa-fw me-3px"></i> Like
+						</a>
+						<a href="javascript:;" class="flex-fill text-decoration-none text-center text-gray-600">
+							<i class="fa fa-comments fa-fw me-3px"></i> Comment
+						</a> 
+						<a href="javascript:;" class="flex-fill text-decoration-none text-center text-gray-600">
+							<i class="fa fa-share fa-fw me-3px"></i> Share
+						</a>
+					</div>
+					<hr class="mt-10px mb-3" />
+		
+					<!-- timeline-input -->
+					<form action="" class="d-flex align-items-center">
+						<div><img src="{% static 'img/user/user-13.jpg' %}" height="35" class="rounded-pill" /></div>
+						<div class="ps-2 flex-1">
+							<div class="position-relative">
+								<input type="text" class="form-control rounded-pill ps-3 py-2 fs-13px bg-light" placeholder="Write a comment..." />
+								<div class="position-absolute end-0 top-0 bottom-0 d-flex align-items-center px-2">
+									<a href="#" class="btn bg-none text-gray-600 shadow-none px-1"><i class="far fa-smile fa-fw fa-lg d-block"></i></a>
+									<a href="#" class="btn bg-none text-gray-600 shadow-none px-1"><i class="fa fa-camera fa-fw fa-lg d-block"></i></a>
+									<a href="#" class="btn bg-none text-gray-600 shadow-none px-1"><i class="fa fa-film fa-fw fa-lg d-block"></i></a>
+									<a href="#" class="btn bg-none text-gray-600 shadow-none px-1"><i class="far fa-sticky-note fa-fw fa-lg d-block"></i></a>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- END timeline-body -->
+			</div>
+			<!-- END timeline-content -->
+		</div>
+		<!-- END timeline-item -->
+		<!-- BEGIN timeline-item -->
+		<div class="timeline-item">
+			<!-- BEGIN timeline-time -->
+			<div class="timeline-time">
+				<span class="date">10 January 2025</span>
+				<span class="time">20:43</span>
+			</div>
+			<!-- END timeline-time -->
+			<!-- BEGIN timeline-icon -->
+			<div class="timeline-icon">
+				<a href="javascript:;">&nbsp;</a>
+			</div>
+			<!-- END timeline-icon -->
+			<!-- BEGIN timeline-content -->
+			<div class="timeline-content">
+				<!-- BEGIN timeline-header -->
+				<div class="timeline-header">
+					<div class="userimage"><img src="{% static 'img/user/user-4.jpg' %}" alt="" /></div>
+					<div class="username">
+						<a href="javascript:;">Lelouch Wong <i class="fa fa-check-circle text-blue ms-1"></i></a>
+						<div class="text-muted fs-12px">1 days ago <i class="fa fa-globe-americas opacity-5 ms-1"></i></div>
+					</div>
+					<div>
+						<a href="#" class="btn btn-lg border-0 rounded-pill w-40px h-40px p-0 d-flex align-items-center justify-content-center" data-bs-toggle="dropdown">
+							<i class="fa fa-ellipsis-h text-gray-600"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-end">
+							<a href="#" class="dropdown-item d-flex align-items-center">
+								<i class="fa fa-fw fa-bookmark fa-lg"></i> 
+								<div class="flex-1 ps-1">
+									<div>Save Post</div>
+									<div class="mt-n1 text-gray-500"><small>Add this to your saved items</small></div>
+								</div>
+							</a>
+							<div class="dropdown-divider"></div>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-edit fa-lg me-1"></i> Edit post</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-user fa-lg me-1"></i> Edit audience</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-bell fa-lg me-1"></i> Turn off notifications for this post</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-language fa-lg me-1"></i> Turn off translations</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-calendar-alt fa-lg me-1"></i> Turn date</a>
+							<div class="dropdown-divider"></div>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-archive fa-lg me-1"></i> Move to archive</a>
+							<a href="#" class="dropdown-item"><i class="fa fa-fw fa-trash-alt fa-lg me-1"></i> Move to Recycle bin</a>
+						</div>
+					</div>
+				</div>
+				<!-- END timeline-header -->
+				<!-- BEGIN timeline-body -->
+				<div class="timeline-body">
+					<!-- timeline-post -->
+					<div class="mb-3">
+						<h4 class="mb-1">
+							795 Folsom Ave, Suite 600 San Francisco, CA 94107
+						</h4>
+						<div class="mb-2">In hac habitasse platea dictumst. Pellentesque bibendum id sem nec faucibus. Maecenas molestie, augue vel accumsan rutrum, massa mi rutrum odio, id luctus mauris nibh ut leo.</div>
+						<div class="row gx-1">
+							<div class="col-6">
+								<a href="{% static 'img/gallery/gallery-4.jpg' %}" data-lity><img src="{% static 'img/gallery/gallery-4.jpg' %}" alt="" class="mw-100 d-block" /></a>
+							</div>
+							<div class="col-6">
+								<a href="{% static 'img/gallery/gallery-5.jpg' %}" data-lity><img src="{% static 'img/gallery/gallery-5.jpg' %}" alt="" class="mw-100 d-block" /></a>
+							</div>
+						</div>
+					</div>
+		
+					<!-- timeline-action -->
+					<hr class="my-10px" />
+					<div class="d-flex align-items-center fw-bold">
+						<a href="javascript:;" class="flex-fill text-decoration-none text-center text-gray-600">
+							<i class="fa fa-thumbs-up fa-fw me-3px"></i> Like
+						</a>
+						<a href="javascript:;" class="flex-fill text-decoration-none text-center text-gray-600">
+							<i class="fa fa-comments fa-fw me-3px"></i> Comment</a> 
+						<a href="javascript:;" class="flex-fill text-decoration-none text-center text-gray-600">
+							<i class="fa fa-share fa-fw me-3px"></i> Share
+						</a>
+					</div>
+					<hr class="mt-10px mb-3" />
+		
+					<!-- timeline-input -->
+					<form action="" class="d-flex align-items-center">
+						<div><img src="{% static 'img/user/user-13.jpg' %}" height="35" class="rounded-pill" /></div>
+						<div class="ps-2 flex-1">
+							<div class="position-relative">
+								<input type="text" class="form-control rounded-pill ps-3 py-2 fs-13px bg-light" placeholder="Write a comment..." />
+								<div class="position-absolute end-0 top-0 bottom-0 d-flex align-items-center px-2">
+									<a href="#" class="btn bg-none text-gray-600 shadow-none px-1"><i class="far fa-smile fa-fw fa-lg d-block"></i></a>
+									<a href="#" class="btn bg-none text-gray-600 shadow-none px-1"><i class="fa fa-camera fa-fw fa-lg d-block"></i></a>
+									<a href="#" class="btn bg-none text-gray-600 shadow-none px-1"><i class="fa fa-film fa-fw fa-lg d-block"></i></a>
+									<a href="#" class="btn bg-none text-gray-600 shadow-none px-1"><i class="far fa-sticky-note fa-fw fa-lg d-block"></i></a>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- END timeline-body -->
+			</div>
+			<!-- END timeline-content -->
+		</div>
+		<!-- END timeline-item -->
+		<!-- BEGIN timeline-item -->
+		<div class="timeline-item">
+			<!-- BEGIN timeline-icon -->
+			<div class="timeline-icon">
+				<a href="javascript:;">&nbsp;</a>
+			</div>
+			<!-- END timeline-icon -->
+			<!-- BEGIN timeline-content -->
+			<div class="timeline-content">
+				<!-- BEGIN timeline-body -->
+				<div class="timeline-body">
+					<div class="d-flex align-items-center">
+						<div class="spinner-border spinner-border-sm me-3" role="status">
+							<span class="visually-hidden">Loading...</span>
+						</div>
+						Loading...
+					</div>
+				</div>
+				<!-- END timeline-body -->
+			</div>
+			<!-- BEGIN timeline-content -->
+		</div>
+		<!-- END timeline-item -->
+	</div>
+	<!-- END timeline -->
+{% endblock %}

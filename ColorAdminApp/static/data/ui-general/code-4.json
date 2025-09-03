@@ -1,0 +1,8 @@
+&lt;!-- badge --&gt;
+&lt;span class="badge bg-primary"&gt;badge&lt;/span&gt;
+
+&lt;!-- badge-pill --&gt;
+&lt;span class="badge bg-danger rounded-pill"&gt;badge-pill&lt;/span&gt;
+
+&lt;!-- badge-square --&gt;
+&lt;span class="badge bg-dark rounded-0"&gt;badge-square&lt;/span&gt;

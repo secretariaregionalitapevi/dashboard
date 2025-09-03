@@ -1,0 +1,42 @@
+.app-with-wide-sidebar {
+	& .app-header {
+		& .navbar-header {
+			width: $app-sidebar-width-wide;
+			
+			@include media-breakpoint-down(md) {
+				width: auto;
+			}
+		}
+	}
+	& .app-sidebar,
+	& .app-sidebar-bg {
+		width: $app-sidebar-width-wide;
+		
+		@include media-breakpoint-down(md) {
+			width: $app-sidebar-width-wide;
+			inset-inline-start: $app-sidebar-width-wide * -1;
+		}
+	}
+	& .app-sidebar-end {
+		&.app-sidebar,
+		&.app-sidebar-bg {
+			@include media-breakpoint-down(md) {
+				inset-inline-end: $app-sidebar-width-wide * -1;
+				inset-inline-start: auto;
+			}
+		}
+	}
+	& .app-content {
+		@include media-breakpoint-up(md) {
+			margin-inline-start: $app-sidebar-width-wide;
+		}
+	}
+	&.app-with-end-sidebar {
+		& .app-content {
+			@include media-breakpoint-up(md) {
+				margin-inline-end: $app-sidebar-width-wide;
+				margin-inline-start: 0;
+			}
+		}
+	}
+}

@@ -1,0 +1,14 @@
+&lt;div class="alert alert-primary fade show"&gt;...&lt;/div&gt;
+&lt;div class="alert alert-secondary fade show"&gt;...&lt;/div&gt;
+&lt;div class="alert alert-success fade show"&gt;...&lt;/div&gt;
+&lt;div class="alert alert-danger fade show"&gt;...&lt;/div&gt;
+&lt;div class="alert alert-warning fade show"&gt;...&lt;/div&gt;
+&lt;div class="alert alert-yellow fade show"&gt;...&lt;/div&gt;
+&lt;div class="alert alert-info fade show"&gt;...&lt;/div&gt;
+&lt;div class="alert alert-lime fade show"&gt;...&lt;/div&gt;
+&lt;div class="alert alert-purple fade show"&gt;...&lt;/div&gt;
+&lt;div class="alert alert-light fade show"&gt;...&lt;/div&gt;
+&lt;div class="alert alert-dark fade show"&gt;...&lt;/div&gt;
+&lt;div class="alert alert-indigo fade show"&gt;...&lt;/div&gt;
+&lt;div class="alert alert-pink fade show"&gt;...&lt;/div&gt;
+&lt;div class="alert alert-green fade show"&gt;...&lt;/div&gt;

@@ -1,0 +1,10 @@
+&lt;div class="d-flex"&gt;
+  &lt;div class="pe-3 flex-1"&gt;
+    ...
+  &lt;/div&gt;
+  &lt;a class="w-lg-300px w-100px" href="javascript:;"&gt;
+    &lt;img src="{% static 'img/user/user-1.jpg' %}" alt="" class="mw-100 rounded-pill" /&gt;
+  &lt;/a&gt;
+&lt;/div&gt;
+
+&lt;hr class="bg-gray-500" /&gt;

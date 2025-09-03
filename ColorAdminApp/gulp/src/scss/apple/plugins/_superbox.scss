@@ -1,0 +1,105 @@
+.superbox {
+	&.superbox-active {
+		font-size: 0;
+		margin: rem(-1px) rem(-1px) 0 0;
+	
+		& .superbox-list {
+			display: inline-block;
+			position: relative;
+			background: none;
+		
+			& .superbox-img {
+				width: 100%;
+				cursor: pointer;
+				display: block;
+				padding-top: 75%;
+				position: relative;
+			
+				& img {
+					display: none;
+				}
+				& span {
+					position: absolute;
+					top: rem(1px);
+					inset-inline-start: rem(1px);
+					inset-inline-end: rem(1px);
+					bottom: rem(1px);
+					background-size: cover !important;
+					background-position: center !important;
+				}
+				&:hover {
+					opacity: .8;
+				}
+			}
+			&.superbox-O {
+				z-index: 10;
+			
+				&:before {
+					content: '';
+					position: absolute;
+					inset-inline-start: 50%;
+					bottom: rem(0px);
+					border: 10px solid transparent;
+					border-bottom-color: $body-bg;
+					margin-inline-start: rem(-10px);
+					z-index: 10;
+				}
+				&:after {
+					content: '';
+					position: absolute;
+					inset-inline-start: 50%;
+					bottom: rem(-3px);
+					border: 10px solid transparent;
+					border-bottom-color: $gray-800;
+					margin-inline-start: rem(-10px);
+					z-index: 20;
+				}
+			}
+		}
+		& .superbox-show {
+			background: $gray-800 !important;
+			margin: rem(1px) 0;
+			box-shadow: none;
+		
+			& .superbox-current-img {
+				max-width: 100%;
+				border: none;
+				box-shadow: $box-shadow;
+			}
+			& .superbox-prev {
+				:dir(rtl) & {
+					inset-inline-start: auto;
+					inset-inline-end: rem(10px);
+				}
+				& .icon-circle-arrow-left {
+					&:before {
+						:dir(rtl) & {
+							content: '\e4a2';	
+						}
+					}
+				}
+			}
+			& .superbox-next {
+				:dir(rtl) & {
+					inset-inline-end: auto;
+					inset-inline-start: rem(10px);
+				}
+				& .icon-circle-arrow-right {
+					&:before {
+						:dir(rtl) & {
+							content: '\e4a1';	
+						}
+					}
+				}
+			}
+		}
+		& .superbox-close {
+			cursor: pointer;
+			position: absolute;
+			top: $spacer;
+			inset-inline-end: $spacer;
+			width: rem(35px);
+			height: rem(35px);
+		}
+	}
+}

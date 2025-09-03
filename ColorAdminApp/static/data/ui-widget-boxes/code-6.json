@@ -1,0 +1,13 @@
+&lt;div class="panel panel-inverse"&gt;
+  &lt;div class="panel-heading"&gt;...&lt;/div&gt;
+  &lt;div class="alert alert-success alert-dismissible fade in rounded-0 mb-0"&gt;
+    &lt;div class="d-flex"&gt;
+      &lt;i class="fa fa-check fa-2x me-1"&gt;&lt;/i&gt;
+      &lt;div class="mb-0 ps-2"&gt;
+        ...
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button type="button" class="btn-close ms-3" data-bs-dismiss="alert"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="panel-body"&gt;...&lt;/div&gt;
+&lt;/div&gt;

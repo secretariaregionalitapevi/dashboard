@@ -1,0 +1,79 @@
+.app-with-end-sidebar {
+	& .app-sidebar-float-submenu-container {
+		& .app-sidebar-float-submenu-line {
+			inset-inline-start: auto;
+			inset-inline-end: rem(26px);
+		}
+		& .app-sidebar-float-submenu-arrow {
+			inset-inline-start: auto;
+			inset-inline-end: 0;
+		}
+		& .app-sidebar-float-submenu .menu-item:after {
+			inset-inline-start: auto;
+			inset-inline-end: 0;
+		}
+		& .app-sidebar-float-submenu {
+			padding-inline-start: 0;
+			padding-inline-end: rem(39px);
+			text-align: end;
+			
+			& .menu-item {
+				& > .menu-link {
+					flex-direction: row-reverse;
+					padding-inline-start: rem(15px);
+					padding-inline-end: rem(20px);
+					
+					& .menu-caret {
+						&:before {
+							content: '\f053';
+						}
+					}
+					&:after {
+						inset-inline-end: rem(-11px);
+						inset-inline-start: auto;
+					}
+				}
+				&.active,
+				&.expanding,
+				&.expand {
+					& > .menu-link {
+						& .menu-caret {
+							&:before {
+								transform: rotate(-90deg);
+							}
+						}
+					}
+				}
+				&:before {
+					inset-inline-end: rem(-13px);
+					inset-inline-start: auto;
+				}
+			}
+			& .menu-submenu {
+				padding-inline-start: 0;
+				padding-inline-end: rem(15px);
+			}
+		}
+	}
+	& .app-sidebar,
+	& .app-sidebar-bg {
+		inset-inline-start: auto;
+		inset-inline-end: 0;
+		
+		@include media-breakpoint-down(md) {
+			inset-inline-end: $app-sidebar-width * -1;
+		}
+	}
+	& .app-content {
+		margin-inline-start: 0;
+		margin-inline-end: $app-sidebar-width;
+		
+		@include media-breakpoint-down(md) {
+			margin-inline-end: 0;
+		}
+	}
+	& .btn-scroll-to-top {
+		inset-inline-start: rem(25px);
+		inset-inline-end: auto;
+	}
+}

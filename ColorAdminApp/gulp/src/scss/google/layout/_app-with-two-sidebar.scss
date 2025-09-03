@@ -1,0 +1,47 @@
+.app-with-two-sidebar {
+	& .app-header {
+		& .navbar-toggle.pull-start {
+			& + .navbar-header {
+				margin: 0;
+				justify-content: center;
+			}
+		}
+		& .navbar-brand {
+			@include media-breakpoint-down(md) {
+				margin: 0 auto;
+				padding: 0;
+			}
+		}
+	}
+	& .app-sidebar-end {
+		&.app-sidebar,
+		&.app-sidebar-bg {
+			inset-inline-end: -$app-sidebar-width;
+			inset-inline-start: auto;
+		}
+	}
+	&.app-with-wide-sidebar {
+		& .app-sidebar-end {
+			&.app-sidebar,
+			&.app-sidebar-bg {
+				inset-inline-end: -$app-sidebar-width-wide;
+			}
+		}
+	}
+	&.app-sidebar-minified {
+		& .app-sidebar-end {
+			&.app-sidebar,
+			&.app-sidebar-bg {
+				width: $app-sidebar-width;
+			}
+		}
+		&.app-with-wide-sidebar {
+			& .app-sidebar-end {
+				&.app-sidebar,
+				&.app-sidebar-bg {
+					width: $app-sidebar-width-wide;
+				}
+			}
+		}
+	}
+}

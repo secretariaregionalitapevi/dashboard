@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Tree View{% endblock %}
+
+{% block css %}
+	<link href="{% static 'plugins/jstree/dist/themes/default/style.min.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block js %}
+	<script src="{% static 'plugins/@highlightjs/cdn-assets/highlight.min.js' %}"></script>
+	<script src="{% static 'js/demo/render.highlight.js' %}"></script>
+	<script src="{% static 'plugins/jstree/dist/jstree.min.js' %}"></script>
+	<script src="{% static 'js/demo/ui-tree.demo.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+	<!-- BEGIN breadcrumb -->
+	<ol class="breadcrumb float-xl-end">
+		<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+		<li class="breadcrumb-item"><a href="javascript:;">UI Elements</a></li>
+		<li class="breadcrumb-item active">Tree View</li>
+	</ol>
+	<!-- END breadcrumb -->
+	<!-- BEGIN page-header -->
+	<h1 class="page-header">Tree View <small>header small text goes here...</small></h1>
+	<!-- END page-header -->
+				
+	<!-- BEGIN row -->
+	<div class="row">
+		<!-- BEGIN col-6 -->
+		<div class="col-xl-6">
+			<!-- BEGIN panel -->
+			<div class="panel panel-inverse" data-sortable-id="tree-view-1">
+				<div class="panel-heading">
+					<h4 class="panel-title">Default Tree</h4>
+					<div class="panel-heading-btn">
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+					</div>
+				</div>
+				<div class="panel-body">
+					<div id="jstree-default">
+						<ul>
+							<li data-jstree='{"opened":true}' >
+								Root node 1
+								<ul>
+									<li data-jstree='{"opened":true, "selected":true }'>Initially Selected</li>
+									<li>Folder 1</li>
+									<li>Folder 2</li>
+									<li>Folder 3</li>
+									<li data-jstree='{"opened":true}' >
+										Initially open
+										<ul>
+											<li data-jstree='{"disabled":true}' >Disabled node</li>
+											<li>Another node</li>
+										</ul>
+									</li>
+									<li data-jstree='{ "icon" : "fab fa-adobe fa-lg text-danger" }'>custom icon class (fontawesome)</li>
+									<li data-jstree='{ "icon" : "fa fa-link fa-lg text-primary" }'><a href="http://www.jstree.com">Clickable link node</a></li>
+								</ul>
+							</li>
+							<li>Root node 2</li>
+						</ul>
+					</div>
+				</div>
+				<!-- BEGIN hljs-wrapper -->
+				<div class="hljs-wrapper">
+					<pre><code class="html" data-url="{% static 'data/ui-tree/code-1.json' %}"></code></pre>
+				</div>
+				<!-- END hljs-wrapper -->
+			</div>
+			<!-- END panel -->
+		</div>
+		<!-- END col-6 -->
+		<!-- BEGIN col-6 -->
+		<div class="col-xl-6">
+			<!-- BEGIN panel -->
+			<div class="panel panel-inverse" data-sortable-id="tree-view-2">
+				<div class="panel-heading">
+					<h4 class="panel-title">Checkable Tree</h4>
+					<div class="panel-heading-btn">
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+					</div>
+				</div>
+				<div class="panel-body">
+					<div id="jstree-checkable"></div>
+				</div>
+				<!-- BEGIN hljs-wrapper -->
+				<div class="hljs-wrapper">
+					<pre><code class="html" data-url="{% static 'data/ui-tree/code-2.json' %}"></code></pre>
+				</div>
+				<!-- END hljs-wrapper -->
+			</div>
+			<!-- END panel -->
+		</div>
+		<!-- END col-6 -->
+	</div>
+	<!-- END row -->
+
+	<!-- BEGIN row -->
+	<div class="row">
+		<!-- BEGIN col-6 -->
+		<div class="col-xl-6">
+			<!-- BEGIN panel -->
+			<div class="panel panel-inverse" data-sortable-id="tree-view-3">
+				<div class="panel-heading">
+					<h4 class="panel-title">Contextual Menu with Drag & Drop</h4>
+					<div class="panel-heading-btn">
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+					</div>
+				</div>
+				<div class="alert alert-info rounded-0 mb-0">
+					<i class="fa fa-info-circle fa-fw"></i> All the opened & selected nodes will be saved in the user's browser.
+				</div>
+				<div class="panel-body">
+					<div id="jstree-drag-and-drop"></div>
+				</div>
+				<!-- BEGIN hljs-wrapper -->
+				<div class="hljs-wrapper">
+					<pre><code class="html" data-url="{% static 'data/ui-tree/code-3.json' %}"></code></pre>
+				</div>
+				<!-- END hljs-wrapper -->
+			</div>
+			<!-- END panel -->
+		</div>
+		<!-- END col-6 -->
+		<!-- BEGIN col-6 -->
+		<div class="col-xl-6">
+			<!-- BEGIN panel -->
+			<div class="panel panel-inverse" data-sortable-id="tree-view-4">
+				<div class="panel-heading">
+					<h4 class="panel-title">Ajax Tree with Drag & Drop</h4>
+					<div class="panel-heading-btn">
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+					</div>
+				</div>
+				<div class="alert alert-info rounded-0 mb-0">
+					<i class="fa fa-info-circle fa-fw"></i> The tree nodes are loaded from date_root.json via ajax.
+				</div>
+				<div class="panel-body">
+					<div id="jstree-ajax"></div>
+				</div>
+				<!-- BEGIN hljs-wrapper -->
+				<div class="hljs-wrapper">
+					<pre><code class="html" data-url="{% static 'data/ui-tree/code-4.json' %}"></code></pre>
+				</div>
+				<!-- END hljs-wrapper -->
+			</div>
+			<!-- END panel -->
+		</div>
+		<!-- END col-6 -->
+	</div>
+	<!-- END row -->
+{% endblock %}

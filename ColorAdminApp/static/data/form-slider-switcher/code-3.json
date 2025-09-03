@@ -1,0 +1,27 @@
+&lt;!-- required files --&gt;
+&lt;link href="{% static 'plugins/abpetkov-powerange/dist/powerange.min.css' %}" rel="stylesheet" />
+&lt;script src="{% static 'plugins/abpetkov-powerange/dist/powerange.min.js' %}"&gt;&lt;/script&gt;
+
+&lt;!-- html --&gt;
+&lt;div class="powerange-wrapper"&gt;
+  &lt;input type="text" id="powerange-default" /&gt;
+&lt;/div&gt;
+
+&lt;!-- script --&gt;
+&lt;script&gt;
+  var elm = document.getElementById('powerange-default');
+  var powerange = new Powerange(this, {
+    disable: false,
+    disableOpacity: 0.5,
+    decimal: false,
+    hideRange: false,
+    klass: '',
+    min: 0,
+    max: 100,
+    start: 70,
+    step: null,
+    vertical: false
+  });
+
+  elm.value;  // get value
+&lt;/script&gt;

@@ -1,0 +1,11 @@
+&lt;ul class="nav nav-pills"&gt;
+  &lt;li class="nav-item"&gt;
+    &lt;a href="#default-tab-1" data-bs-toggle="tab" class="nav-link active"&gt;Tab 1&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class="tab-content panel p-3 rounded"&gt;
+  &lt;div class="tab-pane fade active show" id="default-tab-1"&gt;
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;

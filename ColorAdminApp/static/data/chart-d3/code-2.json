@@ -1,0 +1,38 @@
+&lt;!-- required files --&gt;
+&lt;link href="{% static 'plugins/nvd3/build/nv.d3.css' %}" rel="stylesheet" /&gt;
+&lt;script src="{% static 'plugins/d3/d3.min.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/nvd3/build/nv.d3.min.js' %}"&gt;&lt;/script&gt;
+
+&lt;div id="nv-bar-chart" class="h-250px"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  var barChartData = [{
+    key: 'Cumulative Return',
+    values: [
+      { 'label' : 'A', 'value' : 29, 'color' : app.color.red }, 
+      { 'label' : 'B', 'value' : 15, 'color' : app.color.orange }, 
+      { 'label' : 'C', 'value' : 32, 'color' : app.color.success }, 
+      { 'label' : 'D', 'value' : 196, 'color' : app.color.cyan },  
+      { 'label' : 'E', 'value' : 44, 'color' : app.color.blue },  
+      { 'label' : 'F', 'value' : 98, 'color' : app.color.purple },  
+      { 'label' : 'G', 'value' : 13, 'color' : app.color.gray500 },  
+      { 'label' : 'H', 'value' : 5, 'color' : app.color.componentColor }
+    ]
+  }];
+
+  nv.addGraph(function() {
+    var barChart = nv.models.discreteBarChart()
+      .x(function(d) { return d.label })
+      .y(function(d) { return d.value })
+      .showValues(true)
+      .duration(250);
+
+    barChart.yAxis.axisLabel("Total Sales");
+    barChart.xAxis.axisLabel('Product');
+
+    d3.select('#nv-bar-chart').append('svg').datum(barChartData).call(barChart);
+    nv.utils.windowResize(barChart.update);
+
+    return barChart;
+  });
+&lt;/script&gt;

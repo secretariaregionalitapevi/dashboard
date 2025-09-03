@@ -1,0 +1,21 @@
+&lt;!-- toggler --&gt;
+&lt;a href="#modal-dialog" class="btn btn-primary" data-bs-toggle="modal"&gt;Modal&lt;/a&gt;
+
+&lt;!-- #modal-dialog --&gt;
+&lt;div class="modal fade" id="modal-dialog"&gt;
+  &lt;div class="modal-dialog"&gt;
+    &lt;div class="modal-content"&gt;
+      &lt;div class="modal-header"&gt;
+        &lt;h4 class="modal-title"&gt;Modal Dialog&lt;/h4&gt;
+        &lt;button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"&gt;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class="modal-body"&gt;
+        ...
+      &lt;/div&gt;
+      &lt;div class="modal-footer"&gt;
+        &lt;a href="javascript:;" class="btn btn-white" data-bs-dismiss="modal"&gt;Close&lt;/a&gt;
+        &lt;a href="javascript:;" class="btn btn-success"&gt;Action&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;

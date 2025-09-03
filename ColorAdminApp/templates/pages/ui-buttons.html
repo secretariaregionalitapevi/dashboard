@@ -1,0 +1,440 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Buttons{% endblock %}
+
+{% block js %}
+	<script src="{% static 'plugins/@highlightjs/cdn-assets/highlight.min.js' %}"></script>
+	<script src="{% static 'js/demo/render.highlight.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+	<!-- BEGIN breadcrumb -->
+	<ol class="breadcrumb float-xl-end">
+		<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+		<li class="breadcrumb-item"><a href="javascript:;">UI Elements</a></li>
+		<li class="breadcrumb-item active">Buttons</li>
+	</ol>
+	<!-- END breadcrumb -->
+	<!-- BEGIN page-header -->
+	<h1 class="page-header">Buttons <small>header small text goes here...</small></h1>
+	<!-- END page-header -->
+	
+	<!-- BEGIN row -->
+	<div class="row">
+		<!-- BEGIN col-6 -->
+		<div class="col-xl-6">
+			<!-- BEGIN panel -->
+			<div class="panel panel-inverse" data-sortable-id="ui-buttons-1">
+				<!-- BEGIN panel-heading -->
+				<div class="panel-heading">
+					<h4 class="panel-title">Buttons <span class="badge bg-success ms-1">NEW</span></h4>
+					<div class="panel-heading-btn">
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+					</div>
+				</div>
+				<!-- END panel-heading -->
+				<!-- BEGIN panel-body -->
+				<div class="panel-body">
+					<div class="d-flex flex-wrap">
+						<button type="button" class="btn btn-white me-1 mb-1">White</button>
+						<button type="button" class="btn btn-default me-1 mb-1">Default</button>
+						<button type="button" class="btn btn-gray me-1 mb-1">Gray</button>
+						<button type="button" class="btn btn-purple me-1 mb-1">Purple</button>
+						<button type="button" class="btn btn-indigo me-1 mb-1">Indigo</button>
+						<button type="button" class="btn btn-primary me-1 mb-1">Primary</button>
+						<button type="button" class="btn btn-info me-1 mb-1">Info</button>
+						<button type="button" class="btn btn-yellow me-1 mb-1">Yellow</button>
+						<button type="button" class="btn btn-warning me-1 mb-1">Warning</button>
+						<button type="button" class="btn btn-pink me-1 mb-1">Pink</button>
+						<button type="button" class="btn btn-danger me-1 mb-1">Danger</button>
+						<button type="button" class="btn btn-success me-1 mb-1">Success</button>
+						<button type="button" class="btn btn-green me-1 mb-1">Green</button>
+						<button type="button" class="btn btn-lime me-1 mb-1">Lime</button>
+						<button type="button" class="btn btn-dark me-1 mb-1">Dark</button>
+						<button type="button" class="btn btn-link">Link</button>
+					</div>
+					<hr />
+					<div class="d-flex flex-wrap">
+						<button type="button" class="btn btn-outline-primary me-1 mb-1">Outline Primary</button>
+					</div>
+				</div>
+				<!-- END panel-body -->
+				<!-- BEGIN hljs-wrapper -->
+				<div class="hljs-wrapper">
+					<pre><code class="html" data-url="{% static 'data/ui-buttons/code-1.json' %}"></code></pre>
+				</div>
+				<!-- END hljs-wrapper -->
+			</div>
+			<!-- END panel -->
+		</div>
+		<!-- END col-6 -->
+		<!-- BEGIN col-6 -->
+		<div class="col-xl-6">
+			<!-- BEGIN panel -->
+			<div class="panel panel-inverse" data-sortable-id="ui-buttons-2">
+				<!-- BEGIN panel-heading -->
+				<div class="panel-heading">
+					<h4 class="panel-title">Button Dropdowns</h4>
+					<div class="panel-heading-btn">
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+					</div>
+				</div>
+				<!-- END panel-heading -->
+				<!-- BEGIN panel-body -->
+				<div class="panel-body">
+					<div class="btn-group me-1 mb-1">
+						<a href="javascript:;" class="btn btn-default">Dropdown</a>
+						<a href="#" data-bs-toggle="dropdown" class="btn btn-default dropdown-toggle"><i class="fa fa-caret-down"></i></a>
+						<div class="dropdown-menu dropdown-menu-end">
+							<a href="javascript:;" class="dropdown-item">Action 1</a>
+							<a href="javascript:;" class="dropdown-item">Action 2</a>
+							<a href="javascript:;" class="dropdown-item">Action 3</a>
+							<div class="dropdown-divider"></div>
+							<a href="javascript:;" class="dropdown-item">Action 4</a>
+						</div>
+					</div>
+					<div class="btn-group dropup me-1 mb-1">
+						<a href="javascript:;" class="btn btn-primary">Dropup</a>
+						<a href="#" data-bs-toggle="dropdown" class="btn btn-primary dropdown-toggle"><i class="fa fa-caret-up"></i></a>
+						<div class="dropdown-menu">
+							<a href="javascript:;" class="dropdown-item">Action 1</a>
+							<a href="javascript:;" class="dropdown-item">Action 2</a>
+							<a href="javascript:;" class="dropdown-item">Action 3</a>
+							<div class="dropdown-divider"></div>
+							<a href="javascript:;" class="dropdown-item">Action 4</a>
+						</div>
+					</div>
+				</div>
+				<!-- END panel-body -->
+				<!-- BEGIN hljs-wrapper -->
+				<div class="hljs-wrapper">
+					<pre><code class="html" data-url="{% static 'data/ui-buttons/code-2.json' %}"></code></pre>
+				</div>
+				<!-- END hljs-wrapper -->
+			</div>
+			<!-- END panel -->
+		</div>
+		<!-- END col-6 -->
+	</div>
+	<!-- END row -->
+	<!-- BEGIN row -->
+	<div class="row">
+		<!-- BEGIN col-6 -->
+		<div class="col-xl-6">
+			<!-- BEGIN panel -->
+			<div class="panel panel-inverse" data-sortable-id="ui-buttons-3">
+				<!-- BEGIN panel-heading -->
+				<div class="panel-heading">
+					<h4 class="panel-title">Button Sizes</h4>
+					<div class="panel-heading-btn">
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+					</div>
+				</div>
+				<!-- END panel-heading -->
+				<!-- BEGIN panel-body -->
+				<div class="panel-body">
+					<a href="javascript:;" class="btn btn-primary btn-lg me-1 mb-1">Large Button</a>
+					<a href="javascript:;" class="btn btn-primary me-1 mb-1">Default Button</a>
+					<a href="javascript:;" class="btn btn-default btn-sm me-1 mb-1">Small Button</a>
+					<a href="javascript:;" class="btn btn-default btn-xs me-1 mb-1">Extra Small</a>
+				</div>
+				<!-- END panel-body -->
+				<!-- BEGIN hljs-wrapper -->
+				<div class="hljs-wrapper">
+					<pre><code class="html" data-url="{% static 'data/ui-buttons/code-3.json' %}"></code></pre>
+				</div>
+				<!-- END hljs-wrapper -->
+			</div>
+			<!-- END panel -->
+		</div>
+		<!-- END col-6 -->
+		<!-- BEGIN col-6 -->
+		<div class="col-xl-6">
+			<!-- BEGIN panel -->
+			<div class="panel panel-inverse" data-sortable-id="ui-buttons-4">
+				<!-- BEGIN panel-heading -->
+				<div class="panel-heading">
+					<h4 class="panel-title">Button State</h4>
+					<div class="panel-heading-btn">
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+					</div>
+				</div>
+				<!-- END panel-heading -->
+				<!-- BEGIN panel-body -->
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-6">
+							<a href="javascript:;" class="btn btn-default disabled me-1 mb-1">Disabled Button</a>
+							<a href="javascript:;" class="btn btn-default active me-1 mb-1">Active Button</a>
+						</div>
+						<div class="col-md-6">
+							<a href="javascript:;" class="btn btn-primary d-block">Block Button</a>
+						</div>
+					</div>
+				</div>
+				<!-- END panel-body -->
+				<!-- BEGIN hljs-wrapper -->
+				<div class="hljs-wrapper">
+					<pre><code class="html" data-url="{% static 'data/ui-buttons/code-4.json' %}"></code></pre>
+				</div>
+				<!-- END hljs-wrapper -->
+			</div>
+			<!-- END panel -->
+		</div>
+		<!-- END col-6 -->
+	</div>
+	<!-- END row -->
+	<!-- BEGIN row -->
+	<div class="row">
+		<!-- BEGIN col-6 -->
+		<div class="col-xl-6">
+			<!-- BEGIN panel -->
+			<div class="panel panel-inverse" data-sortable-id="ui-buttons-5">
+				<!-- BEGIN panel-heading -->
+				<div class="panel-heading">
+					<h4 class="panel-title">Button with Icon</h4>
+					<div class="panel-heading-btn">
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+					</div>
+				</div>
+				<!-- END panel-heading -->
+				<!-- BEGIN panel-body -->
+				<div class="panel-body">
+					<div class="row text-center">
+						<div class="col-md-6">
+							<div class="mb-2">
+								<a href="javascript:;" class="btn btn-lg btn-primary">
+									<span class="d-flex align-items-center text-start">
+										<i class="fab fa-twitter fa-3x me-3 text-black"></i>
+										<span>
+											<span class="d-block"><b>Twitter Bootstrap</b></span>
+											<span class="d-block fs-12px opacity-7">Version 5.0</span>
+										</span>
+									</span>
+								</a>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<p>
+								<a href="javascript:;" class="btn btn-default me-5px"><i class="fa fa-comment"></i> Comment</a>
+								<a href="javascript:;" class="btn btn-default me-5px"><i class="fa fa-cogs"></i> Setting</a>
+								<a href="javascript:;" class="btn btn-default"><i class="fa fa-cog"></i></a>
+							</p>
+							<p>
+								<a href="javascript:;" class="btn btn-default d-block"><i class="fa fa-list"></i> Button block with icon</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- END panel-body -->
+				<!-- BEGIN hljs-wrapper -->
+				<div class="hljs-wrapper">
+					<pre><code class="html" data-url="{% static 'data/ui-buttons/code-5.json' %}"></code></pre>
+				</div>
+				<!-- END hljs-wrapper -->
+			</div>
+			<!-- END panel -->
+		</div>
+		<!-- END col-6 -->
+		<!-- BEGIN col-6 -->
+		<div class="col-xl-6">
+			<!-- BEGIN panel -->
+			<div class="panel panel-inverse" data-sortable-id="ui-buttons-6">
+				<!-- BEGIN panel-heading -->
+				<div class="panel-heading">
+					<h4 class="panel-title">Button Groups & Toolbars</h4>
+					<div class="panel-heading-btn">
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+					</div>
+				</div>
+				<!-- END panel-heading -->
+				<!-- BEGIN panel-body -->
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="btn-group">
+								<button class="btn btn-white">Left</button>
+								<button class="btn btn-white active">Middle</button>
+								<button class="btn btn-white">Right</button>
+							</div>
+							<p></p>
+							<div class="btn-group">
+								<a class="btn btn-white" href="javascript:;"><i class="fa fa-align-left"></i></a>
+								<a class="btn btn-white active" href="javascript:;"><i class="fa fa-align-center"></i></a>
+								<a class="btn btn-white" href="javascript:;"><i class="fa fa-align-right"></i></a>
+								<a class="btn btn-white" href="javascript:;"><i class="fa fa-align-justify"></i></a>
+							</div>
+							<p></p>
+						</div>
+						<div class="col-md-6">
+							<div class="btn-group">
+								<button type="button" class="btn btn-white">1</button>
+								<button type="button" class="btn btn-white active">2</button>
+								<button type="button" class="btn btn-white">3</button>
+							</div>
+							<div class="btn-group">
+								<button type="button" class="btn btn-white">4</button>
+								<button type="button" class="btn btn-white">5</button>
+								<button type="button" class="btn btn-white">6</button>
+							</div>
+							<div class="btn-group">
+								<button type="button" class="btn btn-white">7</button>
+							</div>
+							<p></p>
+							<div class="btn-group">
+								<a class="btn btn-dark" href="javascript:;"><i class="fa fa-backward"></i></a>
+								<a class="btn btn-dark" href="javascript:;"><i class="fa fa-fast-backward"></i></a>
+								<a class="btn btn-dark" href="javascript:;"><i class="fa fa-pause"></i></a>
+								<a class="btn btn-dark active" href="javascript:;"><i class="fa fa-play"></i></a>
+								<a class="btn btn-dark" href="javascript:;"><i class="fa fa-forward"></i></a>
+								<a class="btn btn-dark" href="javascript:;"><i class="fa fa-fast-forward"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- END panel-body -->
+				<!-- BEGIN hljs-wrapper -->
+				<div class="hljs-wrapper">
+					<pre><code class="html" data-url="{% static 'data/ui-buttons/code-6.json' %}"></code></pre>
+				</div>
+				<!-- END hljs-wrapper -->
+			</div>
+			<!-- END panel -->
+		</div>
+		<!-- END col-6 -->
+		<!-- BEGIN col-6 -->
+		<div class="col-xl-6">
+			<!-- BEGIN panel -->
+			<div class="panel panel-inverse" data-sortable-id="ui-buttons-7">
+				<!-- BEGIN panel-heading -->
+				<div class="panel-heading">
+					<h4 class="panel-title">Button Group Vertical & Justified</h4>
+					<div class="panel-heading-btn">
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+					</div>
+				</div>
+				<!-- END panel-heading -->
+				<!-- BEGIN panel-body -->
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="btn-group-vertical me-5px">
+								<button type="button" class="btn btn-indigo"><i class="fa fa-cog"></i> Button</button>
+								<button type="button" class="btn btn-indigo active"><i class="fa fa-cog"></i> Button</button>
+								<button type="button" class="btn btn-indigo"><i class="fa fa-cog"></i> Button</button>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="btn-group w-100">
+								<a class="btn btn-outline-inverse">Left</a>
+								<a class="btn btn-outline-inverse active">Middle</a>
+								<a class="btn btn-outline-inverse">Right</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- END panel-body -->
+				<!-- BEGIN hljs-wrapper -->
+				<div class="hljs-wrapper">
+					<pre><code class="html" data-url="{% static 'data/ui-buttons/code-7.json' %}"></code></pre>
+				</div>
+				<!-- END hljs-wrapper -->
+			</div>
+			<!-- END panel -->
+		</div>
+		<!-- END col-6 -->
+		<!-- BEGIN col-6 -->
+		<div class="col-xl-6">
+			<!-- BEGIN panel -->
+			<div class="panel panel-inverse" data-sortable-id="ui-buttons-8">
+				<!-- BEGIN panel-heading -->
+				<div class="panel-heading">
+					<h4 class="panel-title">Button Icon & Sizes</h4>
+					<div class="panel-heading-btn">
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+					</div>
+				</div>
+				<!-- END panel-heading -->
+				<!-- BEGIN panel-body -->
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-8">
+							<p>
+								<a href="javascript:;" class="btn btn-default btn-icon btn-circle btn-lg"><i class="fa fa-expand"></i></a>
+								<a href="javascript:;" class="btn btn-success btn-icon btn-circle btn-lg"><i class="fa fa-redo"></i></a>
+								<a href="javascript:;" class="btn btn-warning btn-icon btn-circle btn-lg"><i class="fa fa-minus"></i></a>
+								<a href="javascript:;" class="btn btn-danger btn-icon btn-circle btn-lg"><i class="fa fa-times"></i></a>
+								<a href="javascript:;" class="btn btn-primary btn-icon btn-circle btn-lg"><i class="fab fa-facebook-f"></i></a>
+								<a href="javascript:;" class="btn btn-info btn-icon btn-circle btn-lg"><i class="fab fa-twitter"></i></a>
+								<a href="javascript:;" class="btn btn-dark btn-icon btn-circle btn-lg"><i class="fab fa-stack-overflow"></i></a>
+							</p>
+							<p>
+								<a href="javascript:;" class="btn btn-default btn-icon btn-circle"><i class="fa fa-expand"></i></a>
+								<a href="javascript:;" class="btn btn-success btn-icon btn-circle"><i class="fa fa-redo"></i></a>
+								<a href="javascript:;" class="btn btn-warning btn-icon btn-circle"><i class="fa fa-minus"></i></a>
+								<a href="javascript:;" class="btn btn-danger btn-icon btn-circle"><i class="fa fa-times"></i></a>
+								<a href="javascript:;" class="btn btn-primary btn-icon btn-circle"><i class="fab fa-facebook-f"></i></a>
+								<a href="javascript:;" class="btn btn-info btn-icon btn-circle"><i class="fab fa-twitter"></i></a>
+								<a href="javascript:;" class="btn btn-dark btn-icon btn-circle"><i class="fab fa-stack-overflow"></i></a>
+							</p>
+							<p>
+								<a href="javascript:;" class="btn btn-default btn-icon btn-circle btn-sm"><i class="fa fa-expand"></i></a>
+								<a href="javascript:;" class="btn btn-success btn-icon btn-circle btn-sm"><i class="fa fa-redo"></i></a>
+								<a href="javascript:;" class="btn btn-warning btn-icon btn-circle btn-sm"><i class="fa fa-minus"></i></a>
+								<a href="javascript:;" class="btn btn-danger btn-icon btn-circle btn-sm"><i class="fa fa-times"></i></a>
+								<a href="javascript:;" class="btn btn-primary btn-icon btn-circle btn-sm"><i class="fab fa-facebook-f"></i></a>
+								<a href="javascript:;" class="btn btn-info btn-icon btn-circle btn-sm"><i class="fab fa-twitter"></i></a>
+								<a href="javascript:;" class="btn btn-dark btn-icon btn-circle btn-sm"><i class="fab fa-stack-overflow"></i></a>
+							</p>
+							<p>
+								<a href="javascript:;" class="btn btn-default btn-icon btn-circle btn-xs"><i class="fa fa-expand"></i></a>
+								<a href="javascript:;" class="btn btn-success btn-icon btn-circle btn-xs"><i class="fa fa-redo"></i></a>
+								<a href="javascript:;" class="btn btn-warning btn-icon btn-circle btn-xs"><i class="fa fa-minus"></i></a>
+								<a href="javascript:;" class="btn btn-danger btn-icon btn-circle btn-xs"><i class="fa fa-times"></i></a>
+								<a href="javascript:;" class="btn btn-primary btn-icon btn-circle btn-xs"><i class="fab fa-facebook-f"></i></a>
+								<a href="javascript:;" class="btn btn-info btn-icon btn-circle btn-xs"><i class="fab fa-twitter"></i></a>
+								<a href="javascript:;" class="btn btn-dark btn-icon btn-circle btn-xs"><i class="fab fa-stack-overflow"></i></a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- END panel-body -->
+				<!-- BEGIN hljs-wrapper -->
+				<div class="hljs-wrapper">
+					<pre><code class="html" data-url="{% static 'data/ui-buttons/code-8.json' %}"></code></pre>
+				</div>
+				<!-- END hljs-wrapper -->
+			</div>
+			<!-- END panel -->
+		</div>
+		<!-- END col-6 -->
+	</div>
+	<!-- END row -->
+
+{% endblock %}

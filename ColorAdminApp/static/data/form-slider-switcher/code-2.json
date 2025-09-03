@@ -1,0 +1,9 @@
+&lt;!-- change state via javascript --&gt;
+&lt;script&gt;
+var elm = document.getElementById('id-here');
+var switchery = new Switchery(elm);
+
+switchery.enable();  // enable
+switchery.disable(); // disable
+switchery.destroy(); // destroy
+&lt;/script&gt;

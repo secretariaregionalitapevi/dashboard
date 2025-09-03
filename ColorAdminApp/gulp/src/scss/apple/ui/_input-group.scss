@@ -1,0 +1,121 @@
+.input-group-text {
+  @include border-radius($input-border-radius);
+}
+
+.input-group-lg > .form-control,
+.input-group-lg > .form-select,
+.input-group-lg > .input-group-text,
+.input-group-lg > .btn {
+  @include border-radius($input-border-radius-lg);
+}
+
+.input-group-sm > .form-control,
+.input-group-sm > .form-select,
+.input-group-sm > .input-group-text,
+.input-group-sm > .btn {
+  @include border-radius($input-border-radius-sm);
+}
+
+.input-group-lg > .form-select,
+.input-group-sm > .form-select {
+	padding-inline-start: $form-select-padding-x;
+  padding-inline-end: $form-select-padding-x + $form-select-indicator-padding;
+}
+
+$input-group-sizes: (
+  null: $input-border-radius,
+  sm: $input-border-radius-sm,
+  lg: $input-border-radius-lg
+);
+@each $size, $radius in $input-group-sizes {
+  .input-group#{if($size, '.input-group-#{$size}', '')} {
+    &:not(.has-validation) {
+      > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating),
+      > .dropdown-toggle:nth-last-child(n + 3),
+      > .form-floating:not(:last-child) > .form-control,
+      > .form-floating:not(:last-child) > .form-select {
+        :dir(ltr) & {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+        :dir(rtl) & {
+          border-top-right-radius: $radius;
+          border-bottom-right-radius: $radius;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+    }
+
+    &.has-validation {
+      > :nth-last-child(n + 3):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating),
+      > .dropdown-toggle:nth-last-child(n + 4),
+      > .form-floating:nth-last-child(n + 3) > .form-control,
+      > .form-floating:nth-last-child(n + 3) > .form-select {
+        :dir(ltr) & {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+        :dir(rtl) & {
+          border-top-right-radius: $radius;
+          border-bottom-right-radius: $radius;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+    }
+
+    $validation-messages: "";
+    @each $state in map-keys($form-validation-states) {
+      $validation-messages: $validation-messages + ":not(." + unquote($state) + "-tooltip)" + ":not(." + unquote($state) + "-feedback)";
+    }
+
+    > :not(:first-child):not(.dropdown-menu)#{$validation-messages} {
+      margin-left: 0;
+      margin-inline-start: calc(-1 * #{$input-border-width});
+      
+      :dir(ltr) & {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      :dir(rtl) & {
+				border-top-left-radius: $radius;
+				border-bottom-left-radius: $radius;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+			&:last-child:not(.dropdown-toggle):not(.dropdown-menu) {
+				:dir(rtl) & {
+					border-top-left-radius: $radius;
+					border-bottom-left-radius: $radius;
+				}
+			}
+      &:nth-last-child(n + 3):not(.dropdown-menu):not(.form-floating) {
+      	:dir(rtl) & {
+					border-top-left-radius: 0;
+					border-bottom-left-radius: 0;
+				}
+      }
+    }
+    > .form-floating:not(:first-child) > .form-control,
+    > .form-floating:not(:first-child) > .form-select {
+      :dir(ltr) & {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      :dir(rtl) & {
+        border-top-left-radius: $radius;
+        border-bottom-left-radius: $radius;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+    > :not(:first-child):not(:last-child):not(.dropdown-toggle):not(.dropdown-menu)#{$validation-messages},
+    > .form-floating:not(:first-child):not(:last-child) > .form-control,
+    > .form-floating:not(:first-child):not(:last-child) > .form-select {
+      :dir(rtl) & {
+    		border-radius: 0;
+    	}
+    }
+  }
+}

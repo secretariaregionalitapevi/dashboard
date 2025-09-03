@@ -1,0 +1,9 @@
+.pagination {
+	font-weight: $pagination-font-weight;
+	flex-wrap: wrap;
+	
+	& .page-item:not(:first-child) .page-link {
+		margin-left: 0;
+    margin-inline-start: .375rem;
+	}
+}

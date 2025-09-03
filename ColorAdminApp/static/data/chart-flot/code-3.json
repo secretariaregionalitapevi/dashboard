@@ -1,0 +1,44 @@
+&lt;!-- required files --&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.canvaswrapper.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.colorhelpers.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.saturated.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.browser.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.drawSeries.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.uiConstants.js' %}"&gt;&lt;/script&gt;
+
+&lt;div id="bar-chart" class="h-250px"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  var data = [[0, 10], [1, 8], [2, 4], [3, 13], [4, 17], [5, 9]];
+  var ticks = [[0, 'JAN'], [1, 'FEB'], [2, 'MAR'], [3, 'APR'], [4, 'MAY'], [5, 'JUN']];
+  $.plot('#bar-chart', [{ label: 'Bounce Rate', data: data, color: app.color.componentColor }], {
+    series: {
+      bars: {
+        show: true,
+        barWidth: 0.6,
+        align: 'center',
+        fill: true,
+        fillColor: 'rgba('+ app.color.componentColorRgb + ', .25)',
+        zero: true
+      }
+    },
+    xaxis: {
+      tickColor: 'rgba('+ app.color.darkRgb + ', .15)',
+      autoscaleMargin: 0.05,
+      ticks: ticks
+    },
+    yaxis: {
+      tickColor: 'rgba('+ app.color.darkRgb + ', .15)'
+    },
+    grid: {
+      borderColor: 'rgba('+ app.color.darkRgb + ', .15)',
+      borderWidth: 1,
+      backgroundColor: 'rgba('+ app.color.darkRgb + ', .035)',
+      tickColor: 'rgba('+ app.color.darkRgb + ', .15)'
+    },
+    legend: {
+      noColumns: 0
+    },
+  });
+&lt;/script&gt;

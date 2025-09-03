@@ -1,0 +1,23 @@
+&lt;!-- begin widget-list --&gt;
+&lt;div class="widget-list rounded mb-4"&gt;
+  &lt;!-- begin widget-list-item --&gt;
+  &lt;div class="widget-list-item"&gt;
+    &lt;div class="widget-list-media"&gt;
+      &lt;img src="{% static 'img/user/user-1.jpg' %}" width="50" class="rounded" /&gt;
+    &lt;/div&gt;
+    &lt;div class="widget-list-content"&gt;
+      &lt;h4 class="widget-list-title"&gt;Christopher Struth&lt;/h4&gt;
+      &lt;p class="widget-list-desc"&gt;Bank Transfer&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="widget-list-action"&gt;
+      &lt;a href="#" data-bs-toggle="dropdown" class="text-body text-opacity-50"&gt;
+        &lt;i class="fa fa-ellipsis-h fs-14px"&gt;&lt;/i&gt;
+      &lt;/a&gt;
+      &lt;ul class="dropdown-menu dropdown-menu-end"&gt;
+        ...
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- end widget-list-item --&gt;
+&lt;/div&gt;
+&lt;!-- end widget-list --&gt;

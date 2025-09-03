@@ -1,0 +1,22 @@
+&lt;!-- required files --&gt;
+&lt;link href="{% static 'plugins/select2/dist/css/select2.min.css' %}" rel="stylesheet" /&gt;
+&lt;script src="{% static 'plugins/select2/dist/js/select2.min.js' %}"&gt;&lt;/script&gt;
+
+&lt;!-- html --&gt;
+&lt;select class="default-select2 form-control"&gt;
+  &lt;optgroup label="Alaskan/Hawaiian Time Zone"&gt;
+    &lt;option value="AK"&gt;Alaska&lt;/option&gt;
+    &lt;option value="HI"&gt;Hawaii&lt;/option&gt;
+  &lt;/optgroup&gt;
+&lt;/select&gt;
+
+&lt;!-- multiple selection --&gt;
+&lt;select class="multiple-select2 form-control" multiple&gt;
+  ...
+&lt;/select&gt;
+
+&lt;!-- script --&gt;
+&lt;script&gt;
+  $(".default-select2").select2();
+  $(".multiple-select2").select2({ placeholder: "Select a state" });
+&lt;/script&gt;

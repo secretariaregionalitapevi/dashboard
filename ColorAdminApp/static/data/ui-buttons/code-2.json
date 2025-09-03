@@ -1,0 +1,15 @@
+&lt;!-- dropdown --&gt;
+&lt;div class="btn-group"&gt;
+  &lt;a href="#" class="btn btn-default"&gt;Dropdown&lt;/a&gt;
+  &lt;a href="#" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown"&gt;
+    &lt;i class="fa fa-caret-down"&gt;&lt;/i&gt;
+  &lt;/a&gt;
+  &lt;ul class="dropdown-menu dropdown-menu-end"&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;!-- dropup --&gt;
+&lt;div class="btn-group dropup"&gt;
+  ...
+&lt;/div&gt;

@@ -1,0 +1,8 @@
+&lt;div class="fa-3x"&gt;
+  &lt;i class="fas fa-arrow-alt-circle-right"&gt;&lt;/i&gt;
+  &lt;i class="fas fa-arrow-alt-circle-right fa-rotate-90"&gt;&lt;/i&gt;
+  &lt;i class="fas fa-arrow-alt-circle-right fa-rotate-180"&gt;&lt;/i&gt;
+  &lt;i class="fas fa-arrow-alt-circle-right fa-rotate-270"&gt;&lt;/i&gt;
+  &lt;i class="fas fa-arrow-alt-circle-right fa-flip-horizontal"&gt;&lt;/i&gt;
+  &lt;i class="fas fa-arrow-alt-circle-right fa-flip-vertical"&gt;&lt;/i&gt;
+&lt;/div&gt;

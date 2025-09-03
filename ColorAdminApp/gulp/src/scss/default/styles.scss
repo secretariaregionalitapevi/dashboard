@@ -1,0 +1,26 @@
+/*!
+ * Color Admin v5.5.2 (https://seantheme.com/color-admin/)
+ * Copyright 2025 SeanTheme
+ */
+
+@import 'font';
+@import 'functions';
+@import 'variables';
+@import 'variables-dark';
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/maps';
+@import 'node_modules/bootstrap/scss/mixins';
+@import 'node_modules/bootstrap/scss/utilities';
+@import '_utilities.scss';
+@import 'node_modules/bootstrap/scss/utilities/api';
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'mixins';
+@import 'root';
+@import 'reboot';
+@import 'app';
+@import 'layout';
+@import 'ui';
+@import 'pages';
+@import 'plugins';
+@import 'helper';

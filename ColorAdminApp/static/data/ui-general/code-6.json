@@ -1,0 +1,23 @@
+&lt;!-- default --&gt;
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar fs-10px fw-bold" style="width: 80%"&gt;Basic&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- striped --&gt;
+&lt;div class="progress progress-striped"&gt;
+  &lt;div class="progress-bar bg-warning" style="width: 80%"&gt;
+    Striped
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- animated --&gt;
+&lt;div class="progress progress-striped active"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;!-- stacked --&gt;
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar bg-dark" style="width: 25%"&gt;...&lt;/div&gt;
+  &lt;div class="progress-bar bg-grey" style="width: 25%"&gt;...&lt;/div&gt;
+  &lt;div class="progress-bar bg-lime" style="width: 25%"&gt;...&lt;/div&gt;
+&lt;/div&gt;

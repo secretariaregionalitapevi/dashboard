@@ -1,0 +1,36 @@
+{
+  "name": "jvectormap-next",
+  "version": "3.1.2",
+  "description": "jQuery plugin for embedding vector maps with reach API and methods for data visualization to the web-pages.",
+  "keywords": [
+    "map",
+    "vector",
+    "world",
+    "usa",
+    "choropleth"
+  ],
+  "homepage": "http://jvectormap.com",
+  "bugs": "https://github.com/alex-pex/jvectormap/issues",
+  "license": "(AGPL OR Commercial)",
+  "author": "Kirill Lebedev <echo.bjornd@gmail.com>",
+  "contributors": [
+    "Alexandre Paixao <alexandre.paixao@live.fr>"
+  ],
+  "main": "jquery-jvectormap.js",
+  "files": [
+    "/jquery-*",
+    "/LICENSE-*"
+  ],
+  "repository": "alex-pex/jvectormap",
+  "scripts": {
+    "build": "./build.sh",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "uglify-js": "^3.19.3"
+  },
+  "peerDependencies": {
+    "jquery": ">=1.7"
+  },
+  "gitHead": "01e54fa7f1e88f087ab0a8627cee7f9ad6b05b1d"
+}

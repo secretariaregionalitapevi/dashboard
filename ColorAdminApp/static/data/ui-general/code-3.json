@@ -1,0 +1,16 @@
+&lt;!-- default --&gt;
+&lt;div class="note alert-primary"&gt;
+  &lt;div class="note-icon"&gt;&lt;i class="fab fa-facebook-f"&gt;&lt;/i&gt;&lt;/div&gt;
+  &lt;div class="note-content"&gt;
+    &lt;h4&gt;&lt;b&gt;Note with icon!&lt;/b&gt;&lt;/h4&gt;
+    &lt;p&gt; ... &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- with end icon --&gt;
+&lt;div class="note alert-warning note-with-end-icon"&gt;
+  &lt;div class="note-icon"&gt;...&lt;/div&gt;
+  &lt;div class="note-content text-end"&gt;
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;

@@ -1,0 +1,475 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Bootstrap 5{% endblock %}
+
+{% block js %}
+	<script src="{% static 'plugins/masonry-layout/dist/masonry.pkgd.min.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+	<!-- BEGIN breadcrumb -->
+	<ol class="breadcrumb float-xl-end">
+		<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+		<li class="breadcrumb-item active">Bootstrap 5</li>
+	</ol>
+	<!-- END breadcrumb -->
+	<!-- BEGIN page-header -->
+	<h1 class="page-header mb-10px">Bootstrap 5 <small>header small text goes here...</small></h1>
+	<!-- END page-header -->
+	
+	<p class="mb-20px">
+		A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. If you’re familiar with Bootstrap 3, cards replace our old panels, wells, and thumbnails. Similar functionality to those components is available as modifier classes for cards.
+	</p>
+	
+	<!-- BEGIN row -->
+	<div class="row">
+		<!-- BEGIN col-3 -->
+		<div class="col-xl-3 col-sm-6">
+			<div class="mb-10px fs-10px mt-10px"><b class="text-dark">EXAMPLE</b></div>
+			<!-- BEGIN card -->
+			<div class="card border-0">
+				<img class="card-img-top" src="{% static 'img/gallery/gallery-1.jpg' %}" alt="" />
+				<div class="card-body">
+					<h4 class="card-title mb-10px">Card title</h4>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<a href="javascript:;" class="btn btn-sm btn-default">Go somewhere</a>
+				</div>
+			</div>
+			<!-- END card -->
+			
+			<div class="mb-10px fs-10px mt-20px"><b class="text-dark">IMAGE OVERLAYS</b></div>
+			<!-- BEGIN card -->
+			<div class="card bg-dark border-0 text-white">
+				<img class="card-img" src="{% static 'img/gallery/gallery-15.jpg' %}" alt="" />
+				<div class="card-img-overlay bg-gray-900 bg-opacity-50 rounded">
+					<h4 class="card-title">Card title</h4>
+					<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+					<p class="card-text">Last updated 3 mins ago</p>
+				</div>
+			</div>
+			<!-- END card -->
+			
+			<div class="mb-10px fs-10px mt-20px"><b class="text-dark">INVERTED TEXT</b></div>
+			<!-- BEGIN card -->
+			<div class="card bg-dark border-0 text-white">
+				<div class="card-body">
+					<h4 class="card-title">Special title treatment</h4>
+					<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+					<a href="javascript:;" class="btn btn-sm btn-warning">Go somewhere</a>
+				</div>
+			</div>
+			<!-- END card -->
+		</div>
+		<!-- END col-3 -->
+		<!-- BEGIN col-3 -->
+		<div class="col-xl-3 col-sm-6">
+			<div class="mb-10px fs-10px mt-10px"><b class="text-dark">BLOCKS</b></div>
+			<!-- BEGIN card -->
+			<div class="card border-0">
+				<div class="card-body">
+					This is some text within a card block.
+				</div>
+			</div>
+			<!-- END card -->
+			
+			<div class="mb-10px fs-10px mt-20px"><b class="text-dark">TITLE, TEXT & LINKS</b></div>
+			<!-- BEGIN card -->
+			<div class="card border-0">
+				<div class="card-body">
+					<h4 class="card-title">Card title</h4>
+					<h6 class="card-subtitle mb-10px text-muted">Card subtitle</h6>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<a href="javascript:;" class="card-link">Card link</a>
+					<a href="javascript:;" class="card-link">Another link</a>
+				</div>
+			</div>
+			<!-- END card -->
+			
+			<div class="mb-10px fs-10px mt-20px"><b class="text-dark">WITH IMAGES</b></div>
+			
+			<!-- BEGIN card -->
+			<div class="card border-0">
+				<img class="card-img-top" src="{% static 'img/gallery/gallery-2.jpg' %}" alt="" />
+				<div class="card-body">
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				</div>
+			</div>
+			<!-- END card -->
+			
+			<div class="mb-10px fs-10px mt-20px"><b class="text-dark">LIST GROUPS</b></div>
+			<!-- BEGIN card -->
+			<div class="card mb-4 border-0">
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">Cras justo odio</li>
+					<li class="list-group-item">Dapibus ac facilisis in</li>
+					<li class="list-group-item">Vestibulum at eros</li>
+				</ul>
+			</div>
+			<!-- END card -->
+		</div>
+		<!-- END col-3 -->
+		<!-- BEGIN col-3 -->
+		<div class="col-xl-3 col-sm-6">
+			<div class="mb-10px fs-10px mt-10px"><b class="text-dark">HEADER & FOOTER</b></div>
+			<!-- BEGIN card -->
+			<div class="card text-center border-0">
+				<div class="card-header fw-bold">
+					Featured
+				</div>
+				<div class="card-body">
+					<h4 class="card-title">Special title treatment</h4>
+					<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+					<a href="javascript:;" class="btn btn-sm btn-primary">Go somewhere</a>
+				</div>
+				<div class="card-footer fw-bold">
+					2 days ago
+				</div>
+			</div>
+			<!-- END card -->
+			
+			<div class="mb-10px fs-10px mt-20px"><b class="text-dark">NAVIGATION</b></div>
+			
+			<!-- BEGIN card -->
+			<div class="card text-center border-0">
+				<div class="card-header">
+					<ul class="nav nav-tabs card-header-tabs">
+						<li class="nav-item">
+							<a class="nav-link active" data-bs-toggle="tab" href="#card-tab-1">Active</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" data-bs-toggle="tab" href="#card-tab-2">Link</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link disabled" href="javascript:;">Disabled</a>
+						</li>
+					</ul>
+				</div>
+				<div class="card-body">
+					<div class="tab-content p-0 m-0">
+						<div class="tab-pane fade active show" id="card-tab-1">
+							<h4 class="card-title">Special title treatment</h4>
+							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+							<a href="javascript:;" class="btn btn-sm btn-default">Go somewhere</a>
+						</div>
+						<div class="tab-pane fade" id="card-tab-2">
+							<h4 class="card-title">Special title treatment 2</h4>
+							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+							<a href="javascript:;" class="btn btn-sm btn-yellow">Go somewhere</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END card -->
+
+			<div class="mb-10px fs-10px mt-20px"><b class="text-dark">NAVIGATION PILLS</b></div>
+			
+			<!-- BEGIN card -->
+			<div class="card text-center border-0">
+				<div class="card-header">
+					<ul class="nav nav-pills card-header-pills">
+						<li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#card-pill-1">Active</a></li>
+						<li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#card-pill-2">Link</a></li>
+						<li class="nav-item"><a class="nav-link disabled" data-bs-toggle="tab" href="javascript:;">Disabled</a></li>
+					</ul>
+				</div>
+				<div class="card-body">
+					<div class="tab-content p-0 m-0">
+						<div class="tab-pane fade active show" id="card-pill-1">
+							<h4 class="card-title">Special title treatment</h4>
+							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+							<a href="javascript:;" class="btn btn-sm btn-primary">Go somewhere</a>
+						</div>
+						<div class="tab-pane fade" id="card-pill-2">
+							<h4 class="card-title">Special title treatment 2</h4>
+							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+							<a href="javascript:;" class="btn btn-sm btn-success">Go somewhere</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END card -->
+		</div>
+		<!-- END col-3 -->
+		<!-- BEGIN col-3 -->
+		<div class="col-xl-3 col-sm-6">
+			<div class="mb-10px fs-10px mt-10px"><b class="text-dark">BACKGROUND VARIANTS</b></div>
+			
+			<!-- BEGIN card -->
+			<div class="card text-white border-0 bg-teal text-center mb-2">
+				<div class="card-body">
+					<blockquote class="blockquote">
+						<p>Make it so that <br />everything becomes your<br /> spiritual advisor</p>
+					</blockquote>
+					<figcaption class="blockquote-footer mt-n2 mb-1 text-white text-opacity-75">
+						Someone famous in <cite title="Source Title">Source Title</cite>
+					</figcaption>
+				</div>
+			</div>
+			<!-- END card -->
+			
+			<!-- BEGIN card -->
+			<div class="card text-white border-0 bg-blue text-center mb-2">
+				<div class="card-body">
+					<blockquote class="blockquote">
+						<p class="mb-2">You don't have <br />to invade a country in order<br /> to be happy</p>
+					</blockquote>
+					<figcaption class="blockquote-footer mt-n2 mb-1 text-white text-opacity-75">
+						Someone famous in <cite title="Source Title">Source Title</cite>
+					</figcaption>
+				</div>
+			</div>
+			<!-- END card -->
+			
+			<!-- BEGIN card -->
+			<div class="card text-white border-0 bg-indigo text-center mb-4">
+				<div class="card-body">
+					<blockquote class="blockquote">
+						<p class="mb-2">Imagination is to <br />never pretend to be <br /> handicapped</p>
+					</blockquote>
+					<figcaption class="blockquote-footer mt-n2 mb-1 text-white text-opacity-75">
+						Someone famous in <cite title="Source Title">Source Title</cite>
+					</figcaption>
+				</div>
+			</div>
+			<!-- END card -->
+			
+			<div class="mb-10px fs-10px mt-20px"><b class="text-dark">BORDER CARDS</b></div>
+			
+			<!-- BEGIN card -->
+			<div class="card border-warning text-warning mb-10px">
+				<div class="card-body">
+					<blockquote class="blockquote">
+						<p class="mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+					</blockquote>
+					<figcaption class="blockquote-footer mt-n2 mb-1 text-orange-700">
+						Someone famous in <cite title="Source Title">Source Title</cite>
+					</figcaption>
+				</div>
+			</div>
+			<!-- END card -->
+			
+			<!-- BEGIN card -->
+			<div class="card border-danger text-danger mb-10px">
+				<div class="card-body">
+					<blockquote class="blockquote">
+						<p class="mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+					</blockquote>
+					<figcaption class="blockquote-footer mt-n2 mb-1 text-red-700">
+						Someone famous in <cite title="Source Title">Source Title</cite>
+					</figcaption>
+				</div>
+			</div>
+			<!-- END card -->
+		</div>
+		<!-- END col-3 -->
+	</div>
+	<!-- END row -->
+	
+	<!-- BEGIN row -->
+	<div class="row">
+		<!-- BEGIN col-6 -->
+		<div class="col-xl-12">
+			<div class="mb-10px fs-10px mt-20px"><b class="text-dark">CARD GROUPS</b></div>
+			<!-- BEGIN card-group -->
+			<div class="card-group">
+				<!-- BEGIN card -->
+				<div class="card">
+					<img class="card-img-top" src="{% static 'img/gallery/gallery-6.jpg' %}" alt="Card image cap" />
+					<div class="card-body">
+						<h4 class="card-title">Card title</h4>
+						<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+						<p class="card-text text-gray">Last updated 3 mins ago</p>
+					</div>
+				</div>
+				<!-- END card -->
+				<!-- BEGIN card -->
+				<div class="card">
+					<img class="card-img-top" src="{% static 'img/gallery/gallery-7.jpg' %}" alt="Card image cap" />
+					<div class="card-body">
+						<h4 class="card-title">Card title</h4>
+						<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+						<p class="card-text text-gray">Last updated 3 mins ago</p>
+					</div>
+				</div>
+				<!-- END card -->
+				<!-- BEGIN card -->
+				<div class="card">
+					<img class="card-img-top" src="{% static 'img/gallery/gallery-8.jpg' %}" alt="Card image cap" />
+					<div class="card-body">
+						<h4 class="card-title">Card title</h4>
+						<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+						<p class="card-text text-gray">Last updated 3 mins ago</p>
+					</div>
+				</div>
+				<!-- END card -->
+				<!-- BEGIN card -->
+				<div class="card">
+					<img class="card-img-top" src="{% static 'img/gallery/gallery-9.jpg' %}" alt="Card image cap" />
+					<div class="card-body">
+						<h4 class="card-title">Card title</h4>
+						<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+						<p class="card-text text-gray">Last updated 3 mins ago</p>
+					</div>
+				</div>
+				<!-- END card -->
+			</div>
+			<!-- END card-group -->
+		</div>
+		<!-- END col-6 -->
+		<!-- BEGIN col-6 -->
+		<div class="col-xl-12">
+			<div class="mb-10px fs-10px mt-20px"><b class="text-dark">CARD COLUMNS</b></div>
+			<!-- BEGIN row -->
+			<div class="row" data-masonry='{"percentPosition": true }'>
+				<!-- BEGIN col-4 -->
+				<div class="col-sm-6 col-lg-4 mb-4">
+					<!-- BEGIN card -->
+					<div class="card border-0">
+						<div class="h-250px rounded-top" style="background-image: url({% static 'img/gallery/gallery-11.jpg' %}); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+						<div class="card-body">
+							<h5 class="card-title mb-2">Card title that wraps to a new line</h5>
+							<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+						</div>
+					</div>
+					<!-- END card -->
+				</div>
+				<!-- END col-4 -->
+				<!-- BEGIN col-4 -->
+				<div class="col-sm-6 col-lg-4 mb-4">
+					<!-- BEGIN card -->
+					<div class="card border-0">
+						<div class="card-body">
+							<blockquote class="blockquote mb-0">
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+								<footer class="blockquote-footer text-gray">
+									Someone famous in <cite title="Source Title">Source Title</cite>
+								</footer>
+							</blockquote>
+						</div>
+					</div>
+					<!-- END card -->
+				</div>
+				<!-- END col-4 -->
+				<!-- BEGIN col-4 -->
+				<div class="col-sm-6 col-lg-4 mb-4">
+					<!-- BEGIN card -->
+					<div class="card border-0 bg-dark text-white">
+						<div class="h-250px rounded-top card-img" style="background-image: url({% static 'img/gallery/gallery-10.jpg' %}); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+						<div class="card-img-overlay">
+							<h4 class="card-title">Card title</h4>
+							<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+							<p class="card-text">Last updated 3 mins ago</p>
+						</div>
+					</div>
+					<!-- END card -->
+				</div>
+				<!-- END col-4 -->
+				<!-- BEGIN col-4 -->
+				<div class="col-sm-6 col-lg-4 mb-4">
+					<!-- BEGIN card -->
+					<div class="card border-0 bg-indigo text-white text-center">
+						<div class="card-body">
+							<blockquote class="blockquote mb-0">
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+								<footer class="blockquote-footer text-white text-opacity-75">
+									Someone famous in <cite title="Source Title">Source Title</cite>
+								</footer>
+							</blockquote>
+						</div>
+					</div>
+					<!-- END card -->
+				</div>
+				<!-- END col-4 -->
+				<!-- BEGIN col-4 -->
+				<div class="col-sm-6 col-lg-4 mb-4">
+					<!-- BEGIN card -->
+					<div class="card border-0 text-white">
+						<div class="h-250px rounded-top card-img" style="background-image: url({% static 'img/gallery/gallery-17.jpg' %}); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+						<div class="card-img-overlay">
+							<h4 class="card-title">Card title</h4>
+							<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+							<p class="card-text">Last updated 3 mins ago</p>
+						</div>
+					</div>
+					<!-- END card -->
+				</div>
+				<!-- END col-4 -->
+				<!-- BEGIN col-4 -->
+				<div class="col-sm-6 col-lg-4 mb-4">
+					<!-- BEGIN card -->
+					<div class="card border-0 text-white bg-dark text-center">
+						<div class="card-body">
+							<blockquote class="blockquote mb-0">
+								<p>Fusce finibus sed augue quis volutpat. Duis non cursus felis. Nunc tristique lacinia orci, vel iaculis ipsum pretium at. Nullam ac mattis eros. Quisque a mauris in ex vulputate accumsan.</p>
+								<footer class="blockquote-footer text-white text-opacity-75">
+									Someone famous in <cite title="Source Title">Source Title</cite>
+								</footer>
+							</blockquote>
+						</div>
+					</div>
+					<!-- END card -->
+				</div>
+				<!-- END col-4 -->
+				<!-- BEGIN col-4 -->
+				<div class="col-sm-6 col-lg-4 mb-4">
+					<!-- BEGIN card -->
+					<div class="card border-0">
+						<div class="card-body">
+							<h4 class="card-title">Card title</h4>
+							<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+							<p class="card-text text-gray">Last updated 3 mins ago</p>
+						</div>
+					</div>
+					<!-- END card -->
+				</div>
+				<!-- END col-4 -->
+				<!-- BEGIN col-4 -->
+				<div class="col-sm-6 col-lg-4 mb-4">
+					<!-- BEGIN card -->
+					<div class="card border-0 text-white">
+						<div class="h-250px rounded-top card-img" style="background-image: url({% static 'img/gallery/gallery-13.jpg' %}); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+						<div class="card-img-overlay">
+							<h4 class="card-title">Card title</h4>
+							<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+							<p class="card-text">Last updated 3 mins ago</p>
+						</div>
+					</div>
+					<!-- END card -->
+				</div>
+				<!-- END col-4 -->
+				<!-- BEGIN col-4 -->
+				<div class="col-sm-6 col-lg-4 mb-4">
+					<!-- BEGIN card -->
+					<div class="card border-0 text-center">
+						<div class="card-body">
+							<h4 class="card-title">Card title</h4>
+							<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+							<p class="card-text text-gray">Last updated 3 mins ago</p>
+						</div>
+					</div>
+					<!-- END card -->
+				</div>
+				<!-- END col-4 -->
+				<!-- BEGIN col-4 -->
+				<div class="col-sm-6 col-lg-4 mb-4">
+					<!-- BEGIN card -->
+					<div class="card border-0">
+						<div class="h-250px rounded-top" style="background-image: url({% static 'img/gallery/gallery-14.jpg' %}); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+						<div class="card-body">
+							<h4 class="card-title">Card title</h4>
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						</div>
+					</div>
+					<!-- END card -->
+				</div>
+				<!-- END col-4 -->
+			</div>
+			<!-- END row -->
+		</div>
+		<!-- END col-6 -->
+	</div>
+	<!-- END row -->
+
+{% endblock %}

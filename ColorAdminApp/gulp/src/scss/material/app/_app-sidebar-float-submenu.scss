@@ -1,0 +1,190 @@
+.app-sidebar-float-submenu-container {
+	position: fixed;
+	width: $app-sidebar-width;
+	margin: 0;
+	background: var(--#{$prefix}app-sidebar-float-submenu-bg);
+	z-index: $app-sidebar-float-submenu-zindex;
+	box-shadow: $app-sidebar-box-shadow;
+	
+	& .app-sidebar-float-submenu {
+		:dir(ltr) & {
+			padding: rem(9px) 0 rem(9px) rem(39px);
+		}
+		:dir(rtl) & {
+			padding: rem(9px) rem(39px) rem(9px) 0;
+		}
+		
+		& .active,
+		& .expanding,
+		& .expand {
+			& > a {
+				& .menu-caret {
+					&:before {
+						opacity: 1.0;
+						transform: rotate(90deg);
+						
+						:dir(rtl) & {
+							transform: rotate(-90deg);
+						}
+					}
+				}
+			}
+		}
+		& .menu-caret {
+			display: block;
+			margin-inline-start: auto;
+			width: rem(20px);
+			text-align: center;
+			font-size: $font-size-sm;
+			border: none;
+			margin-inline-end: auto;
+			
+			@include fontawesome();
+		
+			&:before {
+				content: '\f054';
+				display: block;
+				text-align: center;
+				opacity: 0.5;
+				transition: all .2s linear;
+				
+				:dir(rtl) & {
+					content: '\f053';
+				}
+			}
+		}
+		& .menu-item {
+			position: relative;
+					
+			& .menu-link {
+				padding: rem(3px) 0;
+				padding-inline-start: rem(15px);
+				padding-inline-end: rem(20px);
+				line-height: rem(18px);
+				color: var(--#{$prefix}app-sidebar-menu-submenu-link-color);
+				text-decoration: none;
+				position: relative;
+				display: flex;
+				align-items: flex-start;
+				font-weight: var(--#{$prefix}app-sidebar-menu-submenu-link-font-weight);
+				
+				& .menu-text {
+					flex: 1;
+				}
+				&:hover,
+				&:focus {
+					background: none;
+					color: var(--#{$prefix}app-sidebar-menu-submenu-link-hover-color);
+				}
+				&:after {
+					content: '';
+					position: absolute;
+					top: rem(11px);
+					width: rem(11px);
+					height: rem(2px);
+					background: var(--#{$prefix}app-sidebar-float-submenu-grid-border-color);
+					inset-inline-start: rem(-11px);
+				}
+			}
+			&:before {
+				content: '';
+				position: absolute;
+				inset-inline-start: rem(-13px);
+				top: 0;
+				bottom: 0;
+				width: rem(2px);
+				background: var(--#{$prefix}app-sidebar-float-submenu-grid-border-color);
+			}
+			&:after {
+				content: '';
+				position: absolute;
+				inset-inline-start: 0;
+				width: rem(6px);
+				height: rem(6px);
+				border: var(--#{$prefix}app-sidebar-menu-grid-border-width) solid var(--#{$prefix}app-sidebar-menu-grid-border-color);
+				top: rem(11px);
+				margin-top: rem(-2px);
+				z-index: 10;
+				background: var(--#{$prefix}app-sidebar-bg);
+				border-radius: rem(4px);
+			}
+			&:first-child {
+				&:before {
+					top: rem(-11px);
+				}
+				&:last-child:before {
+					height: rem(20px);
+				}
+			}
+			&:last-child {
+				&:before {
+					bottom: auto;
+					height: rem(13px);
+				}
+			}
+			&.has-sub {
+				& > a {
+					&:before {
+						background: var(--#{$prefix}app-sidebar-float-submenu-grid-border-color);
+					}
+				}
+			}
+			&.active {
+				& > .menu-link {
+					background: none;
+					color: var(--#{$prefix}app-sidebar-component-color);
+				}
+				&:after {
+					border-color: var(--#{$prefix}app-theme);
+				}
+			}
+			
+			& .menu-submenu {
+				padding: 0;
+				background: none;
+				position: relative;
+				display: none;
+				padding-inline-start: rem(15px);
+			}
+			
+			&.active {
+				&.has-sub {
+					& > .menu-submenu {
+						display: block;
+					}
+				}
+			}
+		}
+		& > .menu-item {
+			&:first-child {
+				&:before {
+					top: rem(11px);
+				}
+				&:last-child {
+					&:before {
+						height: 0 !important;
+					}
+				}
+			}
+		}
+	}
+	& .app-sidebar-float-submenu-arrow {
+		position: absolute;
+		top: rem(20px);
+		width: rem(28px);
+		height: rem(2px);
+		inset-inline-start: rem(26px);position: absolute;
+		top: rem(20px);
+		width: rem(28px);
+		height: rem(2px);
+		background: var(--#{$prefix}app-sidebar-float-submenu-grid-border-color);
+		inset-inline-start: 0;
+	}
+	& .app-sidebar-float-submenu-line {
+		position: absolute;
+		top: rem(20px);
+		width: rem(2px);
+		background: var(--#{$prefix}app-sidebar-float-submenu-grid-border-color);
+		inset-inline-start: rem(26px);
+	}
+}

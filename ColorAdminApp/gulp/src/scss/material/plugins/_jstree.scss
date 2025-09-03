@@ -1,0 +1,160 @@
+.jstree {
+	& .jstree-container-ul {
+		& .jstree-node {
+			position: relative;
+			background: none !important;
+			
+			&:before {
+				content: '';
+				position: absolute;
+				top: 0;
+				bottom: 1px;
+				inset-inline-start: $spacer * 0.75;
+				border-inline-start: 1px dotted var(--#{$prefix}component-border-color);
+			}
+			&:last-child {
+				&:before {
+					bottom: rem(11px);
+				}	
+			}
+			& > .jstree-icon {
+				&.jstree-ocl {
+					position: relative;
+					background: none;
+				
+					&:before {
+						content: '';
+						position: absolute;
+						inset-inline-start: 50%;
+						inset-inline-end: 1px;
+						top: 50%;
+						border-top: 1px dotted var(--#{$prefix}component-border-color);
+					}
+					&:after {
+						content: '';
+						position: absolute;
+						top: 50%;
+						inset-inline-start: 50%;
+						margin-inline-start: rem(-3px);
+						margin-top: rem(-3px);
+						border: 5px solid transparent;
+						transition: all .2s linear;
+					}
+				}
+			}
+			
+			& .jstree-anchor {
+				color: rgba(var(--#{$prefix}component-color-rgb), .75);
+				font-weight: $font-weight-bold;
+				
+				& .jstree-icon {
+					&.jstree-checkbox {
+						background: none;
+						
+						&:before {
+							content: '';
+							position: absolute;
+							inset-inline-start: rem(4px);
+							top: rem(4px);
+							inset-inline-end: rem(4px);
+							bottom: rem(4px);
+							border: 1px solid var(--#{$prefix}component-border-color);
+							display: block;
+							background: var(--#{$prefix}component-bg);
+							border-radius: $border-radius-sm;
+						}
+						&:after {
+							content: '';
+							position: absolute;
+							inset-inline-start: rem(7px);
+							top: rem(7px);
+							inset-inline-end: rem(7px);
+							bottom: rem(7px);
+							display: block;
+								
+							@include fontawesome();
+						}
+						
+						&.jstree-undetermined {
+							&:after {
+								background: var(--#{$prefix}component-border-color);
+							}
+						}
+					}
+				}
+				
+				&.jstree-clicked {
+					color: var(--#{$prefix}component-color);
+					
+					& .jstree-icon {
+						&.jstree-checkbox {
+							&:after {
+								content: '\f00c';
+								font-size: rem(10px);
+								line-height: rem(15px);
+								color: rgba(var(--#{$prefix}component-color-rgb), .75);
+								top: rem(5px);
+								inset-inline-start: rem(5px);
+								inset-inline-end: rem(5px);
+								bottom: rem(5px);
+							}
+						}
+					}
+				}
+				&.jstree-disabled {
+					color: rgba(var(--#{$prefix}component-color-rgb), .25);
+						
+					& > .jstree-icon {
+						opacity: 0.4;
+						filter: none;
+					}
+				}
+			}
+			& .jstree-hovered,
+			& .jstree-wholerow-hovered {
+				background: none;
+				color: rgba(var(--#{$prefix}component-color-rgb), 1);
+				box-shadow: none;
+			}
+			& .jstree-clicked,
+			& .jstree-wholerow-clicked {
+				background: var(--#{$prefix}light);
+				box-shadow: none;
+			}
+			
+			&.jstree-open {
+				& .jstree-anchor {
+					& > .fa-folder {
+						&:before {
+							content: '\f07c';
+							color: rgba(var(--#{$prefix}component-color-rgb), .35);
+						}
+					}
+					&.jstree-clicked {
+						& > .fa-folder {
+							&:before {
+								color: var(--#{$prefix}component-color);
+							}
+						}
+					}
+				}
+				
+				& > .jstree-ocl {
+					&:after {
+						border-inline-start-color: rgba(var(--#{$prefix}component-color-rgb), .25);
+						transform: rotate(45deg);
+					}
+				}
+			}
+			&.jstree-closed {
+				& > .jstree-ocl {
+					&:after {
+						border-inline-start-color: rgba(var(--#{$prefix}component-color-rgb), .25);
+						margin-top: rem(-5px);
+						transform: rotate(0deg);
+					}
+				}
+			}
+		}
+	}
+}

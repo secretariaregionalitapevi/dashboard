@@ -1,0 +1,39 @@
+&lt;!-- required files --&gt;
+&lt;script src="{% static 'plugins/chart.js/dist/chart.umd.js' %}"&gt;&lt;/script&gt;
+
+&lt;!-- html --&gt;
+&lt;canvas id="bar-chart"&gt;&lt;/canvas&gt;
+
+&lt;!-- script --&gt;
+&lt;script&gt;
+  Chart.defaults.color = 'rgba('+ app.color.componentColorRgb + ', .65)';
+  Chart.defaults.font.family = app.font.family;
+  Chart.defaults.font.weight = 500;
+  Chart.defaults.scale.grid.color = 'rgba('+ app.color.componentColorRgb + ', .15)';
+  Chart.defaults.scale.ticks.backdropColor = 'rgba('+ app.color.componentColorRgb + ', 0)';
+
+  var randomScalingFactor = function() { 
+    return Math.round(Math.random()*100)
+  };
+
+  var ctx2 = document.getElementById('bar-chart').getContext('2d');
+  var barChart = new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [{
+        label: 'Dataset 1',
+        borderWidth: 1,
+        borderColor: app.color.indigo,
+        backgroundColor: 'rgba('+ app.color.indigoRgb + ', .3)',
+        data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+      }, {
+        label: 'Dataset 2',
+        borderWidth: 1,
+        borderColor: 'rgba('+ app.color.componentColorRgb + ', .85)',
+        backgroundColor: 'rgba('+ app.color.componentColorRgb + ', .3)',
+        data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+      }]
+    }
+  });
+&lt;/script&gt;

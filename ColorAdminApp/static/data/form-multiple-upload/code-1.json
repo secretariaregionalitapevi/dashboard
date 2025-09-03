@@ -1,0 +1,85 @@
+&lt;!-- required files --&gt;
+&lt;link href="{% static 'plugins/blueimp-gallery/css/blueimp-gallery.min.css' %}" rel="stylesheet" /&gt;
+&lt;link href="{% static 'plugins/blueimp-file-upload/css/jquery.fileupload.css' %}" rel="stylesheet" /&gt;
+&lt;link href="{% static 'plugins/blueimp-file-upload/css/jquery.fileupload-ui.css' %}" rel="stylesheet" /&gt;
+
+&lt;script src="{% static 'plugins/blueimp-file-upload/js/vendor/jquery.ui.widget.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/blueimp-tmpl/js/tmpl.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/blueimp-load-image/js/load-image.all.min.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/blueimp-canvas-to-blob/js/canvas-to-blob.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/blueimp-gallery/js/jquery.blueimp-gallery.min.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/blueimp-file-upload/js/jquery.iframe-transport.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/blueimp-file-upload/js/jquery.fileupload.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/blueimp-file-upload/js/jquery.fileupload-process.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/blueimp-file-upload/js/jquery.fileupload-image.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/blueimp-file-upload/js/jquery.fileupload-audio.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/blueimp-file-upload/js/jquery.fileupload-video.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/blueimp-file-upload/js/jquery.fileupload-validate.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/blueimp-file-upload/js/jquery.fileupload-ui.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'js/demo/form-multiple-upload.demo.js' %}"&gt;&lt;/script&gt;
+
+&lt;!-- html --&gt;
+&lt;form id="fileupload" action="{% static 'global/plugins/jquery-file-upload/server/php/" method="POST" enctype="multipart/form-data"&gt;
+  &lt;div class="row fileupload-buttonbar"&gt;
+    &lt;div class="col-xl-7"&gt;
+      &lt;span class="btn btn-primary fileinput-button me-1"&gt;
+        &lt;i class="fa fa-fw fa-plus"&gt;&lt;/i&gt;
+        &lt;span&gt;Add files...&lt;/span&gt;
+        &lt;input type="file" name="files[]" multiple&gt;
+      &lt;/span&gt;
+      &lt;button type="submit" class="btn btn-primary start me-1"&gt;
+        &lt;i class="fa fa-fw fa-upload"&gt;&lt;/i&gt;
+        &lt;span&gt;Start upload&lt;/span&gt;
+      &lt;/button&gt;
+      &lt;button type="reset" class="btn btn-default cancel me-1"&gt;
+        &lt;i class="fa fa-fw fa-ban"&gt;&lt;/i&gt;
+        &lt;span&gt;Cancel upload&lt;/span&gt;
+      &lt;/button&gt;
+      &lt;button type="button" class="btn btn-default delete me-1"&gt;
+        &lt;i class="fa fa-fw fa-trash"&gt;&lt;/i&gt;
+        &lt;span&gt;Delete&lt;/span&gt;
+      &lt;/button&gt;
+      &lt;!-- The global file processing state --&gt;
+      &lt;span class="fileupload-process"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;!-- The global progress state --&gt;
+    &lt;div class="col-xl-5 fileupload-progress fade d-none d-xl-block"&gt;
+      &lt;!-- The global progress bar --&gt;
+      &lt;div class="progress progress-striped active"&gt;
+        &lt;div class="progress-bar progress-bar-success" style="width:0%;"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;!-- The extended global progress state --&gt;
+      &lt;div class="progress-extended"&gt;&nbsp;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+
+&lt;!-- The template to display files available for upload --&gt;
+&lt;script id="template-upload" type="text/x-tmpl"&gt;
+  {% for (var i=0, file; file=o.files[i]; i++) { %}
+    ...
+  {% } %}
+&lt;/script&gt;
+
+&lt;!-- The template to display files available for download --&gt;
+&lt;script id="template-download" type="text/x-tmpl"&gt;
+  {% for (var i=0, file; file=o.files[i]; i++) { %}
+    ...
+  {% } %}
+&lt;/script&gt;
+
+&lt;!-- script --&gt;
+&lt;script&gt;
+  $('#fileupload').fileupload({
+    autoUpload: false,
+    disableImageResize: /Android(?!.*Chrome)|Opera/.test(window.navigator.userAgent),
+    maxFileSize: 5000000,
+    acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i     
+  });
+  
+  $('#fileupload').bind('fileuploadadd', function(e, data) {
+  });
+
+  $('#fileupload').bind('fileuploadfail', function(e, data) {
+  });
+&lt;/script&gt;

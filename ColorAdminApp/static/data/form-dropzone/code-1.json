@@ -1,0 +1,14 @@
+&lt;!-- required files --&gt;
+&lt;link href="{% static 'plugins/dropzone/dist/min/dropzone.min.css' %}" rel="stylesheet" /&gt;
+&lt;script src="{% static 'plugins/dropzone/dist/min/dropzone.min.js' %}"&gt;&lt;/script&gt;
+
+&lt;div id="dropzone"&gt;
+  &lt;form action="/upload" class="dropzone needsclick" id="demo-upload"&gt;
+    &lt;div class="dz-message needsclick"&gt;
+      Drop files &lt;b&gt;here&lt;/b&gt; or &lt;b&gt;click&lt;/b&gt; to upload.&lt;br /&gt;
+      &lt;span class="dz-note needsclick"&gt;
+        (This is just a demo dropzone. Selected files are &lt;strong&gt;not&lt;/strong&gt; actually uploaded.)
+      &lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;

@@ -1,0 +1,82 @@
+{% load static %}
+
+<!-- BEGIN #top-menu -->
+<div id="top-menu" class="app-top-menu" data-bs-theme="dark">
+	<!-- BEGIN menu -->
+	<div class="menu">
+		{% for menu in sidebar_menu %}
+			{% if menu.is_header %}
+			{% elif menu.is_divider %}
+			{% else %}
+				<div class="menu-item {% if menu.children %} has-sub {% endif %} {% if menu.is_active %} active {% endif %}">
+					<a href="{{ menu.url }}" class="menu-link">
+						{% if menu.icon %}<span class="menu-icon"><i class="{{ menu.icon }}"></i></span>{% endif %}
+						{% if menu.img %}<span class="menu-icon-img"><img src="{% static menu.img %}" /></span>{% endif %}
+						{% if menu.title %}
+							<span class="menu-text">
+								{{ menu.title }}
+								{% if menu.label %}<span class="menu-label">{{ menu.label }}</span>{% endif %}
+							</span>
+						{% endif %}
+						{% if menu.children and not menu.badge %}<span class="menu-caret"></span>{% endif %}
+						{% if menu.badge %}<div class="menu-badge">{{ menu.badge }}</div>{% endif %}
+					</a>
+					{% if menu.children %}
+						<div class="menu-submenu">
+							{% for children in menu.children %}
+								<div class="menu-item {% if children.children %} has-sub {% endif %} {% if children.is_active %} active {% endif %}">
+									<a href="{{ children.url }}" class="menu-link">
+										<span class="menu-text">
+											{{ children.title }}
+											{% if children.highlight %} <i class="fa fa-paper-plane text-theme"></i>{% endif %}
+										</span>
+										{% if children.children %}<span class="menu-caret"></span>{% endif %}
+									</a>
+									
+									{% if children.children %}
+										<div class="menu-submenu">
+											{% for children2 in children.children %}
+												<div class="menu-item {% if children2.children %} has-sub {% endif %} {% if children2.is_active %} active {% endif %}">
+													<a href="{{ children2.url }}" class="menu-link">
+														<span class="menu-text">
+															{{ children2.title }}
+															{% if children2.highlight %} <i class="fa fa-paper-plane text-theme"></i>{% endif %}
+														</span>
+														{% if children2.children %}<span class="menu-caret"></span>{% endif %}
+													</a>
+													
+													{% if children2.children %}
+														<div class="menu-submenu">
+															{% for children3 in children2.children %}
+																<div class="menu-item {% if children3.children %} has-sub {% endif %} {% if children3.is_active %} active {% endif %}">
+																	<a href="{{ children3.url }}" class="menu-link">
+																		<span class="menu-text">
+																			{{ children3.title }}
+																			{% if children3.highlight %} <i class="fa fa-paper-plane text-theme"></i>{% endif %}
+																		</span>
+																	</a>
+																</div>
+															{% endfor %}
+														</div>
+													{% endif %}
+												</div>
+											{% endfor %}
+										</div>
+									{% endif %}
+								</div>
+							{% endfor %}
+						</div>
+					{% endif %}
+				</div>
+			{% endif %}
+		{% endfor %}
+		<div class="menu-item menu-control menu-control-start">
+			<a href="javascript:;" class="menu-link" data-toggle="app-top-menu-prev"><i class="fa fa-angle-left"></i></a>
+		</div>
+		<div class="menu-item menu-control menu-control-end">
+			<a href="javascript:;" class="menu-link" data-toggle="app-top-menu-next"><i class="fa fa-angle-right"></i></a>
+		</div>
+	</div>
+	<!-- END menu -->
+</div>
+<!-- END #top-menu -->

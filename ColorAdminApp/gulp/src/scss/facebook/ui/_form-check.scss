@@ -1,0 +1,66 @@
+.form-check {
+	:dir(rtl) & {
+		padding-left: 0;
+  	padding-right: $form-check-padding-start;
+	}
+
+  .form-check-input {
+    :dir(rtl) & {
+    	float: right;
+    	margin-left: 0;
+    	margin-right: $form-check-padding-start * -1;
+    }
+  }
+}
+
+.form-check-reverse {
+  :dir(rtl) & {
+		padding-left: $form-check-padding-start;
+		padding-right: 0;
+		text-align: left;
+  }
+
+  .form-check-input {
+		:dir(rtl) & {
+			float: left;
+			margin-left: $form-check-padding-start * -1;
+			margin-right: 0;
+		}
+  }
+}
+
+.form-switch {
+	:dir(rtl) & {
+		padding-left: 0;
+  	padding-right: $form-switch-padding-start;
+	}
+
+  .form-check-input {
+		:dir(rtl) & {
+			margin-left: 0;
+			margin-right: $form-switch-padding-start * -1;
+			background-position: right center;
+		}
+  }
+
+  &.form-check-reverse {
+		:dir(rtl) & {
+			padding-left: $form-switch-padding-start;
+			padding-right: 0;
+		}
+
+    .form-check-input {
+			:dir(rtl) & {
+				margin-left: $form-switch-padding-start * -1;
+				margin-right: 0;
+			}
+    }
+  }
+}
+
+.form-check-inline {
+	:dir(rtl) & {
+		margin-right: 0;
+		margin-left: $form-check-inline-margin-end;
+	}
+}

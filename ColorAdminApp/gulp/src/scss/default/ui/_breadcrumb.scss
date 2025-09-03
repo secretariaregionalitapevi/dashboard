@@ -1,0 +1,30 @@
+.breadcrumb {
+	margin: 0;
+	font-weight: $breadcrumb-font-weight;
+	
+	& .breadcrumb-item {
+		line-height: $page-header-line-height * $page-header-font-size;
+		
+		& + .breadcrumb-item {
+			:dir(rtl) & {
+				padding-inline-end: 0;
+				padding-inline-start: .5rem;
+			}
+			&:before {
+				:dir(rtl) & {
+					float: right;
+					padding-inline-start: 0;
+					padding-inline-end: .5rem;
+				}
+			}
+		}
+		& a {
+			color: var(--#{$prefix}body-color);
+			text-decoration: none;
+			
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}

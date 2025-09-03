@@ -1,0 +1,11 @@
+&lt;!-- list unstyled --&gt;
+&lt;ul class="list-unstyled"&gt;
+  &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+  ...
+&lt;/ul&gt;
+
+&lt;!-- list inline --&gt;
+&lt;ul class="list-inline"&gt;
+  &lt;li class="list-inline-item"&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+  ...
+&lt;/ul&gt;

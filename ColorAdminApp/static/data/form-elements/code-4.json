@@ -1,0 +1,7 @@
+&lt;!-- html --&gt;
+&lt;div class="form-floating"&gt;
+  &lt;input type="email" class="form-control fs-15px" id="floatingInput" /&gt;
+  &lt;label for="floatingInput" class="d-flex align-items-center fs-13px"&gt;
+    Email address
+  &lt;/label&gt;
+&lt;/div&gt;

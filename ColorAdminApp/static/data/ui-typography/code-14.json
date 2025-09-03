@@ -1,0 +1,5 @@
+&lt;dl class="row"&gt;
+  &lt;dt  class="col-md-3"&gt;Description Title&lt;/dt&gt;
+  &lt;dd  class="col-md-9"&gt;A description list...&lt;/dd&gt;
+  ...
+&lt;/dl&gt;

@@ -1,0 +1,24 @@
+&lt;table class="table align-middle"&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;!-- with input --&gt;
+      &lt;td&gt;
+        &lt;input type="text" class="form-control my-n1" /&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    
+    &lt;tr&gt;
+      &lt;!-- with input-group --&gt;
+      &lt;td&gt;
+        &lt;div class="input-group my-n1"&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    
+    &lt;tr&gt;
+      &lt;!-- with btn-group --&gt;
+      &lt;td&gt;
+        &lt;div class="btn-group my-n1"&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;

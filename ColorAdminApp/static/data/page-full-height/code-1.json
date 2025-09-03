@@ -1,0 +1,17 @@
+&lt;!-- views.py --&gt;
+def page(request):
+  context = {
+    "appContentFullHeight": 1,
+    "appContentClass": "p-0"
+  }
+  return render(request, "pages/page.html", context)
+
+
+&lt;!-- view.html --&gt;
+{% block content %}
+  &lt;div class="overflow-hidden h-100"&gt;
+    &lt;div data-scrollbar="true" data-height="100%" data-skip-mobile="true" class="app-content-padding"&gt;
+      &lt;!-- content here --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+{% endblock %}

@@ -1,0 +1,16 @@
+&lt;div class="panel panel-inverse"&gt;
+  &lt;div class="panel-heading"&gt;...&lt;/div&gt;
+  &lt;div class="panel-toolbar"&gt;
+    &lt;div class="btn-group me-5px"&gt;
+      ...
+    &lt;/div&gt;
+    &lt;div class="btn-group"&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;textarea class="form-control no-rounded-pill border-1 border-start-0 border-end-0 border-bottom-0 rounded-0 bg-light" rows="5"&gt;...&lt;/textarea&gt;
+  &lt;div class="panel-footer text-end"&gt;
+    &lt;a href="#" class="btn btn-white btn-sm"&gt;Cancel&lt;/a&gt;
+    &lt;a href="#" class="btn btn-primary btn-sm ms-5px"&gt;Action&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;

@@ -1,0 +1,8 @@
+&lt;!-- form-control-lg --&gt;
+&lt;input class="form-control" type="text" placeholder="Readonly input here…" readonly /&gt;
+
+&lt;!-- readonly plaintext --&gt;
+&lt;input type="text" readonly class="form-control-plaintext" value="email@example.com" /&gt;
+
+&lt;!-- password --&gt;
+&lt;input type="password" readonly class="form-control" placeholder="Password" /&gt;

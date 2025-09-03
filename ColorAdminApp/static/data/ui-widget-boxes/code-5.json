@@ -1,0 +1,6 @@
+&lt;div class="panel-heading"&gt;
+  &lt;h4 class="panel-title"&gt;
+    Panel Header with Badge
+    &lt;span class="badge bg-success ms-1"&gt;NEW&lt;/span&gt; 
+  &lt;/h4&gt;
+&lt;/div&gt;

@@ -1,0 +1,8 @@
+.form-select {
+	padding-inline-start: $form-select-padding-x;
+	padding-inline-end: $form-select-indicator-padding;
+	
+	:dir(rtl) & {
+		background-position: left $form-select-padding-x center;
+	}
+}

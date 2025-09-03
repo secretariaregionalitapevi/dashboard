@@ -1,0 +1,5 @@
+&lt;!-- required files --&gt;
+&lt;link href="{% static 'plugins/bootstrap-icons/font/bootstrap-icons.css' %}" rel="stylesheet" /&gt;
+
+&lt;!-- icon --&gt;
+&lt;i class="bi bi-person"&gt;&lt;/i&gt;

@@ -1,0 +1,10 @@
+&lt;div class="panel-heading"&gt;
+  &lt;h4 class="panel-title"&gt;Panel Header with Radio Button&lt;/h4&gt;
+  &lt;div class="btn-group btn-group-toggle my-n1" data-toggle="buttons"&gt;
+    &lt;input type="radio" name="options" class="btn-check" id="option1" checked /&gt;
+    &lt;label class="btn btn-success btn-xs" for="option1"&gt;Option 1&lt;/label&gt;
+    
+    &lt;input type="radio" name="options" class="btn-check" id="option2" /&gt;
+    &lt;label class="btn btn-success btn-xs" for="option2"&gt;Option 2&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;

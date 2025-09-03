@@ -1,0 +1,13 @@
+{
+  "name": "ui-component-mouse",
+  "description": "mouse events.",
+  "version": "0.0.1",
+  "keywords": [
+    "mouse"
+  ],
+  "dependencies": {
+    "component-emitter": "git://github.com/npmcomponent/component-emitter.git",
+    "component-event": "git://github.com/npmcomponent/component-event.git"
+  },
+  "license": "MIT"
+}

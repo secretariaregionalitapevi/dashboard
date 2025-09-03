@@ -1,0 +1,37 @@
+&lt;!-- required files --&gt;
+&lt;script src="{% static 'plugins/apexcharts/dist/apexcharts.min.js' %}"&gt;&lt;/script&gt;
+
+&lt;div id="apex-column-chart"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  var options = {
+    chart: { height: 350, type: 'bar' },
+    title: { text: 'Profit & Margin Chart', align: 'center' },
+    plotOptions: { bar: { horizontal: false, columnWidth: '55%', endingShape: 'rounded' } },
+    dataLabels: { enabled: false },
+    stroke: { show: true, width: 2, colors: ['transparent'] },
+    colors: ['rgba('+ app.color.componentColorRgb + ', .5)', app.color.indigo, 'rgba('+ app.color.componentColorRgb + ', .25)'],
+    series: [
+    	{ name: 'Net Profit', data: [44, 55, 57, 56, 61, 58, 63, 60, 66] }, 
+    	{ name: 'Revenue', data: [76, 85, 101, 98, 87, 105, 91, 114, 94] }, 
+    	{ name: 'Free Cash Flow', data: [35, 41, 36, 26, 45, 48, 52, 53, 41] }
+    ],
+    xaxis: {
+      categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+    },
+    yaxis: { title: { text: '$ (thousands)' } },
+    fill: { opacity: 1 },
+    tooltip: {
+      y: { 
+      	formatter: function (val) { return "$ " + val + " thousands" } 
+      }
+    }
+  };
+  
+  var chart = new ApexCharts(
+    document.querySelector('#apex-column-chart'),
+    options
+  );
+
+  chart.render();
+&lt;/script&gt;

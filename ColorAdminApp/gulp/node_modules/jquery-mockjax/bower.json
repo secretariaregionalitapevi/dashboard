@@ -1,0 +1,24 @@
+{
+  "name": "jquery-mockjax",
+  "main": "dist/jquery.mockjax.js",
+  "dependencies": {
+    "jquery": ">=1.12.4"
+  },
+  "ignore": [
+    ".editorconfig",
+    ".github",
+    ".gitignore",
+    ".jshintrc",
+    ".jshintrc",
+    "browserstack-config.js",
+    "browserstack.js",
+    "grunt-config-options.js",
+    "Gruntfile.js",
+    "lib",
+    "package.json",
+    "qunit-puppeteer.js",
+    "test",
+    "*.json",
+    "*.md"
+  ]
+}

@@ -1,0 +1,37 @@
+.modal {
+	& .modal-header {
+		display: flex;
+		flex: 1;
+		align-items: center;
+		
+		& .btn-close {
+			:dir(rtl) & {
+				margin-left: calc(-.5 * var(--#{$prefix}modal-header-padding-x));
+				margin-right: auto;
+			}
+		}
+	}
+	
+	&.modal-message {
+		& .modal-dialog {
+			width: 100%;
+			max-width: 100%;
+			margin-inline-start: 0;
+			margin-inline-end: 0;
+		}
+		& .modal-content {
+			border-radius: 0;
+		}
+		& .modal-body,
+		& .modal-header,
+		& .modal-footer {
+			width: 60%;
+			border: none;
+			margin: 0 auto;
+			
+			@include media-breakpoint-down(sm) {
+				width: 90%;
+			}
+		}
+	}
+}

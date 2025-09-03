@@ -1,0 +1,46 @@
+&lt;!-- required files --&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.canvaswrapper.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.colorhelpers.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.saturated.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.browser.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.drawSeries.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.uiConstants.js' %}"&gt;&lt;/script&gt;
+
+&lt;div id="interactive-chart" class="h-250px"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  var d1 = [[0, 42], [1, 53], [2,66], [3, 60], [4, 68], [5, 66], [6,71],[7, 75], [8, 69], [9,70], [10, 68], [11, 72], [12, 78], [13, 86]];
+  var d2 = [[0, 12], [1, 26], [2,13], [3, 18], [4, 35], [5, 23], [6, 18],[7, 35], [8, 24], [9,14], [10, 14], [11, 29], [12, 30], [13, 43]];
+
+  $.plot($('#interactive-chart'), [{
+    data: d1, 
+    label: 'Page Views', 
+    color: app.color.blue,
+    lines: { show: true, fill:false, lineWidth: 2.5 },
+    points: { show: true, radius: 5, fillColor: app.color.componentBg },
+    shadowSize: 0
+  }, {
+    data: d2,
+    label: 'Visitors',
+    color: app.color.success,
+    lines: { show: true, fill:false, lineWidth: 2.5, fillColor: '' },
+    points: { show: true, radius: 5, fillColor: app.color.componentBg },
+    shadowSize: 0
+  }], {
+    xaxis: {  tickColor: 'rgba('+ app.color.darkRgb + ', .3)',tickSize: 2 },
+    yaxis: {  tickColor: 'rgba('+ app.color.darkRgb + ', .3)', tickSize: 20 },
+    grid: { 
+      hoverable: true, 
+      clickable: true,
+      tickColor: 'rgba('+ app.color.darkRgb + ', .15)',
+      borderWidth: 1,
+      borderColor: 'rgba('+ app.color.darkRgb + ', .15)',
+      backgroundColor: 'rgba('+ app.color.darkRgb + ', .035)'
+    },
+    legend: {
+      noColumns: 1,
+      show: true
+    }
+  });
+&lt;/script&gt;

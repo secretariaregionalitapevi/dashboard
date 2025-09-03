@@ -1,0 +1,15 @@
+&lt;div class="accordion" id="accordion"&gt;
+  &lt;div class="accordion-item border-0"&gt;
+    &lt;div class="accordion-header" id="headingOne"&gt;
+      &lt;button class="accordion-button bg-gray-900 text-white px-3 py-10px pointer-cursor" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"&gt;
+        &lt;i class="fa fa-circle fa-fw text-blue me-2 fs-8px"&gt;&lt;/i&gt; Collapsible Group Item #1
+      &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordion"&gt;
+      &lt;div class="accordion-body bg-gray-800 text-white"&gt;
+        ...
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  ...
+&lt;/div&gt;

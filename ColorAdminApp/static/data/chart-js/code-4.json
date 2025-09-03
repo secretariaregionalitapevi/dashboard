@@ -1,0 +1,29 @@
+&lt;!-- required files --&gt;
+&lt;script src="{% static 'plugins/chart.js/dist/chart.umd.js' %}"&gt;&lt;/script&gt;
+
+&lt;!-- html --&gt;
+&lt;canvas id="polar-area-chart"&gt;&lt;/canvas&gt;
+
+&lt;!-- script --&gt;
+&lt;script&gt;
+  Chart.defaults.color = 'rgba('+ app.color.componentColorRgb + ', .65)';
+  Chart.defaults.font.family = app.font.family;
+  Chart.defaults.font.weight = 500;
+  Chart.defaults.scale.grid.color = 'rgba('+ app.color.componentColorRgb + ', .15)';
+  Chart.defaults.scale.ticks.backdropColor = 'rgba('+ app.color.componentColorRgb + ', 0)';
+
+  var ctx4 = document.getElementById('polar-area-chart').getContext('2d');
+  var polarAreaChart = new Chart(ctx4, {
+    type: 'polarArea',
+    data: {
+      labels: ['Dataset 1', 'Dataset 2', 'Dataset 3', 'Dataset 4', 'Dataset 5'],
+      datasets: [{
+        data: [300, 160, 100, 200, 120],
+        backgroundColor: ['rgba('+ app.color.indigoRgb + ', .7)', 'rgba('+ app.color.blueRgb + ', .7)', 'rgba('+ app.color.successRgb + ', .7)', 'rgba('+ app.color.gray300Rgb + ', .7)', 'rgba('+ app.color.gray900Rgb + ', .7)'],
+        borderColor: [app.color.indigo, app.color.blue, app.color.success, app.color.gray300, app.color.gray900],
+        borderWidth: 2,
+        label: 'My dataset'
+      }]
+    }
+  });
+&lt;/script&gt;

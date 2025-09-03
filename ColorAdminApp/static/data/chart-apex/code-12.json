@@ -1,0 +1,37 @@
+&lt;!-- required files --&gt;
+&lt;script src="{% static 'plugins/apexcharts/dist/apexcharts.min.js' %}"&gt;&lt;/script&gt;
+
+&lt;div id="apex-radar-chart"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  var chart = new ApexCharts(
+    document.querySelector('#apex-radar-chart'), {
+      chart: { height: 320, type: 'radar' },
+      series: [{ name: 'Series 1', data: [20, 100, 40, 30, 50, 80, 33] }],
+      labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      plotOptions: {
+        radar: {
+          size: 140,
+          strokeColor: 'rgba('+ app.color.componentColorRgb + ', .25)',
+          fill: {
+            colors: ['rgba('+ app.color.componentColorRgb + ', .05)', 'rgba('+ app.color.componentColorRgb + ', .15)']
+          }
+        }
+      },
+      title: { text: 'Radar with Polygon Fill' },
+      colors: [app.color.blue],
+      markers: { size: 4, colors: [app.color.componentBg], strokeColor: app.color.blue, strokeWidth: 2 },
+      tooltip: { y: { formatter: function(val) { return val } } },
+      yaxis: {
+        tickAmount: 7,
+        labels: {
+          formatter: function(val, i) {
+            return (i % 2 === 0) ? val : '';
+          }
+        }
+      }
+    }
+  );
+
+  chart.render();
+&lt;/script&gt;

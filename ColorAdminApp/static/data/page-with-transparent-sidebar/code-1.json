@@ -1,0 +1,6 @@
+&lt;!-- views.py --&gt;
+def page(request):
+  context = {
+    "appSidebarTransparent": 1
+  }
+  return render(request, "pages/page.html", context)

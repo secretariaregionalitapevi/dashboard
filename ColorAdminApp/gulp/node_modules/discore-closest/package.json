@@ -1,0 +1,10 @@
+{
+  "name": "discore-closest",
+  "description": "Find the closest ancestor matching a selector string",
+  "version": "0.1.2",
+  "main": "index.js",
+  "dependencies": {
+    "component-matches-selector": "git://github.com/npmcomponent/component-matches-selector.git"
+  },
+  "license": "MIT"
+}

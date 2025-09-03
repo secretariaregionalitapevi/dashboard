@@ -1,0 +1,22 @@
+&lt;!-- required files --&gt;
+&lt;script src="{% static 'plugins/parsleyjs/dist/parsley.min.js' %}"&gt;&lt;/script&gt;
+
+&lt;form data-parsley-validate="true"&gt;
+  &lt;!-- required --&gt;
+  &lt;input type="text" data-parsley-required="true" /&gt;
+
+  &lt;!-- email --&gt;
+  &lt;input type="email" data-parsley-type="email" /&gt;
+
+  &lt;!-- url --&gt;
+  &lt;input type="url" data-parsley-type="url" /&gt;
+
+  &lt;!-- digits --&gt;
+  &lt;input type="text" data-parsley-type="digits" /&gt;
+
+  &lt;!-- number --&gt;
+  &lt;input type="text" data-parsley-type="number" /&gt;
+
+  &lt;!-- textarea range --&gt;
+  &lt;textarea rows="4" data-parsley-minlength="20" data-parsley-maxlength="100"&gt;&lt;/textarea&gt;
+&lt;/form&gt;

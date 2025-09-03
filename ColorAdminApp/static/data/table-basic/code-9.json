@@ -1,0 +1,9 @@
+&lt;table class="table"&gt;
+  &lt;tbody&gt;
+    &lt;tr class="table-active"&gt;...&lt;/tr&gt;
+    &lt;tr class="table-info"&gt;...&lt;/tr&gt;
+    &lt;tr class="table-success"&gt;...&lt;/tr&gt;
+    &lt;tr class="table-warning"&gt;...&lt;/tr&gt;
+    &lt;tr class="table-danger"&gt;...&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;

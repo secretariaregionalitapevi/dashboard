@@ -1,0 +1,5 @@
+&lt;!-- required files --&gt;
+&lt;link href="{% static 'plugins/flag-icons/css/flag-icons.min.css' %}" rel="stylesheet" /&gt;
+
+&lt;!-- html --&gt;
+&lt;div class="fi fi-ad" title="ad"&gt;&lt;/div&gt;

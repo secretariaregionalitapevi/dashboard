@@ -1,0 +1,17 @@
+&lt;!-- required files --&gt;
+&lt;link href="{% static 'plugins/tag-it/css/jquery.tagit.css' %}" rel="stylesheet" /&gt;
+&lt;script src="{% static 'plugins/jquery-migrate/dist/jquery-migrate.min.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/tag-it/js/tag-it.min.js' %}"&gt;&lt;/script&gt;
+
+&lt;!-- html --&gt;
+&lt;ul id="jquery-tagIt-default"&gt;
+  &lt;li&gt;Tag1&lt;/li&gt;
+  &lt;li&gt;Tag2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- script --&gt;
+&lt;script&gt;
+  $("#jquery-tagIt-default").tagit({
+    availableTags: ["c++", "java", "php", "javascript", "ruby", "python", "c"]
+  });
+&lt;/script&gt;

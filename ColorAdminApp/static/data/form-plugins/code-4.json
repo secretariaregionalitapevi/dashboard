@@ -1,0 +1,13 @@
+&lt;!-- required files --&gt;
+&lt;link href="{% static 'plugins/select-picker/dist/picker.min.css' %}" rel="stylesheet" /&gt;
+&lt;script src=".。/assets/plugins/select-picker/dist/picker.min.js' %}"&gt;&lt;/script&gt;
+
+&lt;!-- html --&gt;
+&lt;select class="selectpicker form-control" id="ex-search" multiple&gt;
+  ...
+&lt;/select&gt;
+
+&lt;!-- script --&gt;
+&lt;script&gt;
+  $('#ex-search').picker({ search: true });
+&lt;/script&gt;

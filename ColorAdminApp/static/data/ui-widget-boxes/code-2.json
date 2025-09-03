@@ -1,0 +1,13 @@
+&lt;div class="panel-heading"&gt;
+  &lt;h4 class="panel-title"&gt;Panel Header with Dropdown&lt;/h4&gt;
+  &lt;div class="btn-group my-n1"&gt;
+    &lt;button type="button" class="btn btn-success btn-xs"&gt;Action&lt;/button&gt;
+    &lt;button type="button" class="btn btn-success btn-xs dropdown-toggle" data-bs-toggle="dropdown"&gt;
+      &lt;span class="caret"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class="dropdown-menu dropdown-menu-end"&gt;
+      &lt;a href="javascript:;" class="dropdown-item"&gt;Action&lt;/a&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;

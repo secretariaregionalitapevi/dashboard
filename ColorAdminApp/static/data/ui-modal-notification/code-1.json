@@ -1,0 +1,23 @@
+&lt;!-- required files --&gt;
+&lt;link href="{% static 'plugins/gritter/css/jquery.gritter.css' %}" rel="stylesheet" /&gt;
+&lt;script src="{% static 'plugins/gritter/js/jquery.gritter.js' %}"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+  $.gritter.add({
+    title: 'This is a sticky notice!',
+    text: '...',
+    image: '{% static 'img/user/user-2.jpg',
+    sticky: true,
+    time: '',
+    class_name: 'my-sticky-class gritter-light',
+    before_open: function(){ },
+    after_open: function(e){ },
+    before_close: function(manual_close) { },
+    after_close: function(manual_close){ } 
+  });
+  
+  $.gritter.removeAll({
+    before_close: function(e){ },
+    after_close: function(){ }
+  });
+&lt;/script&gt;

@@ -1,0 +1,19 @@
+&lt;!-- begin widget-list --&gt;
+&lt;div class="widget-list rounded"&gt;
+  &lt;!-- begin widget-list-item --&gt;
+  &lt;a href="#" class="widget-list-item"&gt;
+    &lt;div class="widget-list-media icon"&gt;
+      &lt;i class="fa fa-link bg-yellow text-dark"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;div class="widget-list-content"&gt;
+      &lt;h4 class="widget-list-title"&gt;Personal Hotspot&lt;/h4&gt;
+    &lt;/div&gt;
+    &lt;div class="widget-list-action text-nowrap text-body text-opacity-50 fw-bold text-decoration-none"&gt;
+      Off
+      &lt;i class="fa fa-angle-right text-body text-opacity-30 fa-lg"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+  &lt;!-- end widget-list-item --&gt;
+  ...
+&lt;/div&gt;
+&lt;!-- end widget-list --&gt;

@@ -1,0 +1,9 @@
+&lt;a href="#" class="btn btn-lg btn-primary"&gt;
+  &lt;span class="d-flex align-items-center text-left"&gt;
+    &lt;i class="fab fa-twitter fa-3x me-3 text-black"&gt;&lt;/i&gt;
+    &lt;span&gt;
+      &lt;span class="d-block"&gt;&lt;b&gt;Twitter Bootstrap&lt;/b&gt;&lt;/span&gt;
+      &lt;span class="d-block fs-12px opacity-7"&gt;Version 4.0&lt;/span&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/a&gt;

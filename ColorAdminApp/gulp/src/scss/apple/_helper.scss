@@ -1,0 +1,284 @@
+/* Helper Row Space */
+@include helper-row-space(0, 15);
+
+/* Helper Margin */
+.top-auto { top: auto !important; }
+.bottom-auto { bottom: auto !important; }
+.start-auto {
+	left: auto !important; 
+	:dir(rtl) & { left: initial !important; right: auto !important; }
+}
+.end-auto {
+	right: auto !important; 
+	:dir(rtl) & { left: auto !important; right: initial !important; }
+}
+.start-0 {
+	left: 0 !important; 
+	:dir(rtl) & { left: initial !important; right: 0 !important; }
+}
+.end-0 {
+	right: 0 !important; 
+	:dir(rtl) & { right: initial !important; left: 0 !important; }
+}
+.float-end {
+	float: right !important;
+	:dir(rtl) & { float: left !important; }
+}
+.float-start {
+	float: left !important;
+	:dir(rtl) & { float: right !important; }
+}
+@each $breakpoint, $size in $grid-breakpoints {
+	@if $breakpoint == xs {
+		:dir(rtl) .float-#{$breakpoint}-start { float: right !important; }
+		:dir(rtl) .float-#{$breakpoint}-end { float: left !important; }
+	} @else {
+		@media (min-width: $size) {
+			:dir(rtl) .float-#{$breakpoint}-start { float: right !important; }
+			:dir(rtl) .float-#{$breakpoint}-end { float: left !important; }
+		}
+	}
+}
+@include helper-spacing('', 'margin', 'm');
+@include helper-spacing('top', 'margin', 'mt');
+@include helper-spacing('end', 'margin', 'me');
+@include helper-spacing('bottom', 'margin', 'mb');
+@include helper-spacing('start', 'margin', 'ms');
+@include helper-spacing('mx', 'margin', 'mx');
+@include helper-spacing('my', 'margin', 'my');
+
+
+/* Helper Padding */
+@include helper-spacing('', 'padding', 'p');
+@include helper-spacing('top', 'padding', 'pt');
+@include helper-spacing('end', 'padding', 'pe');
+@include helper-spacing('bottom', 'padding', 'pb');
+@include helper-spacing('start', 'padding', 'ps');
+@include helper-spacing('px', 'padding', 'px');
+@include helper-spacing('py', 'padding', 'py');
+
+
+/* Helper Font */
+@include helper-font-size(1, 80);
+@include helper-font-weight(1, 8);
+
+
+/* Helper Border */
+.border-theme { border-color: var(--#{$prefix}app-theme) !important; }
+
+
+/* Helper Text */
+.text-theme {
+	--#{$prefix}text-opacity: 1;
+	color: #{rgba(var(--#{$prefix}app-theme-rgb), var(--#{$prefix}text-opacity))} !important;
+}
+.text-theme-color {
+	--#{$prefix}text-opacity: 1;
+	color: #{rgba(var(--#{$prefix}app-theme-color-rgb), var(--#{$prefix}text-opacity))} !important;
+}
+.text-ellipsis { white-space: nowrap !important; text-overflow: ellipsis; overflow: hidden; }
+.text-gradient { -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; }
+@for $i from 10 through 20 {
+	.lh-#{$i} {
+		line-height: #{$i * .1} !important;
+	}
+	.rounded-#{$i}px {
+		border-radius: #{$i}px !important;
+	}
+}
+
+
+/* Helper Cursor */
+.cursor-pointer { cursor: pointer !important }
+.cursor-text { cursor: text !important }
+.cursor-default { cursor: default !important }
+.cursor-inherit { cursor: inherit !important }
+.cursor-move { cursor: move !important }
+.cursor-progress { cursor: progress !important }
+
+
+/* Helper Hover */
+.hover-show:hover .hover-show-elm { display: block !important }
+.hover-bg-component:hover { background-color: var(--#{$prefix}component-bg) !important }
+.hover-bg-body:hover { background-color: var(--#{$prefix}body-bg) !important }
+
+
+/* Helper Max Width & Height */
+.mw-75 { max-width: 75% !important; }
+.mw-50 { max-width: 50% !important; }
+.mw-25 { max-width: 25% !important; }
+.mh-75 { max-height: 75% !important; }
+.mh-50 { max-height: 50% !important; }
+.mh-25 { max-height: 25% !important; }
+
+$positions: (static, relative, absolute, fixed, sticky);
+$transform-values: (none, initial);
+$visibility-values: (none, initial);
+@each $breakpoint, $size in $grid-breakpoints {
+	@each $position in $positions {
+		@if $breakpoint == xs {
+			.position-#{$position} { position: $position !important; }
+		} @else {
+			@media (min-width: $size) {
+				.position-#{$breakpoint}-#{$position} { position: $position !important; }
+			}
+		}
+	}
+	@each $value in $transform-values {
+		@if $breakpoint == xs {
+			.transform-#{$value} { transform: #{$value} !important; }
+		} @else {
+			@media (min-width: $size) {
+				.transform-#{$breakpoint}-#{$value} { transform: #{$value} !important; }
+			}
+		}
+	}
+	@each $value in $visibility-values {
+		@if $breakpoint == xs {
+			.visibility-#{$value} { visibility: #{$value} !important; }
+		} @else {
+			@media (min-width: $size) {
+				.visibility-#{$breakpoint}-#{$value} { visibility: #{$value} !important; }
+			}
+		}
+	}
+	@each $name, $value in $zindex-levels {
+    .z-#{$breakpoint}-#{$name} {
+      @include media-breakpoint-up($breakpoint) {
+        z-index: $value !important;
+      }
+    }
+  }
+}
+
+
+/* Helper Shimmer Loader */
+.shimmer-loader {
+	position: relative;
+	overflow: hidden;
+	background: rgba(var(--#{$prefix}gray-rgb), .15);
+}
+.shimmer-loader::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	inset-inline-start: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent 0%,  rgba(var(--#{$prefix}gray-dark-rgb), 0.1) 50%, transparent 100%);
+	animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+	0% { inset-inline-start: -100%; }
+	100% { inset-inline-start: 100%; }
+}
+
+
+/* Helper Typing Animation */
+.typing-animation {
+	overflow: hidden;
+	white-space: nowrap;
+	animation: typing 2.5s steps(50, end);
+}
+@keyframes typing { 
+	from { width: 0; } 
+	to { width: 100%; }
+}
+
+
+/* Flex */
+.flex-1 { flex: 1; }
+
+
+/* Helper Size */
+@include helper-size('w', 'width');
+@include helper-size('h', 'height');
+.mh-100vh { max-height: 100vh !important; max-height: 100dvh !important; }
+
+
+/* Helper Color */
+.bg-component { 
+	--#{$prefix}bg-opacity: 1;
+	background-color: #{rgba(var(--#{$prefix}component-bg-rgb), var(--#{$prefix}bg-opacity))} !important;
+}
+.bg-none { background: none !important; }
+.bg-position-center { background-position: center !important; }
+.bg-size-cover { background-size: cover !important; }
+.bg-no-repeat { background-repeat: no-repeat !important; }
+.bg-theme {
+	--#{$prefix}bg-opacity: 1;
+	background-color: #{rgba(var(--#{$prefix}app-theme-rgb), var(--#{$prefix}bg-opacity))} !important;
+}
+.bg-gradient-from-transparent { --#{$prefix}bg-gradient-from: transparent; }
+.bg-gradient-to-transparent { --#{$prefix}bg-gradient-to: transparent; }
+.bg-gradient-to-r { background: linear-gradient(to right, var(--#{$prefix}bg-gradient-from) 0%, var(--#{$prefix}bg-gradient-to) 100%); }
+.bg-gradient-to-l { background: linear-gradient(to left, var(--#{$prefix}bg-gradient-from) 0%, var(--#{$prefix}bg-gradient-to) 100%); }
+.bg-gradient-to-t { background: linear-gradient(to top, var(--#{$prefix}bg-gradient-from) 0%, var(--#{$prefix}bg-gradient-to) 100%); }
+.bg-gradient-to-b { background: linear-gradient(to bottom, var(--#{$prefix}bg-gradient-from) 0%, var(--#{$prefix}bg-gradient-to) 100%); }
+.bg-gradient-to-tr { background: linear-gradient(to top right, var(--#{$prefix}bg-gradient-from) 0%, var(--#{$prefix}bg-gradient-to) 100%); }
+.bg-gradient-to-tl { background: linear-gradient(to top left, var(--#{$prefix}bg-gradient-from) 0%, var(--#{$prefix}bg-gradient-to) 100%); }
+.bg-gradient-to-br { background: linear-gradient(to bottom right, var(--#{$prefix}bg-gradient-from) 0%, var(--#{$prefix}bg-gradient-to) 100%); }
+.bg-gradient-to-bl { background: linear-gradient(to bottom left, var(--#{$prefix}bg-gradient-from) 0%, var(--#{$prefix}bg-gradient-to) 100%); }
+.bg-gradient-radial { background: radial-gradient(circle, var(--#{$prefix}bg-gradient-from) 0%, var(--#{$prefix}bg-gradient-to) 100%); }
+.bg-gradient-conic { background: conic-gradient(var(--#{$prefix}bg-gradient-from) 0deg, var(--#{$prefix}bg-gradient-to) 360deg); }
+.bg-gradient-45 { background: linear-gradient(45deg, var(--#{$prefix}bg-gradient-from) 0%, var(--#{$prefix}bg-gradient-to) 100%); }
+.bg-gradient-135 { background: linear-gradient(135deg, var(--#{$prefix}bg-gradient-from) 0%, var(--#{$prefix}bg-gradient-to) 100%); }
+.bg-blur-1 { backdrop-filter: blur(3px) !important; }
+.bg-blur-2 { backdrop-filter: blur(6px) !important; }
+.bg-blur-3 { backdrop-filter: blur(9px) !important; }
+
+@each $color, $value in $theme-colors {
+	@include helper-color($color, $value);
+}
+@each $color, $value in $colors {
+	@include helper-color($color, $value);
+}
+@include background-gradient('bg-gradient-red-pink', $red, $pink);
+@include background-gradient('bg-gradient-orange-red', $orange, $red);
+@include background-gradient('bg-gradient-yellow-orange', $yellow, $orange);
+@include background-gradient('bg-gradient-yellow-red', $yellow, $red);
+@include background-gradient('bg-gradient-teal-green', $teal, $green);
+@include background-gradient('bg-gradient-yellow-green', $yellow, $green);
+@include background-gradient('bg-gradient-blue-purple', $blue, $purple);
+@include background-gradient('bg-gradient-cyan-blue', $cyan, $blue);
+@include background-gradient('bg-gradient-cyan-purple', $cyan, $purple);
+@include background-gradient('bg-gradient-cyan-indigo', $cyan, $indigo);
+@include background-gradient('bg-gradient-blue-indigo', $blue, $indigo);
+@include background-gradient('bg-gradient-purple-indigo', $purple, $indigo);
+@include background-gradient('bg-gradient-silver-black', $silver, $black);
+$theme-gradient: (
+  red: pink,
+  pink: orange,
+  orange: yellow,
+  yellow: lime,
+  lime: green,
+  green: teal,
+  teal: blue,
+  cyan: purple,
+  blue: indigo,
+  purple: indigo,
+  indigo: gray-600,
+  gray-500: gray-900
+);
+:root {
+  --#{$prefix}app-theme-gradient: linear-gradient(135deg, var(--#{$prefix}teal), var(--#{$prefix}blue));
+}
+.text-theme-gradient {
+	color: var(--#{$prefix}app-theme-gradient);
+}
+.bg-theme-gradient {
+	background: var(--#{$prefix}app-theme-gradient);
+}
+@each $base, $to in $theme-gradient {
+  .theme-#{'' + $base} {
+    --#{$prefix}app-theme-gradient: linear-gradient(135deg, var(--#{$prefix}#{$base}), var(--#{$prefix}#{$to}));
+  }
+}
+
+
+/* Helper Opacity */
+@include helper-opacity(0, 10);
+
+
+/* Helper Display */
+.hide { display: none !important; }

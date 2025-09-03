@@ -1,0 +1,9 @@
+&lt;dl&gt;
+  &lt;dt class="text-body"&gt;Description Title&lt;/dt&gt;
+  &lt;dd&gt;A description list...&lt;/dd&gt;
+  &lt;dt class="text-body mt-10px"&gt;Description Title&lt;/dt&gt;
+  &lt;dd&gt;A description list....&lt;/dd&gt;
+  &lt;dd&gt;A description list...&lt;/dd&gt;
+  &lt;dt class="text-body mt-10px"&gt;Description Title&lt;/dt&gt;
+  &lt;dd&gt;A description list...&lt;/dd&gt;
+&lt;/dl&gt;

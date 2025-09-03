@@ -1,0 +1,15 @@
+&lt;div class="input-group"&gt;
+  &lt;span class="input-group-text"&gt;$&lt;/span&gt;
+  &lt;input type="text" class="form-control" /&gt;
+  &lt;span class="input-group-text"&gt;.00&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="input-group"&gt;
+  &lt;input type="text" class="form-control"&gt;
+  &lt;button type="button" class="btn btn-indigo" data-bs-toggle="dropdown"&gt;
+    &lt;span class="caret"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;ul class="dropdown-menu dropdown-menu-end"&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/div&gt;

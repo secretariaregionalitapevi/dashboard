@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Intro JS{% endblock %}
+
+{% block css %}
+	<link href="{% static 'plugins/intro.js/minified/introjs.min.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block js %}
+	<script src="{% static 'plugins/intro.js/minified/intro.min.js' %}"></script>
+	<script src="{% static 'plugins/@highlightjs/cdn-assets/highlight.min.js' %}"></script>
+	<script src="{% static 'js/demo/render.highlight.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+	<!-- BEGIN breadcrumb -->
+	<ol class="breadcrumb float-xl-end">
+		<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+		<li class="breadcrumb-item"><a href="javascript:;">UI Elements</a></li>
+		<li class="breadcrumb-item active">Intro JS</li>
+	</ol>
+	<!-- END breadcrumb -->
+	<!-- BEGIN page-header -->
+	<h1 class="page-header">Intro JS <small>header small text goes here...</small></h1>
+	<!-- END page-header -->
+	
+	<!-- BEGIN panel -->
+	<div class="panel panel-inverse" data-sortable-id="ui-buttons-8">
+		<!-- BEGIN panel-heading -->
+		<div class="panel-heading">
+			<h4 class="panel-title">Installation</h4>
+			<div class="panel-heading-btn">
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+			</div>
+		</div>
+		<!-- END panel-heading -->
+		<!-- BEGIN panel-body -->
+		<div class="panel-body">
+			<div class="text-center mb-5">
+				<h1 class="display-4" data-step="1" 
+					data-intro="Hello world! I'm Intro.js" 
+					data-hint="Hello world! I'm Intro.js" 
+					data-hintPosition="top-middle" 
+					data-position="bottom-right-aligned">Intro.js</h1>
+				<p class="lead mb-4" data-step="2" 
+					data-intro="This is a simple step-by-step guide made using Intro.js"
+					data-hint="This is a simple step-by-step guide made using Intro.js" 
+					data-hintPosition="top-middle" 
+					data-position="bottom-right-aligned">Step-by-step guide and feature introduction</p>
+				<div class="mb-3">
+					<a class="btn btn-lg btn-primary px-5" href="javascript:void(0);" onclick="javascript:introJs().start();">Demo</a>
+				</div>
+				<a href="http://introjs.com/" target="_blank" class="text-gray" data-step="5" 
+					data-intro="Intro.js is free and open-source. View it."
+					data-hint="Intro.js is free and open-source. View it." 
+					data-hintPosition="top-middle" 
+					data-position="bottom-right-aligned">View Official Website</a>
+			</div>
+	
+			<!-- BEGIN row -->
+			<div class="row text-center" data-step="3" 
+				data-intro="Another step. Intro.js main features!" 
+				data-hint="Another step. Intro.js main features!" 
+				data-hintPosition="top-middle" 
+				data-position="bottom-right-aligned">
+				<!-- BEGIN col-4 -->
+				<div class="col-lg-4">
+					<div class="mb-10px"><i class="fa fa-compress fa-4x text-indigo"></i></div>
+					<h5 class="mb-5px">No dependencies, fast and small</h5> 
+					<p>10KB JavaScript and 2.5KB CSS, that's all (minified, gzipped).</p>
+				</div>
+				<!-- END col-4 -->
+				<!-- BEGIN col-4 -->
+				<div class="col-lg-4">
+					<div class="mb-10px"><i class="fa fa-child fa-4x text-blue"></i></div>
+					<h5 class="mb-5px">User-friendly</h5> 
+					<p>Navigate using keyboard or mouse. Easily change the themes for your website.</p>
+				</div>
+				<!-- END col-4 -->
+				<!-- BEGIN col-4 -->
+				<div class="col-lg-4">
+					<div class="mb-10px"><i class="fa fa-globe fa-4x text-success"></i></div>
+					<h5 class="mb-5px">Browser compatibility</h5> 
+					<p>Works on Google Chrome, Mozilla Firefox, Opera, Safari and even Internet Explorer.</p>
+				</div>
+				<!-- END col-4 -->
+			</div>
+			<!-- END row -->
+		</div>
+		<!-- BEGIN hljs-wrapper -->
+		<div class="hljs-wrapper">
+			<pre><code class="html" data-url="{% static 'data/ui-tour/code-1.json' %}"></code></pre>
+		</div>
+		<!-- END hljs-wrapper -->
+	</div>
+				
+	<h4 class="mb-3">Examples</h4>
+
+	<!-- BEGIN row -->
+	<div class="row">
+		<!-- END col-4 -->
+		<div class="col-lg-4">
+			<!-- BEGIN panel -->
+			<div class="panel">
+				<div class="panel-body">
+					<h4><i class="fa fa-bars fa-fw"></i> Progress bar</h4>
+					<p>
+						Add progress-bar to your step-by-step introduction. It's as easy as adding <code>.setOption('showProgress', true)</code> option to your Intro.js instance.
+					</p>
+					<a href="javascript:;" class="btn btn-primary btn-sm" onclick="javascript:introJs().setOption('showProgress', true).start();">Demo</a>
+				</div>
+				<!-- BEGIN hljs-wrapper -->
+				<div class="hljs-wrapper">
+					<pre><code class="html" data-url="{% static 'data/ui-tour/code-2.json' %}"></code></pre>
+				</div>
+				<!-- END hljs-wrapper -->
+			</div>
+			<!-- END panel -->
+		</div>
+		<!-- BEGIN col-4 -->
+		<!-- END col-4 -->
+		<div class="col-lg-4">
+			<!-- BEGIN panel -->
+			<div class="panel" data-intro="Intro.js has many examples. Browse this section to find out more." data-step="4">
+				<div class="panel-body">
+					<h4><i class="fa fa-comment-alt fa-fw"></i> Hint</h4>
+					<p>
+						Hints enables you to add additional descriptions to any part of a web page. You can define hints by adding <code>data-hint</code> attribute to the HTML elements.
+					</p>
+					<a href="javascript:;" class="btn btn-primary btn-sm" onclick="javascript:introJs().addHints();">Demo</a>
+				</div>
+				<!-- BEGIN hljs-wrapper -->
+				<div class="hljs-wrapper">
+					<pre><code class="html" data-url="{% static 'data/ui-tour/code-3.json' %}"></code></pre>
+				</div>
+				<!-- END hljs-wrapper -->
+			</div>
+			<!-- END panel -->
+		</div>
+		<!-- BEGIN col-4 -->
+		<!-- END col-4 -->
+		<div class="col-lg-4">
+			<!-- BEGIN panel -->
+			<div class="panel">
+				<div class="panel-body">
+					<h4><i class="fa fa-filter fa-fw"></i> Enable/disable options</h4>
+					<p>
+						You can enable or disable options like buttons, progress-bar and bullets by calling the <code>setOption('showBullets', false)</code> function and pass option name.
+					</p>
+					<a href="javascript:;" class="btn btn-primary btn-sm" onclick="javascript:introJs().setOption('showBullets', false).start();">Demo</a>
+				</div>
+				<!-- BEGIN hljs-wrapper -->
+				<div class="hljs-wrapper">
+					<pre><code class="html" data-url="{% static 'data/ui-tour/code-4.json' %}"></code></pre>
+				</div>
+				<!-- END hljs-wrapper -->
+			</div>
+			<!-- END panel -->
+		</div>
+		<!-- END col-4 -->
+	</div>
+	<!-- END row -->
+{% endblock %}

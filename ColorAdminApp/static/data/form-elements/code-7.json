@@ -1,0 +1,25 @@
+&lt;!-- default --&gt;
+&lt;div class="form-check"&gt;
+  &lt;input class="form-check-input" type="checkbox" id="checkbox1" checked /&gt;
+  &lt;label class="form-check-label" for="checkbox1"&gt;Checkbox&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;!-- inline --&gt;
+&lt;div class="form-check form-check-inline"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;!-- switches --&gt;
+&lt;div class="form-check form-switch"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;!-- valid --&gt;
+&lt;div class="form-check"&gt;
+  &lt;input class="form-check-input is-valid" /&gt;
+&lt;/div&gt;
+
+&lt;!-- invalid --&gt;
+&lt;div class="form-check"&gt;
+  &lt;input class="form-check-input is-invalid" /&gt;
+&lt;/div&gt;

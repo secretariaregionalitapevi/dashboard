@@ -1,0 +1,14 @@
+&lt;!-- required files --&gt;
+&lt;link href="{% static 'plugins/switchery/dist/switchery.min.css' %}" rel="stylesheet" />
+&lt;script src="{% static 'plugins/switchery/dist/switchery.min.js' %}"&gt;&lt;/script&gt;
+
+&lt;!-- html --&gt;
+&lt;input type="checkbox" id="switchery-default" checked /&gt;
+
+&lt;!-- script --&gt;
+&lt;script&gt;
+  var elm = document.getElementById('switchery-default');
+  var switchery = new Switchery(elm, {
+    color: '#00acac'
+  });
+&lt;/script&gt;

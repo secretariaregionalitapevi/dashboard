@@ -1,0 +1,32 @@
+&lt;!-- begin widget-icon --&gt;
+&lt;div class="widget-icon rounded bg-success text-white"&gt;
+  &lt;i class="fab fa-android"&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;!-- end widget-icon --&gt;
+
+&lt;!-- begin user widget-icon --&gt;
+&lt;div class="widget-icon rounded bg-gray-500 text-white user"&gt;
+  &lt;i class="fa fa-user"&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;!-- end user widget-icon --&gt;
+
+&lt;!-- begin widget-icon-sizes --&gt;
+&lt;div class="widget-icon widget-icon-xl"&gt;&lt;/div&gt;
+&lt;div class="widget-icon widget-icon-lg"&gt;&lt;/div&gt;
+&lt;div class="widget-icon"&gt;&lt;/div&gt;
+&lt;div class="widget-icon widget-icon-sm"&gt;&lt;/div&gt;
+&lt;div class="widget-icon widget-icon-xs"&gt;&lt;/div&gt;
+&lt;!-- end widget-icon-sizes --&gt;
+
+&lt;!-- begin widget-img --&gt;
+&lt;div class="widget-img rounded bg-dark" style="background-image: url({% static 'img/gallery/gallery-11-thumb.jpg' %})"&gt;
+&lt;/div&gt;
+&lt;!-- end widget-img --&gt;
+
+&lt;!-- begin widget-img-sizes --&gt;
+&lt;div class="widget-img widget-img-xl"&gt;&lt;/div&gt;
+&lt;div class="widget-img widget-img-lg"&gt;&lt;/div&gt;
+&lt;div class="widget-img"&gt;&lt;/div&gt;
+&lt;div class="widget-img widget-img-sm"&gt;&lt;/div&gt;
+&lt;div class="widget-img widget-img-xs"&gt;&lt;/div&gt;
+&lt;!-- end widget-img-sizes --&gt;

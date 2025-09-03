@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" {% block htmlAttr %}{% endblock %}>
+<head>
+	<meta charset="utf-8">
+	<title>Color Admin | {% block title %}{% endblock %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+	<!-- ================== BEGIN core-css ================== -->
+	{% load static %}
+	<link href="{% static 'css/vendor.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'css/default/app.min.css' %}" rel="stylesheet" />
+	<!-- ================== END core-css ================== -->
+	
+	{% block css %}{% endblock %}
+</head>
+<body class="{{ bodyClass }}{% if appHeaderHide is not None %} pace-top {% endif %}{% if appBoxedLayout %} boxed-layout {% endif %}" {{ bodyAttr }}>
+	
+	<div id="app" class="app 
+		{{ appClass }}
+		{% if not appHeaderHide %}app-header-fixed{% endif %}
+		{% if not appSidebarHide %}app-sidebar-fixed{% endif %}
+		{% if appHeaderHide is not None %}app-without-header{% endif %}
+		{% if appSidebarEnd is not None %}app-with-end-sidebar{% endif %}
+		{% if appSidebarEndToggled is not None %}app-sidebar-end-toggled{% endif %}
+		{% if appSidebarMinified is not None %}app-sidebar-minified{% endif %}
+		{% if appSidebarWide %}app-with-wide-sidebar{% endif %}
+		{% if appSidebarTwo is not None %}app-with-two-sidebar{% endif %}
+		{% if appSidebarHide is not None %}app-without-sidebar{% endif %}
+		{% if appSidebarHover is not None %}app-with-hover-sidebar{% endif %}
+		{% if appTopMenu is not None %}app-with-top-menu{% endif %}
+		{% if appContentFullHeight is not None %}app-content-full-height{% endif %}
+	">
+		{% if appHeaderHide is None %}
+			{% include 'partial/header.html' %}
+		{% endif %}
+		
+		{% if appSidebarHide is None %}
+			{% include 'partial/sidebar.html' %}
+		{% endif %}
+		
+		{% if appSidebarTwo %}
+			{% include 'partial/sidebar-right.html' %}
+		{% endif %}
+		
+		{% if appTopMenu %}
+			{% include 'partial/top-menu.html' %}
+		{% endif %}
+		
+		<div class="app-content {{ appContentClass }}">
+			{% block content %}{% endblock %}
+		</div>
+		
+		{% include 'partial/theme-panel.html' %}
+	</div>
+
+	{% include 'partial/scroll-top-btn.html' %} 
+	
+	{% block outter_content %}{% endblock %}
+
+	<!-- ================== BEGIN core-js ================== -->
+	<script src="{% static 'js/vendor.min.js' %}"></script>
+	<script src="{% static 'js/app.min.js' %}"></script>
+	<!-- ================== END core-js ================== -->
+	
+	{% block js %}{% endblock %}
+</body>
+</html>

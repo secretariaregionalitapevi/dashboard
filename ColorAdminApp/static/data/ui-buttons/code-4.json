@@ -1,0 +1,3 @@
+&lt;a href="#" class="btn btn-default disabled"&gt;Disabled Button&lt;/a&gt;
+&lt;a href="#" class="btn btn-default active"&gt;Active Button&lt;/a&gt;
+&lt;a href="#" class="btn btn-primary d-block"&gt;Block Button&lt;/a&gt;

@@ -1,0 +1,13 @@
+{
+  "name": "jvectormap-content",
+  "version": "0.1.1",
+  "license": "MIT",
+  "repository": "alex-pex/jvectormap",
+  "scripts": {
+    "build": "true"
+  },
+  "files": [
+    "*.js"
+  ],
+  "gitHead": "01e54fa7f1e88f087ab0a8627cee7f9ad6b05b1d"
+}

@@ -1,0 +1,8 @@
+&lt;div class="panel-heading"&gt;
+  &lt;h4 class="panel-title"&gt;Panel Header with Progress Bar&lt;/h4&gt;
+  &lt;div class="progress h-10px bg-gray-700 w-150px"&gt;
+    &lt;div class="progress-bar progress-bar-success progress-bar-striped progress-bar-animated fw-bold" style="width: 40%"&gt;
+      40%
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;

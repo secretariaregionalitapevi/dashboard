@@ -1,0 +1,41 @@
+@mixin helper-spacing($direction, $classProperty, $className) {
+	@for $i from 1 through 30 {
+		$classInt: $i;
+		$cssValue: rem($i);
+		$cssProperty: $classProperty;
+		
+		@if ($direction == 'top') {
+			$cssProperty: $classProperty + '-top';
+		} @else if ($direction == 'end') {
+			$cssProperty: $classProperty + '-inline-end';
+		} @else if ($direction == 'bottom') {
+			$cssProperty: $classProperty + '-bottom';
+		} @else if ($direction == 'start') {
+			$cssProperty: $classProperty + '-inline-start';
+		}
+		@if ($i <= 10) {
+			$classInt: ($i) + px;
+			$cssValue: $i + px;
+		} @else if ($i > 10) {
+			$classInt: (($i - 10) * 5) + px;
+			$cssValue: (($i - 10) * 5) + px;
+		}
+		.#{$className}-#{$classInt} {
+			@if ($direction == 'mx') {
+				margin-inline-start: $cssValue !important;
+				margin-inline-end: $cssValue !important;
+			} @else if ($direction == 'my') {
+				margin-top: $cssValue !important;
+				margin-bottom: $cssValue !important;
+			} @else if ($direction == 'px') {
+				padding-inline-start: $cssValue !important;
+				padding-inline-end: $cssValue !important;
+			} @else if ($direction == 'py') {
+				padding-top: $cssValue !important;
+				padding-bottom: $cssValue !important;
+			} @else {
+				#{$cssProperty}: $cssValue !important;
+			}
+		}
+	}
+}

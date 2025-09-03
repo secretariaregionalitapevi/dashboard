@@ -1,0 +1,243 @@
+{% load static %}
+<!-- BEGIN theme-panel -->
+<div class="theme-panel">
+<a href="javascript:;" data-toggle="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
+<div class="theme-panel-content" data-scrollbar="true" data-height="100%">
+	<h5>App Settings</h5>
+	
+	<!-- BEGIN theme-list -->
+	<div class="theme-list">
+		<div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-red" data-theme-class="theme-red" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Red">&nbsp;</a></div>
+		<div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-pink" data-theme-class="theme-pink" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Pink">&nbsp;</a></div>
+		<div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-orange" data-theme-class="theme-orange" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Orange">&nbsp;</a></div>
+		<div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-yellow" data-theme-class="theme-yellow" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Yellow">&nbsp;</a></div>
+		<div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-lime" data-theme-class="theme-lime" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Lime">&nbsp;</a></div>
+		<div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-green" data-theme-class="theme-green" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Green">&nbsp;</a></div>
+		<div class="theme-list-item active"><a href="javascript:;" class="theme-list-link bg-teal" data-theme-class="" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Default">&nbsp;</a></div>
+		<div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-cyan" data-theme-class="theme-cyan" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Cyan">&nbsp;</a></div>
+		<div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-blue" data-theme-class="theme-blue" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Blue">&nbsp;</a></div>
+		<div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-purple" data-theme-class="theme-purple" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Purple">&nbsp;</a></div>
+		<div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-indigo" data-theme-class="theme-indigo" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Indigo">&nbsp;</a></div>
+		<div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-black" data-theme-class="theme-gray-600" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Black">&nbsp;</a></div>
+	</div>
+	<!-- END theme-list -->
+	
+	<div class="theme-panel-divider"></div>
+	
+	<div class="row mt-10px">
+		<div class="col-8 control-label text-body fw-bold">
+			<div class="d-flex">Dark Mode <span class="badge bg-primary ms-1 py-2px position-relative d-flex align-items-center">NEW</span></div>
+			<div class="lh-14">
+				<small class="text-body opacity-50">
+					Adjust the appearance to reduce glare and give your eyes a break.
+				</small>
+			</div>
+		</div>
+		<div class="col-4 d-flex">
+			<div class="form-check form-switch ms-auto mb-0">
+				<input type="checkbox" class="form-check-input" name="app-theme-dark-mode" id="appThemeDarkMode" value="1" />
+				<label class="form-check-label" for="appThemeDarkMode"></label>
+			</div>
+		</div>
+	</div>
+	
+	<div class="theme-panel-divider"></div>
+	
+	<!-- BEGIN theme-switch -->
+	<div class="row mt-10px align-items-center">
+		<div class="col-8 control-label text-body fw-bold">Header Fixed</div>
+		<div class="col-4 d-flex">
+			<div class="form-check form-switch ms-auto mb-0">
+				<input type="checkbox" class="form-check-input" name="app-header-fixed" id="appHeaderFixed" value="1" checked />
+				<label class="form-check-label" for="appHeaderFixed"></label>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-10px align-items-center">
+		<div class="col-8 control-label text-body fw-bold">Header Inverse</div>
+		<div class="col-4 d-flex">
+			<div class="form-check form-switch ms-auto mb-0">
+				<input type="checkbox" class="form-check-input" name="app-header-inverse" id="appHeaderInverse" value="1" />
+				<label class="form-check-label" for="appHeaderInverse"></label>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-10px align-items-center">
+		<div class="col-8 control-label text-body fw-bold">Sidebar Fixed</div>
+		<div class="col-4 d-flex">
+			<div class="form-check form-switch ms-auto mb-0">
+				<input type="checkbox" class="form-check-input" name="app-sidebar-fixed" id="appSidebarFixed" value="1" checked />
+				<label class="form-check-label" for="appSidebarFixed"></label>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-10px align-items-center">
+		<div class="col-8 control-label text-body fw-bold">Sidebar Grid</div>
+		<div class="col-4 d-flex">
+			<div class="form-check form-switch ms-auto mb-0">
+				<input type="checkbox" class="form-check-input" name="app-sidebar-grid" id="appSidebarGrid" value="1" />
+				<label class="form-check-label" for="appSidebarGrid"></label>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-10px align-items-center">
+		<div class="col-8 control-label text-body fw-bold">Gradient Enabled</div>
+		<div class="col-4 d-flex">
+			<div class="form-check form-switch ms-auto mb-0">
+				<input type="checkbox" class="form-check-input" name="app-gradient-enabled" id="appGradientEnabled" value="1" />
+				<label class="form-check-label" for="appGradientEnabled"></label>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-10px align-items-center">
+		<div class="col-8 control-label text-body fw-bold d-flex">RTL Enabled <span class="badge bg-primary ms-1 position-relative d-flex align-items-center">NEW</span></div>
+		<div class="col-4 d-flex">
+			<div class="form-check form-switch ms-auto mb-0">
+				<input type="checkbox" class="form-check-input" name="app-rtl-mode" id="appRtlMode" value="1" />
+				<label class="form-check-label" for="appRtlMode"></label>
+			</div>
+		</div>
+	</div>
+	<!-- END theme-switch -->
+	
+	<div class="theme-panel-divider"></div>
+	
+	<h5>Admin Design (6)</h5>
+	<!-- BEGIN theme-version -->
+	<div class="theme-version">
+		<div class="theme-version-item">
+			<a href="https://seantheme.com/color-admin/admin/html/index_v2.html" class="theme-version-link active">
+				<span style="background-image: url({% static '/img/theme/default.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+		<div class="theme-version-item">
+			<a href="https://seantheme.com/color-admin/admin/transparent/index_v2.html" class="theme-version-link">
+				<span style="background-image: url({% static '/img/theme/transparent.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+		<div class="theme-version-item">
+			<a href="https://seantheme.com/color-admin/admin/apple/index_v2.html" class="theme-version-link">
+				<span style="background-image: url({% static '/img/theme/apple.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+		<div class="theme-version-item">
+			<a href="https://seantheme.com/color-admin/admin/material/index_v2.html" class="theme-version-link">
+				<span style="background-image: url({% static '/img/theme/material.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+		<div class="theme-version-item">
+			<a href="https://seantheme.com/color-admin/admin/facebook/index_v2.html" class="theme-version-link">
+				<span style="background-image: url({% static '/img/theme/facebook.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+		<div class="theme-version-item">
+			<a href="https://seantheme.com/color-admin/admin/google/index_v2.html" class="theme-version-link">
+				<span style="background-image: url({% static '/img/theme/google.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+	</div>
+	<!-- END theme-version -->
+	
+	<div class="theme-panel-divider"></div>
+	
+	<h5>Language Version (9)</h5>
+	<!-- BEGIN theme-version -->
+	<div class="theme-version">
+		<div class="theme-version-item">
+			<a href="https://seantheme.com/color-admin/admin/html/index_v3.html" class="theme-version-link">
+				<span style="background-image: url({% static '/img/version/html.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+		<div class="theme-version-item">
+			<a href="https://seantheme.com/color-admin/admin/ajax/" class="theme-version-link">
+				<span style="background-image: url({% static '/img/version/ajax.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+		<div class="theme-version-item">
+			<a href="https://seantheme.com/color-admin/admin/angularjs/" class="theme-version-link">
+				<span style="background-image: url({% static '/img/version/angular1x.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+		<div class="theme-version-item">
+			<a href="https://seantheme.com/color-admin/admin/angularjs20/" class="theme-version-link">
+				<span style="background-image: url({% static '/img/version/angular20x.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+		<div class="theme-version-item">
+			<a href="https://seantheme.com/color-admin/admin/svelte/" class="theme-version-link">
+				<span style="background-image: url({% static '/img/version/svelte.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+		<div class="theme-version-item">
+			<a href="javascript:alert('Laravel Version only available in downloaded version.');" class="theme-version-link">
+				<span style="background-image: url({% static '/img/version/laravel.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+		<div class="theme-version-item">
+			<a href="javascript:alert('Django Version only available in downloaded version.');" class="theme-version-link active">
+				<span style="background-image: url({% static '/img/version/django.jpg' %});" class="theme-version-cover "></span>
+			</a>
+		</div>
+		<div class="theme-version-item">
+			<a href="https://seantheme.com/color-admin/admin/vue3/" class="theme-version-link">
+				<span style="background-image: url({% static '/img/version/vuejs.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+		<div class="theme-version-item">
+			<a href="https://seantheme.com/color-admin/admin/react/" class="theme-version-link">
+				<span style="background-image: url({% static '/img/version/reactjs.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+		<div class="theme-version-item">
+			<a href="javascript:alert('.NET Core MVC Version only available in downloaded version.');" class="theme-version-link">
+				<span style="background-image: url({% static '/img/version/dotnet.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+		<div class="theme-version-item">
+			<a href="https://seantheme.com/color-admin/admin/nextjs/" class="theme-version-link">
+				<span style="background-image: url({% static '/img/version/nextjs.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+	</div>
+	<!-- END theme-version -->
+	
+	<div class="theme-panel-divider"></div>
+	
+	<h5>Frontend Design (5)</h5>
+	<!-- BEGIN theme-version -->
+	<div class="theme-version">
+		<div class="theme-version-item">
+			<a href="https://seantheme.com/color-admin/frontend/one-page-parallax/" target="blank" class="theme-version-link">
+				<span style="background-image: url({% static '/img/theme/one-page-parallax.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+		<div class="theme-version-item">
+			<a href="https://seantheme.com/color-admin/frontend/e-commerce/" target="blank" class="theme-version-link">
+				<span style="background-image: url({% static '/img/theme/e-commerce.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+		<div class="theme-version-item">
+			<a href="https://seantheme.com/color-admin/frontend/blog/" target="blank" class="theme-version-link">
+				<span style="background-image: url({% static '/img/theme/blog.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+		<div class="theme-version-item">
+			<a href="https://seantheme.com/color-admin/frontend/forum/" target="blank" class="theme-version-link">
+				<span style="background-image: url({% static '/img/theme/forum.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+		<div class="theme-version-item">
+			<a href="https://seantheme.com/color-admin/frontend/corporate/" target="blank" class="theme-version-link">
+				<span style="background-image: url({% static '/img/theme/corporate.jpg' %});" class="theme-version-cover"></span>
+			</a>
+		</div>
+	</div>
+	<!-- END theme-version -->
+	
+	<div class="theme-panel-divider"></div>
+	
+	<a href="https://seantheme.com/color-admin/documentation/" class="btn btn-dark d-block w-100 rounded-pill mb-10px" target="_blank"><b>Documentation</b></a>
+	<a href="javascript:;" class="btn btn-default d-block w-100 rounded-pill" data-toggle="reset-local-storage"><b>Reset Local Storage</b></a>
+</div>
+</div>
+<!-- END theme-panel -->

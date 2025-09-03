@@ -1,0 +1,18 @@
+&lt;ul class="fa-ul"&gt;
+  &lt;li&gt;
+    &lt;span class="fa-li"&gt;&lt;i class="fas fa-check-square"&gt;&lt;/i&gt;&lt;/span&gt;
+    List icons can
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;span class="fa-li"&gt;&lt;i class="fas fa-check-square"&gt;&lt;/i&gt;&lt;/span&gt;
+    be used to
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;span class="fa-li"&gt;&lt;i class="fas fa-spinner fa-pulse"&gt;&lt;/i&gt;&lt;/span&gt;
+    replace bullets
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;span class="fa-li"&gt;&lt;i class="far fa-square"&gt;&lt;/i&gt;&lt;/span&gt;
+    in lists
+  &lt;/li&gt;
+&lt;/ul&gt;

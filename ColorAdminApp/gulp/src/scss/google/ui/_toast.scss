@@ -1,0 +1,18 @@
+.toast-container {
+	position: fixed;
+	top: $app-header-height;
+	margin-top: $spacer;
+	inset-inline-end: $spacer;
+	z-index: $app-content-zindex;
+}
+.toast {
+	& .toast-header {
+		border-bottom-width: $toast-header-border-width;
+		border-color: $toast-border-color;
+		
+		& .btn-close {
+			margin-inline-end: calc(-.5 * var(--#{$prefix}toast-padding-x));
+			margin-inline-start: var(--#{$prefix}toast-padding-x);
+		}
+	}
+}

@@ -1,0 +1,14 @@
+&lt;!-- required files --&gt;
+&lt;link href="{% static 'plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css' %}" rel="stylesheet" /&gt;
+&lt;script src="{% static 'plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js' %}"&gt;&lt;/script&gt;
+
+&lt;!-- html --&gt;
+&lt;input type="text" class="form-control" id="datepicker-autoClose" /&gt;
+
+&lt;!-- script --&gt;
+&lt;script&gt;
+  $("#datepicker-autoClose").datepicker({
+    todayHighlight: true,
+    autoclose: true
+  });
+&lt;/script&gt;

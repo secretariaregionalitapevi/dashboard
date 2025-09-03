@@ -1,0 +1,96 @@
+&lt;!-- required files --&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.canvaswrapper.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.colorhelpers.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.saturated.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.browser.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.drawSeries.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.uiConstants.js' %}"&gt;&lt;/script&gt;
+
+&lt;div id="stacked-chart" class="h-250px"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  var d1 = [];
+  for (var a = 0; a <= 5; a += 1) {
+    d1.push([a, parseInt(Math.random() * 5)]);
+  }
+  var d2 = [];
+  for (var b = 0; b <= 5; b += 1) {
+    d2.push([b, parseInt(Math.random() * 5 + 5)]);
+  }
+  var d3 = [];
+  for (var c = 0; c <= 5; c += 1) {
+    d3.push([c, parseInt(Math.random() * 5 + 5)]);
+  }
+  var d4 = [];
+  for (var d = 0; d <= 5; d += 1) {
+    d4.push([d, parseInt(Math.random() * 5 + 5)]);
+  }
+  var d5 = [];
+  for (var e = 0; e <= 5; e += 1) {
+    d5.push([e, parseInt(Math.random() * 5 + 5)]);
+  }
+  var d6 = [];
+  for (var f = 0; f <= 5; f += 1) {
+    d6.push([f, parseInt(Math.random() * 5 + 5)]);
+  }
+    
+  var xData = [{
+    data:d1,
+    color: app.color.gray500,
+    label: 'China',
+    bars: { fillColor: app.color.gray500 }
+  }, {
+    data:d2,
+    color: app.color.gray900,
+    label: 'Russia',
+    bars: { fillColor: app.color.gray900 }
+  }, {
+    data:d3,
+    color: app.color.white,
+    label: 'Canada',
+    bars: { fillColor: app.color.white }
+  }, {
+    data:d4,
+    color: app.color.purple,
+    label: 'Japan',
+    bars: { fillColor: app.color.purple }
+  }, {
+    data:d5,
+    color: app.color.blue,
+    label: 'USA',
+    bars: { fillColor: app.color.blue }
+  }, {
+    data:d6,
+    color: app.color.cyan,
+    label: 'Others',
+    bars: { fillColor: app.color.cyan }
+  }];
+
+  $.plot('#stacked-chart', xData, { 
+    xaxis: {  
+      tickColor: 'rgba('+ app.color.darkRgb + ', .15)',  
+      ticks: [[0, 'MON'], [1, 'TUE'], [2, 'WED'], [3, 'THU'], [4, 'FRI'], [5, 'SAT']],
+      autoscaleMargin: 0.05
+    },
+    yaxis: { tickColor: 'rgba('+ app.color.darkRgb + ', .15)', ticksLength: 5},
+    grid: { 
+      hoverable: true, 
+      tickColor: 'rgba('+ app.color.darkRgb + ', .15)',
+      borderWidth: 1,
+      borderColor: 'rgba('+ app.color.darkRgb + ', .15)',
+      backgroundColor: 'rgba('+ app.color.darkRgb + ', .035)'
+    },
+    series: {
+      stack: true,
+      lines: { show: false, fill: false, steps: false },
+      bars: { show: true, barWidth: 0.6, align: 'center', fillColor: null },
+      highlightColor: 'rgba('+ app.color.darkRgb + ', .5)'
+    },
+    legend: {
+      show: true,
+      position: 'ne',
+      noColumns: 1
+    }
+  });
+&lt;/script&gt;

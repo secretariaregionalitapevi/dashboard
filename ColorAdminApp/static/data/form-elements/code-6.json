@@ -1,0 +1,19 @@
+&lt;!-- valid --&gt;
+&lt;div class="row mb-3"&gt;
+  &lt;label class="form-label col-form-label col-md-3"&gt;Valid Input&lt;/label&gt;
+  &lt;div class="col-md-9"&gt;
+    &lt;input type="text" class="form-control is-valid" /&gt;
+    &lt;div class="valid-feedback"&gt;Looks good!&lt;/div&gt;
+    &lt;div class="valid-tooltip"&gt;Looks good!&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- invalid --&gt;
+&lt;div class="row mb-3"&gt;
+  &lt;label class="form-label col-form-label col-md-3"&gt;...&lt;/label&gt;
+  &lt;div class="col-md-9"&gt;
+    &lt;input type="text" class="form-control is-invalid" /&gt;
+    &lt;div class="invalid-feedback"&gt;...&lt;/div&gt;
+    &lt;div class="invalid-tooltip"&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;

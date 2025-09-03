@@ -1,0 +1,164 @@
+body {
+	& #gritter-notice-wrapper {
+		width: rem(420px);
+		z-index: $app-header-zindex + 10;
+		inset-inline-end: $spacer * 1.33;
+		top: $spacer * 1.33;
+		
+		@include media-breakpoint-down(sm) {
+			width: auto;
+			inset-inline-end: 0;
+			top: 0;
+			padding: $app-content-padding-y-sm * 0.75 $app-content-padding-x-sm;
+			max-width: rem(360px);
+		}
+		
+		& .gritter-item-wrapper {
+			background: none;
+			background: rgba(#{var(--#{$prefix}gray-900-rgb)}, .95);
+			border-radius: $border-radius;
+			box-shadow: $box-shadow-lg;
+			
+			& .gritter-top,
+			& .gritter-bottom {
+				background: none;
+				display: none;
+			}
+			& .gritter-item {
+				font-family: inherit;
+				padding: $spacer * 0.75 $spacer;
+				background: none;
+				display: flex;
+				flex: 1;
+				align-items: center;
+				padding-inline-end: rem(100px);
+				
+				@include media-breakpoint-down(sm) {
+					padding: $spacer;
+					padding-inline-end: rem(80px);
+				}
+				
+				& .gritter-with-image,
+				& .gritter-without-image {
+					float: none;
+					width: auto;
+					flex: 1;
+				}
+				& .gritter-image {
+					margin: 0;
+					height: auto;
+					border-radius: $border-radius * 20;
+					margin-inline-end: $spacer;
+					
+					@include media-breakpoint-down(sm) {
+						width: rem(36px);
+					}
+				}
+				& .gritter-title {
+					font-size: $h5-font-size;
+					line-height: $headings-line-height;
+					padding: 0;
+					margin-bottom: rem(2px);
+					font-weight: $font-weight-bold;
+					color: $white;
+					text-shadow: none;
+					display: block;
+					
+					@include media-breakpoint-down(sm) {
+						font-size: $font-size-lg;
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis; 
+					}
+				}
+				& p {
+					font-size: $font-size-sm;
+					line-height: $line-height-base;
+					color: $gray-300;
+					
+					@include media-breakpoint-down(sm) {
+						max-height: ($font-size-sm * $line-height-base * 2);
+						overflow: hidden;
+					}
+				}
+				& .gritter-close {
+					inset-inline-start: auto;
+					inset-inline-end: 0;
+					top: 0;
+					bottom: 0;
+					background: none;
+					width: rem(85px);
+					height: auto;
+					display: block !important;
+					font-family: inherit;
+					color: $gray-300;
+					border-inline-start: 1px solid rgba($white, .1);
+					
+					@include media-breakpoint-down(sm) {
+						width: rem(65px);
+					}
+					
+					&:before {
+						content: 'Close';
+						position: absolute;
+						text-align: center;
+						top: 0;
+						inset-inline-end: 0;
+						inset-inline-start: 0;
+						bottom: 0;
+						color: inherit;
+						z-index: 10;
+						text-indent: 0;
+						font-family: inherit;
+						font-size: $font-size-base;
+						font-weight: $font-weight-bold;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+					}
+					&:hover,
+					&:focus {
+						color: $white;
+						outline: none;
+					}
+				}
+			}
+			
+			&.gritter-light {
+				background: rgba($white, .98);
+				
+				& .gritter-item,
+				& .gritter-bottom,
+				& .gritter-top {
+					color: $gray-600;
+				}
+				& .gritter-item {
+					& .gritter-title {
+						color: $gray-900;
+					}
+					& p {
+						color: $gray-700;
+					}
+				}
+				& .gritter-close {
+					border-color: $gray-100;
+					color: lighten($dark, 30%);
+					
+					&:hover,
+					&:focus {
+						&:before {
+							color: $gray-900;
+						}
+					}
+				}
+			}
+			&.without-rounded-img {
+				& .gritter-item {
+					& .gritter-image {
+						border-radius: 0;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,31 @@
+.app-sidebar-end-toggled {
+	& .app-sidebar-end {
+		&.app-sidebar,
+		&.app-sidebar-bg {
+			@include media-breakpoint-up(md) {
+				inset-inline-end: 0;
+			}
+		}
+	}
+	& .app-content {
+		@include media-breakpoint-up(md) {
+			margin-inline-end: $app-sidebar-width;
+		}
+	}
+	
+	&.app-with-wide-sidebar {
+		& .app-sidebar-end {
+			&.app-sidebar,
+			&.app-sidebar-bg {
+				@include media-breakpoint-up(md) {
+					inset-inline-end: 0;
+				}
+			}
+		}
+		& .app-content {
+			@include media-breakpoint-up(md) {
+				margin-inline-end: $app-sidebar-width-wide;
+			}
+		}
+	}
+}

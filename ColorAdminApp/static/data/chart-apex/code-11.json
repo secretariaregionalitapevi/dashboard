@@ -1,0 +1,43 @@
+&lt;!-- required files --&gt;
+&lt;script src="{% static 'plugins/apexcharts/dist/apexcharts.min.js' %}"&gt;&lt;/script&gt;
+
+&lt;div id="apex-radial-bar-chart"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  var options = {
+    chart: { height: 350, type: 'radialBar' },
+    plotOptions: {
+      radialBar: {
+        offsetY: -10,
+        startAngle: 0,
+        endAngle: 270,
+        track: { background: app.color.borderColor },
+        hollow: { margin: 5, size: '30%', background: 'transparent', image: undefined, },
+        dataLabels: { name: { show: false, }, value: { show: false, } }
+      }
+    },
+    colors: ['#1ab7ea', '#0084ff', '#39539E', '#0077B5'],
+    series: [76, 67, 61, 90],
+    labels: ['Vimeo', 'Messenger', 'Facebook', 'LinkedIn'],
+    legend: {
+      show: true,
+      floating: true,
+      position: 'left',
+      offsetX: 140,
+      offsetY: 15,
+      labels: { useSeriesColors: true },
+      markers: { size: 0 },
+      formatter: function(seriesName, opts) { 
+        return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex]
+      },
+      itemMargin: { horizontal: 1 }
+    }
+  }
+
+  var chart = new ApexCharts(
+    document.querySelector('#apex-radial-bar-chart'),
+    options
+  );
+
+  chart.render();
+&lt;/script&gt;

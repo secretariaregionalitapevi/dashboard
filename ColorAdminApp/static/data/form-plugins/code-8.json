@@ -1,0 +1,9 @@
+&lt;!-- html --&gt;
+&lt;input type="text" class="form-control" id="jquery-autocomplete" /&gt;
+
+&lt;!-- script --&gt;
+&lt;script&gt;
+  $("#jquery-autocomplete").autocomplete({
+    source: ["ActionScript", "AppleScript", "Asp", "BASIC", "C"]
+  });
+&lt;/script&gt;

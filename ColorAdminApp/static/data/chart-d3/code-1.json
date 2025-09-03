@@ -1,0 +1,38 @@
+&lt;!-- required files --&gt;
+&lt;link href="{% static 'plugins/nvd3/build/nv.d3.css' %}" rel="stylesheet" /&gt;
+&lt;script src="{% static 'plugins/d3/d3.min.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/nvd3/build/nv.d3.min.js' %}"&gt;&lt;/script&gt;
+
+&lt;div id="nv-line-chart" class="h-250px"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  nv.addGraph(function() {
+    var sin = [], cos = [];
+    for (var i = 0; i < 100; i++) {
+      sin.push({x: i, y:  Math.sin(i/10) });
+      cos.push({x: i, y: .5 * Math.cos(i/10)});
+    }
+    var lineChartData = [
+      { values: sin, key: 'Sine Wave', color: app.color.success }, 
+      { values: cos, key: 'Cosine Wave', color: app.color.blue }
+    ];
+
+    var lineChart = nv.models.lineChart().options({
+      transitionDuration: 300,
+      useInteractiveGuideline: true
+    });
+
+    lineChart.xAxis.axisLabel('Time (s)').tickFormat(d3.format(',.1f'));
+    lineChart.yAxis.axisLabel('Voltage (v)').tickFormat(function(d) {
+      if (d == null) {
+        return 'N/A';
+      }
+      return d3.format(',.2f')(d);
+    });
+
+    d3.select('#nv-line-chart').append('svg').datum(lineChartData).call(lineChart);
+    nv.utils.windowResize(lineChart.update);
+
+    return lineChart;
+  });
+&lt;/script&gt;

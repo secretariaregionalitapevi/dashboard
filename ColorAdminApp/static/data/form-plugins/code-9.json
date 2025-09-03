@@ -1,0 +1,10 @@
+&lt;!-- required files --&gt;
+&lt;script src="{% static 'plugins/jquery.maskedinput/src/jquery.maskedinput.js' %}"&gt;&lt;/script&gt;
+
+&lt;!-- html --&gt;
+&lt;input type="text" class="form-control" id="masked-input-date" /&gt;
+
+&lt;!-- script --&gt;
+&lt;script&gt;
+  $("#masked-input-date").mask("99/99/9999");
+&lt;/script&gt;

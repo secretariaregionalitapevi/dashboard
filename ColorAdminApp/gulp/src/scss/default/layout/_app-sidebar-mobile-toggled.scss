@@ -1,0 +1,34 @@
+// ANIMATION - sidebar slide in
+@keyframes appSidebarMobileSlideInStart { from { inset-inline-start: -$app-sidebar-width; } to { inset-inline-start: 0; } }
+
+// ANIMATION - wide sidebar slide in
+@keyframes appSidebarWideMobileSlideInStart { from { inset-inline-start: -$app-sidebar-width-wide; } to { inset-inline-start: 0; } }
+
+// ANIMATION - mobile backdrop
+@keyframes appSidebarMobileBackdrop { from { background: transparent; } to { background: $app-sidebar-bg-mobile-backdrop; } }
+
+.app-sidebar-mobile-toggled {
+	@include media-breakpoint-down(md) {
+		& .app-sidebar:not(.app-sidebar-end),
+		& .app-sidebar-bg:not(.app-sidebar-end) {
+						inset-inline-start: 0;
+			animation: appSidebarMobileSlideInStart .2s ease;
+
+		}
+		& .app-sidebar-bg:not(.app-sidebar-end) {
+			position: fixed;
+		}
+		& .app-sidebar-mobile-backdrop:not(.app-sidebar-end) {
+			display: block;
+			background: $app-sidebar-bg-mobile-backdrop;
+			animation: appSidebarMobileBackdrop .2s ease;
+		}
+		
+		&.app-with-wide-sidebar {
+			& .app-sidebar:not(.app-sidebar-end),
+			& .app-sidebar-bg:not(.app-sidebar-end) {
+				animation: appSidebarWideMobileSlideInStart .2s ease;
+			}
+		}
+	}
+}

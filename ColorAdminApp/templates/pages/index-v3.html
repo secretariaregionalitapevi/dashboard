@@ -1,0 +1,679 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Dashboard v3{% endblock %}
+
+{% block css %}
+	<link href="{% static 'plugins/jvectormap-next/jquery-jvectormap.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/nvd3/build/nv.d3.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/bootstrap-daterangepicker/daterangepicker.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block js %}
+	<script src="{% static 'plugins/d3/d3.min.js' %}"></script>
+	<script src="{% static 'plugins/nvd3/build/nv.d3.min.js' %}"></script>
+	<script src="{% static 'plugins/jvectormap-next/jquery-jvectormap.min.js' %}"></script>
+	<script src="{% static 'plugins/jvectormap-content/world-mill.js' %}"></script>
+	<script src="{% static 'plugins/apexcharts/dist/apexcharts.min.js' %}"></script>
+	<script src="{% static 'plugins/moment/min/moment.min.js' %}"></script>
+	<script src="{% static 'plugins/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+	<script src="{% static 'js/demo/dashboard-v3.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+	<!-- BEGIN breadcrumb -->
+	<ol class="breadcrumb float-xl-end">
+		<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+		<li class="breadcrumb-item"><a href="javascript:;">Dashboard</a></li>
+		<li class="breadcrumb-item active">Dashboard v3</li>
+	</ol>
+	<!-- END breadcrumb -->
+	<!-- BEGIN page-header -->
+	<h1 class="page-header mb-3">Dashboard v3</h1>
+	<!-- END page-header -->
+	<!-- BEGIN daterange-filter -->
+	<div class="d-sm-flex align-items-center mb-3">
+		<a href="#" class="btn btn-dark me-2 text-truncate" id="daterange-filter">
+			<i class="fa fa-calendar fa-fw text-white text-opacity-50 ms-n1"></i> 
+			<span>1 Jun 2025 - 7 Jun 2025</span>
+			<b class="caret ms-1 opacity-5"></b>
+		</a>
+		<div class="text-gray-600 fw-bold mt-2 mt-sm-0">comparado com <span id="daterange-prev-date">24 Mar-30 Abr 2025</span></div>
+	</div>
+	<!-- END daterange-filter -->
+	 <!-- BEGIN row -->
+	<div class="row">
+		<!-- BEGIN col-3 -->
+		<div class="col-xl-3 col-md-6">
+			<div class="widget widget-stats bg-teal">
+				<div class="stats-icon stats-icon-lg"><i class="fa fa-user-tie"></i></div>
+				<div class="stats-content">
+					<div class="stats-title">TODAY'S VISITS</div>
+					<div class="stats-number">7,842,900</div>
+					<div class="stats-progress progress">
+						<div class="progress-bar" style="width: 70.1%;"></div>
+					</div>
+					<div class="stats-desc">Better than last week (70.1%)</div>
+				</div>
+			</div>
+		</div>
+		<!-- END col-3 -->
+		<!-- BEGIN col-3 -->
+		<div class="col-xl-3 col-md-6">
+			<div class="widget widget-stats bg-blue">
+				<div class="stats-icon stats-icon-lg"><i class="fa fa-dollar-sign fa-fw"></i></div>
+				<div class="stats-content">
+					<div class="stats-title">TODAY'S PROFIT</div>
+					<div class="stats-number">180,200</div>
+					<div class="stats-progress progress">
+						<div class="progress-bar" style="width: 40.5%;"></div>
+					</div>
+					<div class="stats-desc">Better than last week (40.5%)</div>
+				</div>
+			</div>
+		</div>
+		<!-- END col-3 -->
+		<!-- BEGIN col-3 -->
+		<div class="col-xl-3 col-md-6">
+			<div class="widget widget-stats bg-indigo">
+				<div class="stats-icon stats-icon-lg"><i class="fa fa-archive fa-fw"></i></div>
+				<div class="stats-content">
+					<div class="stats-title">NEW ORDERS</div>
+					<div class="stats-number">38,900</div>
+					<div class="stats-progress progress">
+						<div class="progress-bar" style="width: 76.3%;"></div>
+					</div>
+					<div class="stats-desc">Better than last week (76.3%)</div>
+				</div>
+			</div>
+		</div>
+		<!-- END col-3 -->
+		<!-- BEGIN col-3 -->
+		<div class="col-xl-3 col-md-6">
+			<div class="widget widget-stats bg-gray-900">
+				<div class="stats-icon stats-icon-lg"><i class="fa fa-comment-alt fa-fw"></i></div>
+				<div class="stats-content">
+					<div class="stats-title">NEW COMMENTS</div>
+					<div class="stats-number">3,988</div>
+					<div class="stats-progress progress">
+						<div class="progress-bar" style="width: 54.9%;"></div>
+					</div>
+					<div class="stats-desc">Better than last week (54.9%)</div>
+				</div>
+			</div>
+		</div>
+		<!-- END col-3 -->
+	</div>
+	<!-- END row -->
+	<!-- BEGIN row -->
+	<div class="row">
+		<!-- BEGIN col-6 -->
+		<div class="col-xl-6">
+			<!-- BEGIN card -->
+			<div class="card border-0 mb-3 overflow-hidden bg-gray-800 text-white">
+				<!-- BEGIN card-body -->
+				<div class="card-body">
+					<!-- BEGIN row -->
+					<div class="row">
+						<!-- BEGIN col-7 -->
+						<div class="col-xl-7 col-lg-8">
+							<!-- BEGIN title -->
+							<div class="mb-3 text-gray-500">
+								<b>TOTAL MÚSICOS CADASTRADOS</b>
+								<span class="ms-2">
+									<i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Total de Músicos" data-bs-placement="top" data-bs-content="Número total de músicos cadastrados no sistema, incluindo ativos e inativos."></i>
+								</span>
+							</div>
+							<!-- END title -->
+							<!-- BEGIN total-musicians -->
+							<div class="d-flex mb-1">
+								<h2 class="mb-0"><span data-animation="number" data-value="1568">0</span></h2>
+								<div class="ms-auto mt-n1 mb-n1"><div id="total-musicians-sparkline"></div></div>
+							</div>
+							<!-- END total-musicians -->
+							<!-- BEGIN percentage -->
+							<div class="mb-3 text-gray-500">
+								<i class="fa fa-caret-up"></i> <span data-animation="number" data-value="33.21">0.00</span>% comparado à semana passada
+							</div>
+							<!-- END percentage -->
+							<hr class="bg-white bg-opacity-50" />
+							<!-- BEGIN row -->
+							<div class="row text-truncate">
+								<!-- BEGIN col-6 -->
+								<div class="col-6">
+									<div class=" text-gray-500">Músicos Ativos</div>
+									<div class="fs-18px mb-5px fw-bold" data-animation="number" data-value="1245">0</div>
+									<div class="progress h-5px rounded-3 bg-gray-900 mb-5px">
+										<div class="progress-bar progress-bar-striped rounded-right bg-teal" data-animation="width" data-value="79%" style="width: 0%"></div>
+									</div>
+								</div>
+								<!-- END col-6 -->
+								<!-- BEGIN col-6 -->
+								<div class="col-6">
+									<div class=" text-gray-500">Novos Cadastros</div>
+									<div class="fs-18px mb-5px fw-bold"><span data-animation="number" data-value="89">0</span></div>
+									<div class="progress h-5px rounded-3 bg-gray-900 mb-5px">
+										<div class="progress-bar progress-bar-striped rounded-right" data-animation="width" data-value="89%" style="width: 0%"></div>
+									</div>
+								</div>
+								<!-- END col-6 -->
+							</div>
+							<!-- END row -->
+						</div>
+						<!-- END col-7 -->
+						<!-- BEGIN col-5 -->
+						<div class="col-xl-5 col-lg-4 align-items-center d-flex justify-content-center">
+							<img src="{% static 'img/svg/img-1.svg' %}" height="150px" class="d-none d-lg-block" />
+						</div>
+						<!-- END col-5 -->
+					</div>
+					<!-- END row -->
+				</div>
+				<!-- END card-body -->
+			</div>
+			<!-- END card -->
+		</div>
+		<!-- END col-6 -->
+		<!-- BEGIN col-6 -->
+		<div class="col-xl-6">
+			<!-- BEGIN row -->
+			<div class="row">
+				<!-- BEGIN col-6 -->
+				<div class="col-sm-6">
+					<!-- BEGIN card -->
+					<div class="card border-0 text-truncate mb-3 bg-gray-800 text-white">
+						<!-- BEGIN card-body -->
+						<div class="card-body">
+							<!-- BEGIN title -->
+							<div class="mb-3 text-gray-500">
+								<b class="mb-3">PERFORMANCE MUSICAL</b> 
+								<span class="ms-2"><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Performance Musical" data-bs-placement="top" data-bs-content="Métricas de performance e engajamento dos músicos no sistema." data-original-title="" title=""></i></span>
+							</div>
+							<!-- END title -->
+							<!-- BEGIN performance-rate -->
+							<div class="d-flex align-items-center mb-1">
+								<h2 class="text-white mb-0"><span data-animation="number" data-value="87.5">0.00</span>%</h2>
+								<div class="ms-auto">
+									<div id="performance-rate-sparkline"></div>
+								</div>
+							</div>
+							<!-- END performance-rate -->
+							<!-- BEGIN percentage -->
+							<div class="mb-4 text-gray-500 ">
+								<i class="fa fa-caret-up"></i> <span data-animation="number" data-value="5.2">0.00</span>% comparado à semana passada
+							</div>
+							<!-- END percentage -->
+							<!-- BEGIN info-row -->
+							<div class="d-flex mb-2">
+								<div class="d-flex align-items-center">
+									<i class="fa fa-circle text-red fs-8px me-2"></i>
+									Músicos Ativos
+								</div>
+								<div class="d-flex align-items-center ms-auto">
+									<div class="text-gray-500 small"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="1245">0</span></div>
+									<div class="w-50px text-end ps-2 fw-bold"><span data-animation="number" data-value="79.3">0.00</span>%</div>
+								</div>
+							</div>
+							<!-- END info-row -->
+							<!-- BEGIN info-row -->
+							<div class="d-flex mb-2">
+								<div class="d-flex align-items-center">
+									<i class="fa fa-circle text-warning fs-8px me-2"></i>
+									Participando Eventos
+								</div>
+								<div class="d-flex align-items-center ms-auto">
+									<div class="text-gray-500 small"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="89">0</span>%</div>
+									<div class="w-50px text-end ps-2 fw-bold"><span data-animation="number" data-value="15.2">0.00</span>%</div>
+								</div>
+							</div>
+							<!-- END info-row -->
+							<!-- BEGIN info-row -->
+							<div class="d-flex">
+								<div class="d-flex align-items-center">
+									<i class="fa fa-circle text-lime fs-8px me-2"></i>
+									Performance Alta
+								</div>
+								<div class="d-flex align-items-center ms-auto">
+									<div class="text-gray-500 small"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="456">0</span></div>
+									<div class="w-50px text-end ps-2 fw-bold"><span data-animation="number" data-value="29.1">0.00</span>%</div>
+								</div>
+							</div>
+							<!-- END info-row -->
+						</div>
+						<!-- END card-body -->
+					</div>
+					<!-- END card -->
+				</div>
+				<!-- END col-6 -->
+				<!-- BEGIN col-6 -->
+				<div class="col-sm-6">
+					<!-- BEGIN card -->
+					<div class="card border-0 text-truncate mb-3 bg-gray-800 text-white">
+						<!-- BEGIN card-body -->
+						<div class="card-body">
+							<!-- BEGIN title -->
+							<div class="mb-3 text-gray-500">
+								<b class="mb-3">SESSÕES DE PRÁTICA</b> 
+								<span class="ms-2"><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Sessões de Prática" data-bs-placement="top" data-bs-content="Número de sessões de prática registradas pelos músicos no sistema." data-original-title="" title=""></i></span>
+							</div>
+							<!-- END title -->
+							<!-- BEGIN practice-session -->
+							<div class="d-flex align-items-center mb-1">
+								<h2 class="text-white mb-0"><span data-animation="number" data-value="2847">0</span></h2>
+								<div class="ms-auto">
+									<div id="practice-session-sparkline"></div>
+								</div>
+							</div>
+							<!-- END practice-session -->
+							<!-- BEGIN percentage -->
+							<div class="mb-4 text-gray-500 ">
+								<i class="fa fa-caret-up"></i> <span data-animation="number" data-value="12.3">0.00</span>% comparado à semana passada
+							</div>
+							<!-- END percentage -->
+							<!-- BEGIN info-row -->
+							<div class="d-flex mb-2">
+								<div class="d-flex align-items-center">
+									<i class="fa fa-circle text-teal fs-8px me-2"></i>
+									Iniciantes
+								</div>
+								<div class="d-flex align-items-center ms-auto">
+									<div class="text-gray-500 small"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="18.5">0.00</span>%</div>
+									<div class="w-50px text-end ps-2 fw-bold"><span data-animation="number" data-value="1247">0</span></div>
+								</div>
+							</div>
+							<!-- END info-row -->
+							<!-- BEGIN info-row -->
+							<div class="d-flex mb-2">
+								<div class="d-flex align-items-center">
+									<i class="fa fa-circle text-blue fs-8px me-2"></i>
+									Intermediários
+								</div>
+								<div class="d-flex align-items-center ms-auto">
+									<div class="text-gray-500 small"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="14.2">0.00</span>%</div>
+									<div class="w-50px text-end ps-2 fw-bold"><span data-animation="number" data-value="987">0</span></div>
+								</div>
+							</div>
+							<!-- END info-row -->
+							<!-- BEGIN info-row -->
+							<div class="d-flex">
+								<div class="d-flex align-items-center">
+									<i class="fa fa-circle text-cyan fs-8px me-2"></i>
+									Avançados
+								</div>
+								<div class="d-flex align-items-center ms-auto">
+									<div class="text-gray-500 small"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="8.7">0.00</span>%</div>
+									<div class="w-50px text-end ps-2 fw-bold"><span data-animation="number" data-value="613">0</span></div>
+								</div>
+							</div>
+							<!-- END info-row -->
+						</div>
+						<!-- END card-body -->
+					</div>
+					<!-- END card -->
+				</div>
+				<!-- END col-6 -->
+			</div>
+			<!-- END row -->
+		</div>
+		<!-- END col-6 -->
+	</div>
+	<!-- END row -->
+	<!-- BEGIN row -->
+	<div class="row">
+		<!-- BEGIN col-8 -->
+		<div class="col-xl-8 col-lg-6">
+			<!-- BEGIN card -->
+			<div class="card border-0 mb-3 bg-gray-800 text-white">
+				<div class="card-body">
+					<div class="mb-3 text-gray-500 "><b>ANÁLISE DE VISITANTES</b> <span class="ms-2"><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Análise de Visitantes" data-bs-placement="top" data-bs-content="Estatísticas de visitantes e engajamento no sistema de músicos." data-original-title="" title=""></i></span></div>
+					<div class="row">
+						<div class="col-xl-3 col-4">
+							<h3 class="mb-1"><span data-animation="number" data-value="127">0</span></h3>
+							<div>Novos Músicos</div>
+							<div class="text-gray-500 small text-truncate"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="25.5">0.00</span>% dos últimos 7 dias</div>
+						</div>
+						<div class="col-xl-3 col-4">
+							<h3 class="mb-1"><span data-animation="number" data-value="179">0</span></h3>
+							<div>Músicos Ativos</div>
+							<div class="text-gray-500 small text-truncate"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="5.33">0.00</span>% dos últimos 7 dias</div>
+						</div>
+						<div class="col-xl-3 col-4">
+							<h3 class="mb-1"><span data-animation="number" data-value="766">0</span></h3>
+							<div>Total de Acessos</div>
+							<div class="text-gray-500 small text-truncate"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="0.323">0.00</span>% dos últimos 7 dias</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-body p-0">
+					<div style="height: 269px">
+						<div id="visitors-line-chart" class="widget-chart-full-width" data-bs-theme="dark" style="height: 254px"></div>
+					</div>
+				</div>
+			</div>
+			<!-- END card -->
+		</div>
+		<!-- END col-8 -->
+		<!-- BEGIN col-4 -->
+		<div class="col-xl-4 col-lg-6">
+			<!-- BEGIN card -->
+			<div class="card border-0 mb-3 bg-gray-800 text-white">
+				<div class="card-body">
+					<div class="mb-2 text-gray-500">
+						<b>SESSÕES POR LOCALIZAÇÃO</b>
+						<span class="ms-2"><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Sessões por Localização" data-bs-placement="top" data-bs-content="Distribuição geográfica dos músicos cadastrados no sistema."></i></span>
+					</div>
+					<div id="visitors-map" class="mb-2" style="height: 200px" ></div>
+					<div>
+						<div class="d-flex align-items-center text-white mb-2">
+							<div class="widget-img widget-img-xs rounded bg-dark me-2 w-40px" style="background-image: url({% static 'img/flag/us.jpg' %})"></div>
+							<div class="d-flex w-100">
+								<div>United States</div>
+								<div class="ms-auto text-gray-500"><span data-animation="number" data-value="39.85">0.00</span>%</div>
+							</div>
+						</div>
+						<div class="d-flex align-items-center text-white mb-2">
+							<div class="widget-img widget-img-xs rounded bg-dark me-2 w-40px" style="background-image: url({% static 'img/flag/cn.jpg' %})"></div>
+							<div class="d-flex w-100">
+								<div>China</div>
+								<div class="ms-auto text-gray-500"><span data-animation="number" data-value="14.23">0.00</span>%</div>
+							</div>
+						</div>
+						<div class="d-flex align-items-center text-white mb-2">
+							<div class="widget-img widget-img-xs rounded bg-dark me-2 w-40px" style="background-image: url({% static 'img/flag/de.jpg' %})"></div>
+							<div class="d-flex w-100">
+								<div>Germany</div>
+								<div class="ms-auto text-gray-500"><span data-animation="number" data-value="12.83">0.00</span>%</div>
+							</div>
+						</div>
+						<div class="d-flex align-items-center text-white mb-2">
+							<div class="widget-img widget-img-xs rounded bg-dark me-2 w-40px" style="background-image: url({% static 'img/flag/fr.jpg' %})"></div>
+							<div class="d-flex w-100">
+								<div>France</div>
+								<div class="ms-auto text-gray-500"><span data-animation="number" data-value="11.14">0.00</span>%</div>
+							</div>
+						</div>
+						<div class="d-flex align-items-center text-white mb-0">
+							<div class="widget-img widget-img-xs rounded bg-dark me-2 w-40px" style="background-image: url({% static 'img/flag/jp.jpg' %})"></div>
+							<div class="d-flex w-100">
+								<div>Japan</div>
+								<div class="ms-auto text-gray-500"><span data-animation="number" data-value="10.75">0.00</span>%</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END card -->
+		</div>
+		<!-- END col-4 -->
+	</div>
+	<!-- END row -->
+	<!-- BEGIN row -->
+	<div class="row">
+		<!-- BEGIN col-4 -->
+		<div class="col-xl-4 col-lg-6">
+			<!-- BEGIN card -->
+			<div class="card border-0 mb-3 bg-gray-900 text-white">
+				<!-- BEGIN card-body -->
+				<div class="card-body" style="background: no-repeat bottom right; background-image: url({% static 'img/svg/img-4.svg' %}); background-size: auto 60%;">
+					<!-- BEGIN title -->
+					<div class="mb-3 text-gray-500 ">
+						<b>MÚSICOS POR FONTE DE CADASTRO</b>
+						<span class="text-gray-500 ms-2"><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Músicos por Fonte" data-bs-placement="top" data-bs-content="Distribuição dos músicos cadastrados por diferentes fontes de referência."></i></span>
+					</div>
+					<!-- END title -->
+					<!-- BEGIN total-musicians -->
+					<h3 class="mb-10px"><span data-animation="number" data-value="1247">0</span></h3>
+					<!-- END total-musicians -->
+					<!-- BEGIN percentage -->
+					<div class="text-gray-500 mb-1px"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="15.76">0.00</span>% de aumento</div>
+					<!-- END percentage -->
+				</div>
+				<!-- END card-body -->
+				<!-- BEGIN widget-list -->
+				<div class="widget-list rounded-bottom" data-bs-theme="dark">
+					<!-- BEGIN widget-list-item -->
+					<a href="#" class="widget-list-item rounded-0 pt-3px">
+						<div class="widget-list-media icon">
+							<i class="fas fa-music bg-indigo text-white"></i>
+						</div>
+						<div class="widget-list-content">
+							<div class="widget-list-title">Indicação Direta</div>
+						</div>
+						<div class="widget-list-action text-nowrap text-gray-500">
+							<span data-animation="number" data-value="456">0</span>
+						</div>
+					</a>
+					<!-- END widget-list-item -->
+					<!-- BEGIN widget-list-item -->
+					<a href="#" class="widget-list-item">
+						<div class="widget-list-media icon">
+							<i class="fab fa-facebook-f bg-blue text-white"></i>
+						</div>
+						<div class="widget-list-content">
+							<div class="widget-list-title">Facebook</div>
+						</div>
+						<div class="widget-list-action text-nowrap text-gray-500">
+							<span data-animation="number" data-value="234">0</span>
+						</div>
+					</a>
+					<!-- END widget-list-item -->
+					<!-- BEGIN widget-list-item -->
+					<a href="#" class="widget-list-item">
+						<div class="widget-list-media icon">
+							<i class="fab fa-instagram bg-pink text-white"></i>
+						</div>
+						<div class="widget-list-content">
+							<div class="widget-list-title">Instagram</div>
+						</div>
+						<div class="widget-list-action text-nowrap text-gray-500">
+							<span data-animation="number" data-value="198">0</span>
+						</div>
+					</a>
+					<!-- END widget-list-item -->
+					<!-- BEGIN widget-list-item -->
+					<a href="#" class="widget-list-item">
+						<div class="widget-list-media icon">
+							<i class="fab fa-google bg-red text-white"></i>
+						</div>
+						<div class="widget-list-content">
+							<div class="widget-list-title">Google</div>
+						</div>
+						<div class="widget-list-action text-nowrap text-gray-500">
+							<span data-animation="number" data-value="156">0</span>
+						</div>
+					</a>
+					<!-- END widget-list-item -->
+					<!-- BEGIN widget-list-item -->
+					<a href="#" class="widget-list-item pb-3px rounded-bottom">
+						<div class="widget-list-media icon">
+							<i class="fas fa-globe bg-teal text-white"></i>
+						</div>
+						<div class="widget-list-content">
+							<div class="widget-list-title">Site Oficial</div>
+						</div>
+						<div class="widget-list-action text-nowrap text-gray-500">
+							<span data-animation="number" data-value="203">0</span>
+						</div>
+					</a>
+					<!-- END widget-list-item -->
+				</div>
+				<!-- END widget-list -->
+			</div>
+			<!-- END card -->
+		</div>
+		<!-- END col-4 -->
+		<!-- END col-4 -->
+		<!-- BEGIN col-4 -->
+		<div class="col-xl-4 col-lg-6">
+			<!-- BEGIN card -->
+			<div class="card border-0 mb-3 bg-gray-800 text-white">
+				<!-- BEGIN card-body -->
+				<div class="card-body">
+					<!-- BEGIN title -->
+					<div class="mb-3 text-gray-500">
+						<b>INSTRUMENTOS MAIS POPULARES</b>
+						<span class="ms-2 "><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Instrumentos Populares" data-bs-placement="top" data-bs-content="Instrumentos musicais mais utilizados pelos músicos cadastrados."></i></span>
+					</div>
+					<!-- END title -->
+					<!-- BEGIN product -->
+					<div class="d-flex align-items-center mb-15px">
+						<div class="widget-img rounded-3 me-10px bg-white p-3px w-30px">
+							<div class="h-100 w-100" style="background: url({% static 'img/product/product-8.jpg' %}) center no-repeat; background-size: auto 100%;"></div>
+						</div>
+						<div class="text-truncate">
+							<div >Violão Clássico</div>
+							<div class="text-gray-500">Instrumento de Cordas</div>
+						</div>
+						<div class="ms-auto text-center">
+							<div class="fs-13px"><span data-animation="number" data-value="195">0</span></div>
+							<div class="text-gray-500 fs-10px">músicos</div>
+						</div>
+					</div>
+					<!-- END product -->
+					<!-- BEGIN product -->
+					<div class="d-flex align-items-center mb-15px">
+						<div class="widget-img rounded-3 me-10px bg-white p-3px w-30px">
+							<div class="h-100 w-100" style="background: url({% static 'img/product/product-9.jpg' %}) center no-repeat; background-size: auto 100%;"></div>
+						</div>
+						<div class="text-truncate">
+							<div >Piano Digital</div>
+							<div class="text-gray-500">Instrumento de Teclas</div>
+						</div>
+						<div class="ms-auto text-center">
+							<div class="fs-13px"><span data-animation="number" data-value="185">0</span></div>
+							<div class="text-gray-500 fs-10px">músicos</div>
+						</div>
+					</div>
+					<!-- END product -->
+					<!-- BEGIN product -->
+					<div class="d-flex align-items-center mb-15px">
+						<div class="widget-img rounded-3 me-10px bg-white p-3px w-30px">
+							<div class="h-100 w-100" style="background: url({% static 'img/product/product-10.jpg' %}) center no-repeat; background-size: auto 100%;"></div>
+						</div>
+						<div class="text-truncate">
+							<div >Bateria Acústica</div>
+							<div class="text-gray-500">Instrumento de Percussão</div>
+						</div>
+						<div class="ms-auto text-center">
+							<div class="fs-13px"><span data-animation="number" data-value="129">0</span></div>
+							<div class="text-gray-500 fs-10px">músicos</div>
+						</div>
+					</div>
+					<!-- END product -->
+					<!-- BEGIN product -->
+					<div class="d-flex align-items-center mb-15px">
+						<div class="widget-img rounded-3 me-10px bg-white p-3px w-30px">
+							<div class="h-100 w-100" style="background: url({% static 'img/product/product-11.jpg' %}) center no-repeat; background-size: auto 100%;"></div>
+						</div>
+						<div class="text-truncate">
+							<div >Saxofone Alto</div>
+							<div class="text-gray-500">Instrumento de Sopro</div>
+						</div>
+						<div class="ms-auto text-center">
+							<div class="fs-13px"><span data-animation="number" data-value="96">0</span></div>
+							<div class="text-gray-500 fs-10px">músicos</div>
+						</div>
+					</div>
+					<!-- END product -->
+					<!-- BEGIN product -->
+					<div class="d-flex align-items-center">
+						<div class="widget-img rounded-3 me-10px bg-white p-3px w-30px">
+							<div class="h-100 w-100" style="background: url({% static 'img/product/product-12.jpg' %}) center no-repeat; background-size: auto 100%;"></div>
+						</div>
+						<div class="text-truncate">
+							<div >Flauta Transversal</div>
+							<div class="text-gray-500">Instrumento de Sopro</div>
+						</div>
+						<div class="ms-auto text-center">
+							<div class="fs-13px"><span data-animation="number" data-value="55">0</span></div>
+							<div class="text-gray-500 fs-10px">músicos</div>
+						</div>
+					</div>
+					<!-- END product -->
+				</div>
+				<!-- END card-body -->
+			</div>
+			<!-- END card -->
+		</div>
+		<!-- END col-4 -->
+		<!-- BEGIN col-4 -->
+		<div class="col-xl-4 col-lg-6">
+			<!-- BEGIN card -->
+			<div class="card border-0 mb-3 bg-gray-800 text-white">
+				<!-- BEGIN card-body -->
+				<div class="card-body">
+					<!-- BEGIN title -->
+					<div class="mb-3 text-gray-500 ">
+						<b>CAMPANHAS DE ENGAGAMENTO</b>
+						<span class="ms-2"><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Campanhas de Engajamento" data-bs-placement="top" data-bs-content="Campanhas para aumentar o engajamento e participação dos músicos."></i></span>
+					</div>
+					<!-- END title -->
+					<!-- BEGIN row -->
+					<div class="row align-items-center pb-1px">
+						<!-- BEGIN col-4 -->
+						<div class="col-4">
+							<div class="h-100px d-flex align-items-center justify-content-center">
+								<img src="{% static 'img/svg/img-2.svg' %}" class="mw-100 mh-100" />
+							</div>
+						</div>
+						<!-- END col-4 -->
+						<!-- BEGIN col-8 -->
+						<div class="col-8">
+							<div class="mb-2px text-truncate">Campanha de Email para Músicos</div>
+							<div class="mb-2px  text-gray-500  small">Seg 12/6 - Dom 18/6</div>
+							<div class="d-flex align-items-center mb-2px">
+								<div class="flex-grow-1">
+									<div class="progress h-5px rounded-pill bg-white bg-opacity-10">
+										<div class="progress-bar progress-bar-striped bg-indigo" data-animation="width" data-value="80%" style="width: 0%"></div>
+									</div>
+								</div>
+								<div class="ms-2 small w-30px text-center"><span data-animation="number" data-value="80">0</span>%</div>
+							</div>
+							<div class="text-gray-500 small mb-15px text-truncate">
+								57.5% dos músicos clicaram no email
+							</div>
+							<a href="#" class="btn btn-xs btn-indigo fs-10px ps-2 pe-2">Ver campanha</a>
+						</div>
+						<!-- END col-8 -->
+					</div>
+					<!-- END row -->
+					<hr class=" bg-white bg-opacity-20 mt-20px mb-20px" />
+					<!-- BEGIN row -->
+					<div class="row align-items-center">
+						<!-- BEGIN col-4 -->
+						<div class="col-4">
+							<div class="h-100px d-flex align-items-center justify-content-center">
+								<img src="{% static 'img/svg/img-3.svg' %}" class="mw-100 mh-100" />
+							</div>
+						</div>
+						<!-- END col-4 -->
+						<!-- BEGIN col-8 -->
+						<div class="col-8">
+							<div class="mb-2px text-truncate">Campanha no Facebook para Músicos</div>
+							<div class="mb-2px  text-gray-500  small">Sáb 10/6 - Dom 18/6</div>
+							<div class="d-flex align-items-center mb-2px">
+								<div class="flex-grow-1">
+									<div class="progress h-5px rounded-pill bg-white bg-opacity-10">
+										<div class="progress-bar progress-bar-striped bg-warning" data-animation="width" data-value="60%" style="width: 0%"></div>
+									</div>
+								</div>
+								<div class="ms-2 small w-30px text-center"><span data-animation="number" data-value="60">0</span>%</div>
+							</div>
+							<div class="text-gray-500 small mb-15px text-truncate">
+								+124 visitantes do Facebook
+							</div>
+							<a href="#" class="btn btn-xs btn-warning fs-10px ps-2 pe-2">Ver campanha</a>
+						</div>
+						<!-- END col-8 -->
+					</div>
+					<!-- END row -->
+				</div>
+				<!-- END card-body -->
+			</div>
+			<!-- END card -->
+		</div>
+		<!-- END col-4 -->
+	</div>
+	<!-- END row -->
+{% endblock %}

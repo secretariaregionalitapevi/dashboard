@@ -1,0 +1,14 @@
+&lt;!-- begin widget-card-square --&gt;
+&lt;a href="#" class="widget-card rounded square mb-5px"&gt;
+  &lt;div class="widget-card-cover rounded" style="background-image: url({% static 'img/login-bg/login-bg-10.jpg' %})"&gt;
+    &lt;div class="d-flex h-100 align-items-center justify-content-center"&gt;
+      &lt;div class="text-center"&gt;
+        &lt;div class="text-white fs-14px"&gt;&lt;b&gt;PORTRAITS OF&lt;/b&gt;&lt;/div&gt;
+        &lt;div class="text-white text-opacity-75 fw-bold"&gt;2024&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/a&gt;
+&lt;div class="fs-12px fw-bold text-body pt-2px"&gt;Memory 2024&lt;/div&gt;
+&lt;div class="fs-10px fw-bold text-body text-opacity-50 mb-15px"&gt;1,239&lt;/div&gt;
+&lt;!-- end widget-card-square --&gt;

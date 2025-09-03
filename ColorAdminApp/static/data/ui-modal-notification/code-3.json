@@ -1,0 +1,26 @@
+&lt;!-- required files --&gt;
+&lt;script src="{% static 'plugins/sweetalert/dist/sweetalert.min.js' %}"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+  swal({
+    title: 'Are you sure?',
+    text: 'You will not be able to recover this imaginary file!',
+    icon: 'info',
+    buttons: {
+      cancel: {
+        text: 'Cancel',
+        value: null,
+        visible: true,
+        className: 'btn btn-default',
+        closeModal: true,
+      },
+      confirm: {
+        text: 'Primary',
+        value: true,
+        visible: true,
+        className: 'btn btn-primary',
+        closeModal: true
+      }
+    }
+  });
+&lt;/script&gt;

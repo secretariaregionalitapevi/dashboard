@@ -1,0 +1,46 @@
+&lt;!-- required files --&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.canvaswrapper.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.colorhelpers.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.saturated.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.browser.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.drawSeries.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.uiConstants.js' %}"&gt;&lt;/script&gt;
+
+&lt;div id="basic-chart" class="h-250px"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  var d1 = d2 = d3 = [];
+  for (var x = 0; x &lt; Math.PI * 2; x += 0.25) {
+    d1.push([x, Math.sin(x)]);
+    d2.push([x, Math.cos(x)]);
+  }
+  for (var z = 0; z &lt; Math.PI * 2; z += 0.1) {
+    d3.push([z, Math.tan(z)]);
+  }
+  $.plot($('#basic-chart'), [
+    { label: 'data 1',  data: d1, color: app.color.blue, shadowSize: 0 },
+    { label: 'data 2',  data: d2, color: app.color.success, shadowSize: 0 }
+  ], {
+    series: {
+      lines: { show: true },
+      points: { show: false }
+    },
+    xaxis: {
+      min: 0,
+      max: 6,
+      tickColor: 'rgba('+ app.color.darkRgb + ', .3)',
+    },
+    yaxis: {
+      min: -2,
+      max: 2,
+      tickColor: 'rgba('+ app.color.darkRgb + ', .3)'
+    },
+    grid: {
+      borderColor: 'rgba('+ app.color.darkRgb + ', .15)',
+      borderWidth: 1,
+      backgroundColor: 'rgba('+ app.color.darkRgb + ', .035)',
+			tickColor: 'rgba('+ app.color.darkRgb + ', .15)'
+    }
+  });
+&lt;/script&gt;

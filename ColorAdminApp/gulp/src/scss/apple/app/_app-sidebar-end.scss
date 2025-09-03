@@ -1,0 +1,14 @@
+.app-sidebar-end {
+	&.app-sidebar,
+	&.app-sidebar-bg {
+		inset-inline-end: -$app-sidebar-width;
+	}
+	&.app-with-wide-sidebar {
+		& .app-sidebar-end {
+			&.app-sidebar,
+			&.app-sidebar-bg {
+				inset-inline-end: -$app-sidebar-width-wide;
+			}
+		}
+	}
+}

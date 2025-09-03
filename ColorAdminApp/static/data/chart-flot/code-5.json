@@ -1,0 +1,89 @@
+&lt;!-- required files --&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.canvaswrapper.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.colorhelpers.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.saturated.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.browser.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.drawSeries.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'plugins/flot/source/jquery.flot.uiConstants.js' %}"&gt;&lt;/script&gt;
+
+&lt;div id="live-updated-chart" class="h-250px"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  function update() {
+    plot.setData([ getRandomData() ]);
+    plot.draw();
+    setTimeout(update, updateInterval);
+  }
+    
+  function getRandomData() {
+    if (data.length > 0) {
+      data = data.slice(1);
+    }
+    while (data.length < totalPoints) {
+      var prev = data.length > 0 ? data[data.length - 1] : 50;
+      var y = prev + Math.random() * 10 - 5;
+      if (y < 0) {
+        y = 0;
+      }
+      if (y > 100) {
+        y = 100;
+      }
+      data.push(y);
+    }
+    var res = [];
+    for (var i = 0; i < data.length; ++i) {
+      res.push([i, data[i]]);
+    }
+    return res;
+  }
+  
+  var data = [], totalPoints = 150;
+  var updateInterval = 1000;
+
+  $('#updateInterval').val(updateInterval).change(function () {
+    var v = $(this).val();
+    if (v && !isNaN(+v)) {
+      updateInterval = +v;
+      if (updateInterval < 1) {
+        updateInterval = 1;
+      }
+      if (updateInterval > 2000) {
+        updateInterval = 2000;
+      }
+      $(this).val('' + updateInterval);
+    }
+  });
+
+  var plot = $.plot($('#live-updated-chart'), [{ label: 'Server stats', data: getRandomData() }], {
+    series: { 
+      shadowSize: 0, 
+      color: app.color.success, 
+      lines: { 
+        show: true, 
+        fill:true 
+      } 
+    },
+    yaxis: { 
+      min: 0, 
+      max: 100, 
+      tickColor: 'rgba('+ app.color.darkRgb + ', .15)'
+    },
+    xaxis: { 
+      show: true, 
+      tickColor: 'rgba('+ app.color.darkRgb + ', .15)'
+    },
+    grid: {
+      borderWidth: 1,
+      borderColor: 'rgba('+ app.color.darkRgb + ', .15)',
+      backgroundColor: 'rgba('+ app.color.darkRgb + ', .035)', 
+      tickColor: 'rgba('+ app.color.darkRgb + ', .15)'
+    },
+    legend: {
+      noColumns: 1,
+      show: true
+    }
+  });
+
+  update();
+&lt;/script&gt;

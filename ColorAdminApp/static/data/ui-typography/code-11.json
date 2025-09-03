@@ -1,0 +1,10 @@
+&lt;address&gt;
+  &lt;strong&gt;Twitter, Inc.&lt;/strong&gt;&lt;br /&gt;
+  795 Folsom Ave, Suite 600&lt;br /&gt;
+  San Francisco, CA 94107&lt;br /&gt;
+  &lt;abbr title="Phone"&gt;P:&lt;/abbr&gt; (123) 456-7890
+&lt;/address&gt;
+&lt;address&gt;
+&lt;strong&gt;Full Name&lt;/strong&gt;&lt;br /&gt;
+  &lt;a href="mailto:#"&gt;first.last@example.com&lt;/a&gt;
+&lt;/address&gt;

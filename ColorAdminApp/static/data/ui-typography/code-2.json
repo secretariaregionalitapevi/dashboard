@@ -1,0 +1,4 @@
+&lt;small&gt;This line of text is meant to be treated as fine print.&lt;/small&gt;
+&lt;em&gt;rendered as italicized text&lt;/em&gt;
+&lt;span class="semi-bold"&gt;rendered as semi bold text&lt;/span&gt;
+&lt;strong&gt;rendered as bold text&lt;/strong&gt;

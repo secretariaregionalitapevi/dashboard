@@ -1,0 +1,22 @@
+&lt;!-- views.py --&gt;
+def page(request):
+  context = {
+    "appContentFullHeight": 1,
+    "appContentClass": "d-flex flex-column p-0"
+  }
+  return render(request, "pages/page.html", context)
+
+
+&lt;!-- page.html --&gt;
+{% block content %}
+  &lt;div class="app-content-padding flex-grow-1 overflow-hidden" data-scrollbar="true" data-height="100%"&gt;
+    &lt;!-- your content here --&gt;
+  &lt;/div&gt;
+  
+  
+  &lt;!-- BEGIN #footer --&gt;
+  &lt;div id="footer" class="app-footer m-0"&gt;
+    &copy; 2024 Color Admin Responsive Admin Template - Sean Ngu All Rights Reserved
+  &lt;/div&gt;
+  &lt;!-- END #footer --&gt;
+{% endblock %}

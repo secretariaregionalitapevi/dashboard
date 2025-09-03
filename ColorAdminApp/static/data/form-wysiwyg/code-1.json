@@ -1,0 +1,16 @@
+&lt;!-- required files --&gt;
+&lt;link href="{% static 'plugins/quill/dist/quill.snow.css' %}" rel="stylesheet" /&gt;
+&lt;script src="{% static 'plugins/quill/dist/quill.js' %}"&gt;&lt;/script&gt;
+
+&lt;!-- html --&gt;
+&lt;textarea id="editor1" name="editor1"&gt;
+ ...
+&lt;/textarea&gt;
+
+&lt;!-- javascript --&gt;
+&lt;script&gt;
+  const quill = new Quill('#editor1', {
+    theme: 'snow',
+    placeholder: 'Type something...'
+  });
+&lt;/script&gt;

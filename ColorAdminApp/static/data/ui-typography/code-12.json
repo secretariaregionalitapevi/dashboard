@@ -1,0 +1,9 @@
+&lt;blockquote class="blockquote"&gt;
+  &lt;p&gt;...&lt;/p&gt;
+  &lt;footer class="blockquote-footer"&gt;
+    Someone famous &lt;cite title="Source Title"&gt;Source Title&lt;/cite&gt;
+  &lt;/footer&gt;
+&lt;/blockquote&gt;
+&lt;blockquote class="blockquote text-end"&gt;
+  ...
+&lt;/blockquote&gt;

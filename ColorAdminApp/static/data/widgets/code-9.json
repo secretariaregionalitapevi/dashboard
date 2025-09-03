@@ -1,0 +1,13 @@
+&lt;!-- begin widget-stats --&gt;
+&lt;div class="widget widget-stats bg-teal mb-10px"&gt;
+  &lt;div class="stats-icon stats-icon-lg"&gt;&lt;i class="fa fa-globe fa-fw"&gt;&lt;/i&gt;&lt;/div&gt;
+  &lt;div class="stats-content"&gt;
+    &lt;div class="stats-title"&gt;TODAY'S VISITS&lt;/div&gt;
+    &lt;div class="stats-number"&gt;7,842,900&lt;/div&gt;
+    &lt;div class="stats-progress progress"&gt;
+      &lt;div class="progress-bar" style="width: 70.1%;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="stats-desc"&gt;Better than last week (70.1%)&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- end widget-stats --&gt;
