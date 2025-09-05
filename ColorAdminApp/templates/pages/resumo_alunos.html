@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>SAM | Resumo Alunos</title>
+
+    <!-- jQuery DEVE ser o primeiro script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    {% include 'header.html' %}
+
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <!-- Scripts dependentes -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Custom Scripts -->
+    <script src="{{ url_for('static', filename='js/resumo-alunos.js') }}"></script>
+
+    <style>
+    #instrutor-suggestions {
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 1000;
+    }
+    .suggestion-item {
+        padding: 8px 12px;
+        cursor: pointer;
+    }
+    .suggestion-item:hover {
+        background-color: #f8f9fa;
+    }
+    .dropdown-menu.show {
+        display: block !important;
+    }
+
+    /* Estilos para o Select2 */
+    .select2-container {
+        width: 100% !important;
+    }
+
+    .select2-container--default .select2-selection--multiple {
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+    }
+
+    .select2-container--default.select2-container--focus .select2-selection--multiple {
+        border-color: #86b7fe;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        background-color: #1ab394;
+        border: none;
+        color: white;
+        padding: 2px 8px;
+        position: relative;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+        color: #fff;
+        background: #e74c3c;
+        border-radius: 50%;
+        margin-right: 6px;
+        font-weight: bold;
+        padding: 0 7px;
+        font-size: 16px;
+        line-height: 1.2;
+        transition: background 0.2s, color 0.2s;
+        opacity: 1;
+        border: 1px solid #fff;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+        cursor: pointer;
+    }
+    .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+        background: #c0392b;
+        color: #fff;
+        border-color: #fff;
+        opacity: 1;
+    }
+
+    .select2-container--default.is-invalid .select2-selection--multiple {
+        border-color: #dc3545;
+    }
+
+    .select2-container--default.is-invalid.select2-container--focus .select2-selection--multiple {
+        border-color: #dc3545;
+        box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+    }
+
+    /* Estilos para o Select2 do campo Escalas */
+    #lancamentoEscalasModal .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+        color: #fff !important;
+        background: #e74c3c !important;
+        border-radius: 50% !important;
+        margin-right: 6px !important;
+        font-weight: bold !important;
+        padding: 0 7px !important;
+        font-size: 16px !important;
+        line-height: 1.2 !important;
+        border: 2px solid #fff !important;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.18) !important;
+        cursor: pointer !important;
+        opacity: 1 !important;
+        display: inline-block !important;
+        vertical-align: middle !important;
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s !important;
+    }
+    #lancamentoEscalasModal .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+        background: #b71c1c !important;
+        color: #fff !important;
+        border-color: #fff !important;
+        box-shadow: 0 4px 12px rgba(183,28,28,0.25) !important;
+        opacity: 1 !important;
+    }
+    </style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        
+        <!-- Sidenav Menu Start -->
+        {% include 'sidenav.html' %}
+        <!-- Sidenav Menu End -->
+        <div id="flash-messages" style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+            {# Removido o alerta Bootstrap para usar SweetAlert2 #}
+        </div>
+
+        
+        <!-- Topbar -->
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary" href="#"><i class="fa fa-bars"></i></a>
+                        <form role="search" class="navbar-form-custom" action="search_results.html">
+                            <div class="form-group">
+                                <input type="text" placeholder="Pesquisar..." class="form-control" name="top-search" id="top-search">
+                            </div>
+                        </form>
+                    </div>
+
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li style="padding: 20px">
+                            <span class="m-r-sm text-muted welcome-message">Bem-vindo ao SAM <strong>{{ name.split(' ')[0] if name else '' }}</strong> </span>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle navbar-top-item count-info" data-bs-toggle="dropdown" href="#">
+                                <i class="fa fa-envelope"></i> <span class="label label-warning ff-secondary fw-semibold">3</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-messages dropdown-menu-right">
+                                <li>
+                                    <div class="dropdown-messages-box d-flex gap-2 p-2">
+                                        <a class="dropdown-item p-0" href="profile.html">
+                                            <img alt="image" class="rounded-circle" src="img/users/avatar-8.jpg">
+                                        </a>
+                                        <div class="media-body">
+                                            <span class="fw-medium ff-secondary">Mike Lore</span> started following <span class="fw-medium ff-secondary">Monica Smith</span>. <br>
+                                            <small class="text-muted">3 days ago at 7:58 pm - 10.06.2025</small>
+                                        </div>
+                                        <small class="flex-shrink-0 text-muted">4h ago</small>
+                                    </div>
+                                </li>
+                                <li class="dropdown-divider m-0"></li>
+                                <li>
+                                    <div class="dropdown-messages-box d-flex gap-2 p-2">
+                                        <a class="dropdown-item p-0" href="profile.html">
+                                            <img alt="image" class="rounded-circle" src="img/users/avatar-7.jpg">
+                                        </a>
+                                        <div class="media-body">
+                                            <span class="fw-medium ff-secondary">Chris Johnatan Overtunk</span> started following <span class="fw-medium ff-secondary">Monica Smith</span>. <br>
+                                            <small class="text-muted">Yesterday 1:21 pm - 11.06.2025</small>
+                                        </div>
+                                        <small class="flex-shrink-0 text-muted">5h ago</small>
+                                    </div>
+                                </li>
+                                <li class="dropdown-divider m-0"></li>
+                                <li>
+                                    <div class="dropdown-messages-box d-flex gap-2 p-2">
+                                        <a class="dropdown-item p-0" href="profile.html">
+                                            <img alt="image" class="rounded-circle" src="img/users/avatar-9.jpg">
+                                        </a>
+                                        <div class="media-body">
+                                            <span class="fw-medium ff-secondary">Monica Smith</span> love <span class="fw-medium ff-secondary">Kim Smith</span>. <br>
+                                            <small class="text-muted">2 days ago at 2:30 am - 11.06.2025</small>
+                                        </div>
+                                        <small class="flex-shrink-0 ms-auto text-muted">23h ago</small>
+                                    </div>
+                                </li>
+                                <li class="dropdown-divider m-0"></li>
+                                <li>
+                                    <div class="text-center">
+                                        <a href="mailbox.html" class="dropdown-item ff-secondary">
+                                            <i class="fa fa-envelope me-1"></i> <span class="fw-medium">Read All Messages</span>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle navbar-top-item count-info" data-bs-toggle="dropdown" href="#">
+                                <i class="fa fa-bell"></i> <span class="label label-primary ff-secondary fw-semibold">2</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-alerts">
+                                <li>
+                                    <a href="mailbox.html" class="dropdown-item">
+                                        <div>
+                                            <i class="fa fa-envelope fa-fw me-1"></i> You have 16 messages
+                                            <span class="float-end text-muted small">4 minutes ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                <li>
+                                    <a href="profile.html" class="dropdown-item">
+                                        <div>
+                                            <i class="fa-brands fa-x-twitter me-1"></i> 3 New Followers
+                                            <span class="float-end text-muted small">12 minutes ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                <li>
+                                    <a href="grid_options.html" class="dropdown-item">
+                                        <div>
+                                            <i class="fa fa-upload fa-fw me-1"></i> Server Rebooted
+                                            <span class="float-end text-muted small">4 minutes ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                <li>
+                                    <div class="text-center">
+                                        <a href="notifications.html" class="dropdown-item">
+                                            <strong>See All Alerts</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#" class="navbar-top-item position-relative">
+                                <i class="fa fa-moon stretched-link" id="light-theme"></i>
+                                <i class="fa fa-sun stretched-link" id="dark-theme"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url_for('auth.logout') }}" class="navbar-top-item">
+                                <i class="fa fa-sign-out"></i>
+                                <span class="align-middle d-none d-md-inline-flex">Sair</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="right-sidebar-toggle navbar-top-item" href="#">
+                                <i class="fa fa-tasks"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2>Resumo do Aluno</h2>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a>G.E.M</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{{ url_for('alunos.alunos') }}">Alunos</a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <strong>Resumo</strong>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="wrapper wrapper-content animated fadeInUp">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="ibox">
+                            <div class="ibox-content">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="mb-3 d-flex justify-content-between align-items-center">
+                                            <h3 class="fs-18 mb-0">Acompanhamento dos Estudos MSA</h3>
+                                            <div class="d-flex gap-2">
+                                                <button class="btn btn-w-m btn-primary btn-xs" data-bs-toggle="modal" data-bs-target="#editarAlunoModal">
+                                                    <i class="fa fa-edit"></i>&nbsp;&nbsp;Editar
+                                                </button>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <dl class="row mb-0">
+                                            <div class="col-sm-4 text-sm-end"><dt>Status:</dt></div>
+                                            <div class="col-sm-8 text-sm-start">
+                                                <dd class="mb-1"><span class="label {{ 'label-danger' if aluno.status|lower == 'inativo' else 'label-primary' }}">{{ aluno.status }}</span></dd>
+                                            </div>
+                                        </dl>
+                                        <dl class="row mb-0">
+                                            <div class="col-sm-4 text-sm-end"><dt>Lançado por:</dt></div>
+                                            <div class="col-sm-8 text-sm-start">
+                                                <dd class="mb-1">
+                                                    {% if msa %}
+                                                        {{ msa[0].instrutor | upper }}
+                                                    {% else %}
+                                                        Nenhuma fase registrada
+                                                    {% endif %}
+                                                </dd>
+                                            </div>
+                                        </dl>
+                                        <dl class="row mb-0">
+                                            <div class="col-sm-4 text-sm-end"><dt>Mensagens:</dt></div>
+                                            <div class="col-sm-8 text-sm-start"><dd class="mb-1">12</dd></div>
+                                        </dl>
+                                        <dl class="row mb-0">
+                                            <div class="col-sm-4 text-sm-end"><dt>Aluno:</dt></div>
+                                            <div class="col-sm-8 text-sm-start"><dd class="mb-1"><a href="#" class="text-primary"><strong>{{ aluno.nome }}</strong></a></dd></div>
+                                        </dl>
+                                        <dl class="row mb-0">
+                                            <div class="col-sm-4 text-sm-end"><dt>Registro MSA:</dt></div>
+                                            <div class="col-sm-8 text-sm-start">
+                                                <dd class="mb-1">
+                                                    {% if msa %}
+                                                        Fase {{ msa[0].fase }}
+                                                    {% else %}
+                                                        Nenhuma fase registrada
+                                                    {% endif %}
+                                                </dd>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                    <div class="col-lg-6" id="cluster_info">
+                                        <dl class="row mb-0">
+                                            <div class="col-sm-4 text-sm-end"><dt>Comum:</dt></div>
+                                            <div class="col-sm-8 text-sm-start"><dd class="mb-1">{{ nome_comum }}</dd></div>
+                                        </dl>
+                                        <dl class="row mb-0">
+                                            <div class="col-sm-4 text-sm-end"><dt>Cargo/Ministério:</dt></div>
+                                            <div class="col-sm-8 text-sm-start"><dd class="mb-1">{{ aluno.ministerio }}</dd></div>
+                                        </dl>
+                                        <dl class="row mb-0">
+                                            <div class="col-sm-4 text-sm-end"><dt>Nível:</dt></div>
+                                            <div class="col-sm-8 text-sm-start"><dd class="mb-1">{{ aluno.nivel }}</dd></div>
+                                        </dl>
+                                        <dl class="row mb-0">
+                                            <div class="col-sm-4 text-sm-end"><dt>Instrumento:</dt></div>
+                                            <div class="col-sm-8 text-sm-start"><dd class="mb-1">{{ aluno.instrumento }}</dd></div>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <dl class="row mb-0">
+                                            <div class="col-sm-2 text-sm-end">
+                                                <dt>Progama Mínimo:</dt>
+                                            </div>
+                                            <div class="col-sm-10 text-sm-start">
+                                                <dd>
+                                                    <div class="progress mb-1">
+                                                        <div style="width: {{ progresso }}%;" class="progress-bar progress-bar-striped progress-bar-animated"></div>
+                                                    </div>
+                                                    <small>{{ mensagem_progresso }}</small>
+                                                </dd>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-lg-12">
+                                        <div class="panel blank-panel">
+                                            <div class="panel-heading">
+                                                <div class="panel-options">
+                                                    <ul class="nav nav-tabs">
+                                                        <li><a class="nav-link active" href="#tab-1" data-bs-toggle="tab" aria-selected="true" role="tab">MSA</a></li>
+                                                        <li><a class="nav-link" href="#tab-2" data-bs-toggle="tab">Provas</a></li>
+                                                        <li><a class="nav-link" href="#tab-3" data-bs-toggle="tab">Método</a></li>
+                                                        <li><a class="nav-link" href="#tab-4" data-bs-toggle="tab">Hinário</a></li>
+                                                        <li><a class="nav-link" href="#tab-5" data-bs-toggle="tab">Escalas</a></li>
+                                                        <li><a class="nav-link" href="#tab-6" data-bs-toggle="tab">Últimas Atividades</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+        
+                                    <div class="panel-body">       
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="tab-1">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped">
+                                                        <thead class="ff-secondary">
+                                                            <tr>
+                                                                <th>Data</th>
+                                                                <th>Fase</th>
+                                                                <th>Páginas</th>
+                                                                <th>Lições</th>
+                                                                <th>Claves</th>
+                                                                <th>Observações</th>
+                                                                <th>Autorizado por</th>
+                                                                <th>Ações</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="msaTableBody">
+                                                            {% for m in msa %}
+                                                                <tr>
+                                                                    <td>{{ m.data_aula.strftime('%d/%m/%Y') }}</td>
+                                                                    <td>Fase {{ m.fase }}</td>
+                                                                    <td>{{ m.pagina_inicial }} - {{ m.pagina_final }}</td>
+                                                                    <td>{{ m.licoes if m.licoes else '-' }}</td>
+                                                                    <td>{{ m.clave }}</td>
+                                                                    <td>{{ m.observacoes }}</td>
+                                                                    <td>{{ m.instrutor | upper }}</td>
+                                                                    <td>
+                                                                        <button type="button" class="btn btn-danger btn-sm delete-aula" data-id="{{ m.id }}">
+                                                                            <i class="fa fa-trash"></i> Apagar
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                            {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <button class="btn btn-sm btn-primary float-end" data-bs-toggle="modal" data-bs-target="#lancamentoMsaModal">
+                                                    <i class="fa fa-plus"></i> Nova Lição
+                                                </button>
+                                            </div>
+                                            
+                                            <!-- Tab Provas -->
+                                            <div class="tab-pane" id="tab-2">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped">
+                                                        <thead class="ff-secondary">
+                                                            <tr>
+                                                                <th>Data</th>
+                                                                <th>Módulo</th>
+                                                                <th>Nota</th>
+                                                                <th>Autorizado por</th>
+                                                                <th>Observações</th>
+                                                                <th>Ações</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="provasTableBody">
+                                                            {% for p in provas %}
+                                                            <tr>
+                                                                <td>{{ p.data_prova.strftime('%d/%m/%Y') if p.data_prova else '' }}</td>
+                                                                <td>{{ p.modulo }}</td>
+                                                                <td>{{ p.nota }}</td>
+                                                                <td>{{ p.instrutor | upper }}</td>
+                                                                <td>{{ p.observacoes }}</td>
+                                                                <td>
+                                                                    <button type="button" class="btn btn-danger btn-sm delete-prova" data-id="{{ p.id }}">
+                                                                        <i class="fa fa-trash"></i> Apagar
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                        </tbody>                                                            
+                                                    </table>
+                                                </div>
+                                                <button class="btn btn-sm btn-primary float-end" data-bs-toggle="modal" data-bs-target="#lancamentoProvasModal">
+                                                    <i class="fa fa-plus"></i> Nova Prova
+                                                </button>
+                                            </div>
+
+                                            <!-- Tab Método -->
+                                            <div class="tab-pane" id="tab-3">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped">
+                                                        <thead class="ff-secondary">
+                                                            <tr>
+                                                                <th>Data</th>
+                                                                <th>Método</th>
+                                                                <th>Lição</th>
+                                                                <th>Páginas</th>
+                                                                <th>Autorizado por</th>
+                                                                <th>Observações</th>
+                                                                <th>Ações</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="metodoTableBody">
+                                                            {% for m in metodo %}
+                                                            <tr>
+                                                                <td>
+                                                                    {% if m.data_inicio %}
+                                                                        {% if m.data_inicio.__class__.__name__ == 'datetime' %}
+                                                                            {{ m.data_inicio.strftime('%d/%m/%Y') }}
+                                                                        {% else %}
+                                                                            {{ m.data_inicio }}
+                                                                        {% endif %}
+                                                                    {% endif %}
+                                                                </td>
+                                                                <td>{{ m.metodo }}</td>
+                                                                <td>{{ m.licoes }}</td>
+                                                                <td>{{ m.pagina_inicial }}{% if m.pagina_final %} - {{ m.pagina_final }}{% endif %}</td>
+                                                                <td>{{ m.instrutor | upper }}</td>
+                                                                <td>{{ m.observacoes }}</td>
+                                                                <td>
+                                                                    <button type="button" class="btn btn-danger btn-sm delete-metodo" data-id="{{ m.id }}">
+                                                                        <i class="fa fa-trash"></i> Apagar
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <button class="btn btn-sm btn-primary float-end" data-bs-toggle="modal" data-bs-target="#lancamentoMetodoModal">
+                                                    <i class="fa fa-plus"></i> Nova Lição Método
+                                                </button>
+                                            </div>
+
+                                            <!-- Tab Hinário -->
+                                            <div class="tab-pane" id="tab-4">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped">
+                                                        <thead class="ff-secondary">
+                                                            <tr>
+                                                                <th>Data</th>
+                                                                <th>Hino</th>
+                                                                <th>Voz</th>
+                                                                <th>Autorizado por</th>
+                                                                <th>Observações</th>
+                                                                <th>Ações</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="hinarioTableBody">
+                                                            {% for h in hinario %}
+                                                            <tr>
+                                                                <td>{{ h.data.strftime('%d/%m/%Y') if h.data else '' }}</td>
+                                                                <td>{{ h.hino }}</td>
+                                                                <td>{{ h.voz }}</td>
+                                                                <td>{{ h.instrutor | upper }}</td>
+                                                                <td>{{ h.observacoes }}</td>
+                                                                <td>
+                                                                    <button type="button" class="btn btn-danger btn-sm delete-hinario" data-id="{{ h.id }}">
+                                                                        <i class="fa fa-trash"></i> Apagar
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <button class="btn btn-sm btn-primary float-end" data-bs-toggle="modal" data-bs-target="#lancamentoHinarioModal">
+                                                    <i class="fa fa-plus"></i> Novo Hino
+                                                </button>
+                                            </div>
+                                            <!-- Tab Escalas -->
+                                            <div class="tab-pane" id="tab-5">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped">
+                                                        <thead class="ff-secondary">
+                                                            <tr>
+                                                                <th>Data</th>
+                                                                <th>Escala</th>
+                                                                <th>Autorizado por</th>
+                                                                <th>Observações</th>
+                                                                <th>Ações</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="escalasTableBody">
+                                                            {% for e in escalas %}
+                                                            <tr>
+                                                                <td>{{ e.data.strftime('%d/%m/%Y') if e.data else '' }}</td>
+                                                                <td>
+                                                                    {% if e.escala is string %}
+                                                                        {{ e.escala }}
+                                                                    {% else %}
+                                                                        {{ e.escala|join(', ') if e.escala else '' }}
+                                                                    {% endif %}
+                                                                </td>
+                                                                <td>{{ e.instrutor | upper }}</td>
+                                                                <td>{{ e.observacoes }}</td>
+                                                                <td>
+                                                                    <button type="button" class="btn btn-danger btn-sm delete-escala" data-id="{{ e.id }}">
+                                                                        <i class="fa fa-trash"></i> Apagar
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <button class="btn btn-sm btn-primary float-end" data-bs-toggle="modal" data-bs-target="#lancamentoEscalasModal">
+                                                    <i class="fa fa-plus"></i> Nova Escala
+                                                </button>
+                                            </div>
+
+                                                        <div class="tab-pane" id="tab-6">
+                
+                                                            <!-- Timeline dos marcos importantes -->
+                                                            <div id="vertical-timeline" class="vertical-container dark-timeline center-orientation">
+                                                                <!-- Início -->
+                                                                <div class="vertical-timeline-block">
+                                                                    <div class="vertical-timeline-icon text-bg-success">
+                                                                        <i class="fa fa-user-plus"></i>
+                                                                    </div>
+                                                                    <div class="vertical-timeline-content">
+                                                                        <h2>Início</h2>
+                                                                        <p>Aluno ingressou no GEM com o objetivo de estudar {{ aluno.instrumento|lower if aluno and aluno.instrumento else 'instrumento' }}.</p>
+                                                                        <span class="vertical-date">
+                                                                            {% if aluno and aluno.criado_em_sp %}
+                                                                                {{ aluno.criado_em_sp.strftime('%d/%m/%Y') }}<br/>
+                                                                                <small>{{ aluno.criado_em_sp.strftime('%b %d') }}</small>
+                                                                            {% else %}
+                                                                                <span class="text-muted">-</span><br/>
+                                                                                <small>-</small>
+                                                                            {% endif %}
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Ficha de Inscrição -->
+                                                                <div class="vertical-timeline-block">
+                                                                    <div class="vertical-timeline-icon text-bg-info">
+                                                                        <i class="fa fa-file"></i>
+                                                                    </div>
+                                                                    <div class="vertical-timeline-content">
+                                                                        <h2>Ficha de Inscrição</h2>
+                                                                        <p>Ficha de Inscrição enviada pelo aluno</p>
+                                                                        {% set ficha = atividades | selectattr('tipo_atividade', 'equalto', 'ficha_inscricao') | list | first %}
+                                                                        {% if ficha and ficha.documento_path %}
+                                                                            <a href="{{ url_for('static', filename=ficha.documento_path) }}" target="_blank" class="btn btn-primary btn-sm">Ficha de Inscrição</a>
+                                                                            <span class="vertical-date">
+                                                                                {{ ficha.data_atividade.strftime('%d/%m/%Y') }}<br/>
+                                                                                <small>{{ ficha.data_atividade|mes_dia_pt_br }}</small>
+                                                                            </span>
+                                                                        {% else %}
+                                                                            <form id="formFichaInscricao" method="POST" action="{{ url_for('resumo_alunos.solicitar_exame') }}" enctype="multipart/form-data">
+                                                                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                                                                <input type="hidden" name="aluno_id" value="{{ aluno.id }}">
+                                                                                <input type="file" class="form-control mb-2" name="ficha_inscricao" accept=".pdf,.doc,.docx" required>
+                                                                                <button type="submit" class="btn btn-primary btn-sm">Enviar Ficha de Inscrição</button>
+                                                                            </form>
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Ingresso no Ensaio -->
+                                                                <div class="vertical-timeline-block">
+                                                                    <div class="vertical-timeline-icon text-bg-warning">
+                                                                        <i class="fa fa-thumbs-up"></i>
+                                                                    </div>
+                                                                    <div class="vertical-timeline-content">
+                                                                        <h2>Ingresso no Ensaio</h2>
+                                                                        <p>O aluno evoluiu muito bem nos estudos e atingiu o nível necessário do Programa Mínimo</p>
+                                                                        {% set ingresso_ensaio = atividades | selectattr('tipo_atividade', 'equalto', 'ingresso_ensaio') | list | first %}
+                                                                        {% if ingresso_ensaio %}
+                                                                            <span class="vertical-date">
+                                                                                {{ ingresso_ensaio.data_atividade.strftime('%d/%m/%Y') }}<br/>
+                                                                                <small>{{ ingresso_ensaio.data_atividade|mes_dia_pt_br }}</small>
+                                                                            </span>
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Ingresso RJM -->
+                                                                <div class="vertical-timeline-block">
+                                                                    <div class="vertical-timeline-icon text-bg-info">
+                                                                        <i class="fa fa-file"></i>
+                                                                    </div>
+                                                                    <div class="vertical-timeline-content">
+                                                                        <h2>Ingresso RJM</h2>
+                                                                        <p>Com a continuidade dos estudos, foi possível avançar o aluno para o nível de Reunião de Jovens e Menores.</p>
+                                                                        {% set ingresso_rjm = atividades | selectattr('tipo_atividade', 'equalto', 'ingresso_rjm') | list | first %}
+                                                                        {% if ingresso_rjm %}
+                                                                            <span class="vertical-date">
+                                                                                {{ ingresso_rjm.data_atividade.strftime('%d/%m/%Y') }}<br/>
+                                                                                <small>{{ ingresso_rjm.data_atividade|mes_dia_pt_br }}</small>
+                                                                            </span>
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Ingresso no Culto Oficial -->
+                                                                <div class="vertical-timeline-block">
+                                                                    <div class="vertical-timeline-icon text-bg-success">
+                                                                        <i class="fa fa-university"></i>
+                                                                    </div>
+                                                                    <div class="vertical-timeline-content">
+                                                                        <h2>Ingresso no Culto Oficial</h2>
+                                                                        <p>Com o avanço dos estudos e atingindo o requisito necessário pedido no Programa Mínimo, foi possível avançar o candidato para o nível de tocar nos Cultos Oficiais.</p>
+                                                                        {% set ingresso_culto = atividades | selectattr('tipo_atividade', 'equalto', 'ingresso_culto') | list | first %}
+                                                                        {% if ingresso_culto and ingresso_culto.data_atividade %}
+                                                                            <span class="vertical-date">
+                                                                                {{ ingresso_culto.data_atividade.strftime('%d/%m/%Y') }}<br/>
+                                                                                <small>{{ ingresso_culto.data_atividade|mes_dia_pt_br }}</small>
+                                                                            </span>
+                                                                        {% endif %}
+                                                                        {# Carta de Exame #}
+                                                                        {% set carta_exame = atividades | selectattr('tipo_atividade', 'equalto', 'carta_exame') | list | first %}
+                                                                        <div class="mt-2">
+                                                                            {% if carta_exame and carta_exame.documento_path %}
+                                                                                <a href="{{ url_for('static', filename=carta_exame.documento_path) }}" target="_blank" class="btn btn-primary btn-sm">Carta de Exame</a>
+                                                                            {% else %}
+                                                                                <form id="formCartaExame" method="POST" action="{{ url_for('resumo_alunos.solicitar_exame') }}" enctype="multipart/form-data">
+                                                                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                                                                    <input type="hidden" name="aluno_id" value="{{ aluno.id if aluno and aluno.id else '' }}">
+                                                                                    <input type="file" class="form-control mb-2" name="carta_exame" accept=".pdf,.doc,.docx" required {% if not pode_culto %}disabled{% endif %}>
+                                                                                    <button type="submit" class="btn btn-primary btn-sm" {% if not pode_culto %}disabled title='Só é possível enviar após 60% do programa mínimo.'{% endif %}>Enviar Carta de Exame</button>
+                                                                                </form>
+                                                                                {% if not pode_culto %}
+                                                                                    <small class="text-danger">Só é possível enviar a carta de exame após <strong>60%</strong> do programa mínimo.</small>
+                                                                                {% endif %}
+                                                                            {% endif %}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Exame de Oficialização -->
+                                                                <div class="vertical-timeline-block">
+                                                                    <div class="vertical-timeline-icon text-bg-primary">
+                                                                        <i class="fa fa-user-graduate"></i>
+                                                                    </div>
+                                                                    <div class="vertical-timeline-content">
+                                                                        <h2>Exame de Oficialização</h2>
+                                                                        <p>Para finalizar o Programa Mínimo, o aluno cumpriu todas as etapas e foi aprovado no Exame de Oficialização.</p>
+                                                                        {% set oficializacao = atividades | selectattr('tipo_atividade', 'equalto', 'oficializacao') | list | first %}
+                                                                        {% if oficializacao and oficializacao.data_atividade %}
+                                                                            <span class="vertical-date">
+                                                                                {{ oficializacao.data_atividade.strftime('%d/%m/%Y') }}<br/>
+                                                                                <small>{{ oficializacao.data_atividade|mes_dia_pt_br }}</small>
+                                                                            </span>
+                                                                        {% endif %}
+                                                                        {# Carta de Oficialização #}
+                                                                        {% set carta_of = atividades | selectattr('tipo_atividade', 'equalto', 'carta_oficializacao') | list | first %}
+                                                                        <div class="mt-2">
+                                                                            {% if carta_of and carta_of.documento_path %}
+                                                                                <a href="{{ url_for('static', filename=carta_of.documento_path) }}" target="_blank" class="btn btn-primary btn-sm">Carta de Oficialização</a>
+                                                                            {% else %}
+                                                                                <form id="formCartaOficializacao" method="POST" action="{{ url_for('resumo_alunos.solicitar_exame') }}" enctype="multipart/form-data">
+                                                                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                                                                    <input type="hidden" name="aluno_id" value="{{ aluno.id if aluno and aluno.id else '' }}">
+                                                                                    <input type="file" class="form-control mb-2" name="carta_oficializacao" accept=".pdf,.doc,.docx" required {% if not pode_oficializacao %}disabled{% endif %}>
+                                                                                    <button type="submit" class="btn btn-primary btn-sm" {% if not pode_oficializacao %}disabled title='Só é possível enviar após 100% do programa mínimo.'{% endif %}>Enviar Carta de Oficialização</button>
+                                                                                </form>
+                                                                                {% if not pode_oficializacao %}
+                                                                                    <small class="text-danger">Só é possível enviar a carta de oficialização após <strong>100%</strong> do programa mínimo.</small>
+                                                                                {% endif %}
+                                                                            {% endif %}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>                                                                      
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="wrapper wrapper-content project-manager">
+                        <h4>Arquivos de Aulas</h4>
+                        <img width="150" height="150" src="https://congregacaocristanobrasil.org.br/assets/images/logo-ccb-light.png" class="img-fluid">
+                        <p class="media-body"><br />
+                            Espaço dedicado para upload das aulas do aluno. Aqui você pode fazer upload de arquivos, como vídeos, áudios e documentos relacionados às aulas.
+                        </p>
+                        <p class="small font-bold">
+                            <span><i class="fa fa-circle text-warning"></i> Alta Prioridade</span>
+                        </p>
+                        <div class="d-flex flex-column gap-2">
+                            <div>
+                                <h5>Tags dos Arquivos</h5>
+                                <ul class="tag-list p-0 mb-3">
+                                    <li><a href=""><i class="fa fa-tag"></i> MSA</a></li>
+                                    <li><a href=""><i class="fa fa-tag"></i> Provas</a></li>
+                                    <li><a href=""><i class="fa fa-tag"></i> Métodos</a></li>
+                                    <li><a href=""><i class="fa fa-tag"></i> Hinário</a></li>
+                                </ul>
+                            </div>
+
+                        <h5>Arquivos</h5>
+                        <ul class="list-unstyled project-files">
+                            <li><a href=""><i class="fa fa-video"></i> LiçãoFase4.mp4</a></li>
+                            <li><a href=""><i class="fa fa-file-picture-o"></i> Página45.jpg</a></li>
+                            <li><a href=""><i class="fa fa-file-audio"></i> GravaçãoHino_2.mp3</a></li>
+                            <li><a href=""><i class="fa fa-file"></i> Contract_20_11_2014.docx</a></li>
+                        </ul>
+                        <div class="text-center m-t-md">
+                            <a href="#" class="btn btn-xs btn-primary">Adicionar arquivosImprimir </a>
+                            <a href="{{ url_for('resumo_alunos.relatorio_aluno', id=aluno.id) }}" target="_blank" class="btn btn-xs btn-primary">Relatório</a>
+                        </div>
+                    </div>
+                </div>
+            </div>               
+               
+            <div style="text-align: center; margin: 20px 0;">
+                <!-- Botão antigo removido -->
+            </div>
+
+            <div class="footer">
+                <div class="float-end">
+    <!-- Modal de Lançamento MSA -->
+    <div class="modal fade" id="lancamentoMsaModal" tabindex="-1" aria-labelledby="lancamentoMsaModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="lancamentoMsaModalLabel">{{ aluno.nome }} / {{ aluno.instrumento }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="formAulaMSA" method="POST" action="{{ url_for('resumo_alunos.lancar_msa', id=aluno.id) }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div class="modal-body">
+                <div class="row g-6">
+                <div class="col-md-12">
+                    <div class="form-group">
+                    <label for="data_aula" class="form-label fw-bold">Data *</label>
+                    <input type="date" class="form-control" id="data_aula" name="data_aula" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="fase_de" class="form-label fw-bold">Fase de *</label>
+                        <select class="form-select" id="fase_de" name="fase_de" required>
+                            <option value="">Selecione a fase inicial</option>
+                            {% for f in msa_fases %}
+                                <option value="{{ f.fase }}">{{ f.fase }} - {{ f.nome }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="fase_ate" class="form-label fw-bold">Fase até *</label>
+                        <select class="form-select" id="fase_ate" name="fase_ate" required>
+                            <option value="">Selecione a fase final</option>
+                            {% for f in msa_fases %}
+                                <option value="{{ f.fase }}">{{ f.fase }} - {{ f.nome }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                    <label for="pagina_inicial" class="form-label fw-bold">Página inicial</label>
+                    <input type="number" class="form-control" id="pagina_inicial" name="pagina_inicial" placeholder="Página inicial" required min="1">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                    <label for="pagina_final" class="form-label fw-bold">Página final</label>
+                    <input type="number" class="form-control" id="pagina_final" name="pagina_final" placeholder="Página final" required min="1">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="licao_inicial" class="form-label fw-bold">Lições</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="licao_inicial" name="licao_inicial" placeholder="De" min="1">
+                            <span class="input-group-text">até</span>
+                            <input type="number" class="form-control" id="licao_final" name="licao_final" placeholder="Até" min="1">
+                        </div>
+                        <small class="text-muted">Deixe em branco se não aplicável</small>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                    <label for="clave" class="form-label fw-bold">Clave *</label>
+                    <select class="form-select" id="clave" name="clave" required>
+                        <option value="">Selecione</option>
+                        <option value="Sol">Clave de Sol</option>
+                        <option value="Fá">Clave de Fá</option>
+                        <option value="Dó">Clave de Dó</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                    <label for="instrutor" class="form-label fw-bold">Autorizado por *</label>
+                    <div class="position-relative">
+                        <input type="text" class="form-control" id="instrutor" name="instrutor" 
+                            placeholder="Digite pelo menos 3 letras para buscar" required
+                            autocomplete="off">
+                        <div id="instrutor-suggestions" class="dropdown-menu w-100" style="display: none; max-height: 200px; overflow-y: auto; z-index: 1050;">
+                        </div>
+                    </div>
+                    <small class="text-muted">Digite o nome do instrutor responsável</small>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                <label for="observacoes" class="form-label fw-bold">Observações</label>
+                <textarea class="form-control" id="observacoes" name="observacoes" rows="3" placeholder="Descreva a atividade realizada na aula"></textarea>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Salvar Lançamento</button>
+        </div>
+        </form>
+    </div>
+    </div>
+</div>
+  
+
+<!-- Modal de Lançamento Provas -->
+<div class="modal fade" id="lancamentoProvasModal" tabindex="-1" aria-labelledby="lancamentoProvasModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="lancamentoProvasModalLabel">Lançar Prova</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="formProva" method="POST" action="{{ url_for('resumo_alunos.lancar_provas', id=aluno.id) }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <label for="data_prova" class="form-label fw-bold">Data *</label>
+                            <input type="date" class="form-control" id="data_prova" name="data_prova" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="fase_de_prova" class="form-label fw-bold">Fase de *</label>
+                            <select class="form-select" id="fase_de_prova" name="fase_de_prova" required>
+                                <option value="">Selecione a fase inicial</option>
+                                {% for f in msa_fases %}
+                                    <option value="{{ f.fase }}">{{ f.fase }} - {{ f.nome }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="fase_ate_prova" class="form-label fw-bold">Fase até *</label>
+                            <select class="form-select" id="fase_ate_prova" name="fase_ate_prova" required>
+                                <option value="">Selecione a fase final</option>
+                                {% for f in msa_fases %}
+                                    <option value="{{ f.fase }}">{{ f.fase }} - {{ f.nome }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="nota" class="form-label fw-bold">Nota (0-10) *</label>
+                            <input type="number" class="form-control" id="nota" name="nota" min="0" max="10" step="0.1" required placeholder="Exemplo 7,5 ou 10,0">
+                        </div>
+                        <div class="col-12">
+                            <label for="observacoes" class="form-label fw-bold">Observações</label>
+                            <textarea class="form-control" id="observacoes" name="observacoes" rows="3" placeholder="Descreva a atividade realizada na prova"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label for="instrutor_prova" class="form-label fw-bold">Autorizado por *</label>
+                            <div class="position-relative">
+                                <input type="text" class="form-control" id="instrutor_prova" name="instrutor" placeholder="Digite pelo menos 3 letras para buscar" required autocomplete="off">
+                                <div id="instrutor-suggestions" class="dropdown-menu w-100" style="display: none; max-height: 200px; overflow-y: auto; z-index: 1050;"></div>
+                            </div>
+                            <small class="text-muted">Digite o nome do instrutor responsável</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Salvar Prova</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Lançamento Método -->
+<div class="modal fade" id="lancamentoMetodoModal" tabindex="-1" aria-labelledby="lancamentoMetodoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="lancamentoMetodoModalLabel">Lançar Lição de Método</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="formMetodo" method="POST" action="{{ url_for('resumo_alunos.lancar_metodo', id=aluno.id) }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <label for="data_inicio" class="form-label fw-bold">Data *</label>
+                            <input type="date" class="form-control" id="data_inicio" name="data_inicio" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="metodo" class="form-label fw-bold">Método *</label>
+                            <select class="form-select" id="metodo" name="metodo" required>
+                                <option value="">Selecione o método..</option>
+                                <option value="OUTROS">OUTROS (DIGITAR O NOME DO MÉTODO NO CAMPO OBSERVAÇÕES)</option>
+                                <option value="PASQUALE BONA">PASQUALE BONA</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="pagina_inicial_metodo" class="form-label fw-bold">Página inicial</label>
+                            <input type="number" class="form-control" id="pagina_inicial_metodo" name="pagina_inicial" placeholder="Página inicial" min="1">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="pagina_final_metodo" class="form-label fw-bold">Página final</label>
+                            <input type="number" class="form-control" id="pagina_final_metodo" name="pagina_final" placeholder="Página final" min="1">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="licao_inicial" class="form-label fw-bold">Lição inicial</label>
+                            <input type="number" class="form-control" id="licao_inicial" name="licao_inicial" placeholder="Lição inicial">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="licao_final" class="form-label fw-bold">Lição final</label>
+                            <input type="number" class="form-control" id="licao_final" name="licao_final" placeholder="Lição final">
+                        </div>
+                        <div class="col-12">
+                            <label for="observacoes" class="form-label fw-bold">Observações</label>
+                            <textarea class="form-control" id="observacoes" name="observacoes" rows="3" placeholder="Descreva a atividade realizada na aula"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label for="instrutor_metodo" class="form-label fw-bold">Autorizado por*</label>
+                            <div class="position-relative">
+                                <input type="text" class="form-control" id="instrutor_metodo" name="instrutor" placeholder="Digite pelo menos 3 letras para buscar" required autocomplete="off">
+                                <div id="instrutor-suggestions" class="dropdown-menu w-100" style="display: none; max-height: 200px; overflow-y: auto; z-index: 1050;"></div>
+                            </div>
+                            <small class="text-muted">Digite o nome do instrutor responsável</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Lançamento Hinário -->
+<div class="modal fade" id="lancamentoHinarioModal" tabindex="-1" aria-labelledby="lancamentoHinarioModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="lancamentoHinarioModalLabel">Lançar Hino</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="formHinario" method="POST" action="{{ url_for('resumo_alunos.lancar_hinario', id=aluno.id) }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="data_hinario" class="form-label fw-bold">Data *</label>
+                        <input type="date" class="form-control" id="data_hinario" name="data" required>
+                    </div>
+                    <div class="row g-2 align-items-end mb-2">
+                        <div class="col-md-5">
+                            <label for="hino" class="form-label fw-bold">Hino *</label>
+                            <input type="text" class="form-control" id="hino" name="hino" placeholder="Informe o hino">
+                        </div>
+                        <div class="col-md-5">
+                            <label for="voz" class="form-label fw-bold">Voz *</label>
+                            <select class="form-select" id="voz" name="voz">
+                                <option value="">-Selecione a voz-</option>
+                                <option value="Principal">Principal</option>
+                                <option value="Alternativa">Alternativa</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 d-flex align-items-end">
+                            <button type="button" class="btn btn-primary w-100" id="btnAddHino" style="height:38px;"><i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <table class="table table-bordered table-sm mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Hino</th>
+                                    <th>Voz</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody id="hinarioTableBody"></tbody>
+                        </table>
+                    </div>
+                    <div class="mb-3">
+                        <label for="observacoes_hinario" class="form-label fw-bold">Observações</label>
+                        <textarea class="form-control" id="observacoes_hinario" name="observacoes" rows="3" placeholder="Descreva a atividade realizada"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="instrutor_hinario" class="form-label fw-bold">Autorizado por *</label>
+                        <div class="position-relative">
+                            <input type="text" class="form-control" id="instrutor_hinario" name="instrutor" placeholder="Selecione o responsável." required autocomplete="off">
+                            <div id="instrutor-suggestions-hinario" class="dropdown-menu w-100" style="display: none; max-height: 200px; overflow-y: auto; z-index: 1050;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Lançamento Escalas -->
+<div class="modal fade" id="lancamentoEscalasModal" tabindex="-1" aria-labelledby="lancamentoEscalasModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="lancamentoEscalasModalLabel">Lançar Escala</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="formEscala" method="POST" action="{{ url_for('resumo_alunos.lancar_escalas', id=aluno.id) }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="data_escala" class="form-label fw-bold">Data *</label>
+                            <input type="date" class="form-control" id="data_escala" name="data" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="escala" class="form-label fw-bold">Escala *</label>
+                            <select class="form-select select2-escalas" id="escala" name="escala" multiple required>
+                                <option value="Cromática">Cromática</option>
+                                <option value="Dó M + arpejo">Dó M + arpejo</option>
+                                <option value="Sol M + arpejo">Sol M + arpejo</option>
+                                <option value="Ré M + arpejo">Ré M + arpejo</option>
+                                <option value="Lá M + arpejo">Lá M + arpejo</option>
+                                <option value="Mi M + arpejo">Mi M + arpejo</option>
+                                <!-- Adicione mais opções conforme necessário -->
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="observacoes_escala" class="form-label fw-bold">Observações</label>
+                            <textarea class="form-control" id="observacoes_escala" name="observacoes" rows="3" placeholder="Descreva a atividade realizada na aula"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label for="instrutor_escala" class="form-label fw-bold">Autorizado por *</label>
+                            <div class="position-relative">
+                                <input type="text" class="form-control" id="instrutor_escala" name="instrutor" placeholder="Digite pelo menos 3 letras para buscar" required autocomplete="off">
+                                <div id="instrutor-suggestions-escala" class="dropdown-menu w-100" style="display: none; max-height: 200px; overflow-y: auto; z-index: 1050;"></div>
+                            </div>
+                            <small class="text-muted">Digite o nome do responsável</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Função para ativar uma aba específica
+        function activateTab(tabId) {
+            // Remove active class de todas as abas e conteúdos
+            document.querySelectorAll('.nav-link').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(content => content.classList.remove('active'));
+            
+            // Ativa a aba e o conteúdo desejado
+            const tab = document.querySelector(`.nav-link[href="${tabId}"]`);
+            const content = document.querySelector(tabId);
+            
+            if (tab && content) {
+                tab.classList.add('active');
+                content.classList.add('active');
+            }
+        }
+
+        // Salvar aba ativa quando uma aba é clicada
+        document.querySelectorAll('.nav-link[data-bs-toggle="tab"]').forEach(function(tab) {
+            tab.addEventListener('click', function(e) {
+                localStorage.setItem('abaAtivaResumoAluno', e.target.getAttribute('href'));
+            });
+        });
+
+        // Restaurar aba ativa ao carregar a página
+        const abaAtiva = localStorage.getItem('abaAtivaResumoAluno');
+        if (abaAtiva) {
+            activateTab(abaAtiva);
+        }
+
+        // Função genérica para lidar com o envio de formulários
+        function handleFormSubmit(formId, successMessage) {
+            const form = document.getElementById(formId);
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const formData = new FormData(form);
+                    
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-CSRFToken': formData.get('csrf_token')
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Salva a aba ativa antes de recarregar
+                            const activeTab = document.querySelector('.nav-link.active');
+                            if (activeTab) {
+                                localStorage.setItem('abaAtivaResumoAluno', activeTab.getAttribute('href'));
+                            }
+                            
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Sucesso!',
+                                text: successMessage,
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location.reload();
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Erro!',
+                                text: data.message || 'Ocorreu um erro ao processar sua solicitação.'
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro:', error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Erro!',
+                            text: 'Ocorreu um erro ao processar sua solicitação.'
+                        });
+                    });
+                });
+            }
+        }
+
+        // Inicializar handlers para todos os formulários
+        handleFormSubmit('formAulaMSA', 'Aula MSA registrada com sucesso!');
+        handleFormSubmit('formProva', 'Prova registrada com sucesso!');
+        handleFormSubmit('formMetodo', 'Método registrado com sucesso!');
+        handleFormSubmit('formHinario', 'Hino registrado com sucesso!');
+        handleFormSubmit('formEscala', 'Escala registrada com sucesso!');
+        handleFormSubmit('formEditarAluno', 'Aluno atualizado com sucesso!');
+        handleFormSubmit('formSolicitarExame', 'Solicitação de exame registrada com sucesso!');
+
+        // Função para recarregar com SweetAlert
+        function reloadWithSuccess(msg) {
+            // Salva a aba ativa antes de recarregar
+            const activeTab = document.querySelector('.nav-link.active');
+            if (activeTab) {
+                localStorage.setItem('abaAtivaResumoAluno', activeTab.getAttribute('href'));
+            }
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Sucesso!',
+                text: msg,
+                showConfirmButton: false,
+                timer: 1500
+            }).then(() => {
+                window.location.reload();
+            });
+        }
+
+        // Ficha de Inscrição
+        const formFichaInscricao = document.getElementById('formFichaInscricao');
+        if (formFichaInscricao) {
+            formFichaInscricao.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(formFichaInscricao);
+                fetch(formFichaInscricao.action, {
+                    method: 'POST',
+                    body: formData
+                }).then(function(response) {
+                    reloadWithSuccess('Ficha de Inscrição enviada com sucesso!');
+                });
+            });
+        }
+
+        // Carta de Exame
+        const formCartaExame = document.getElementById('formCartaExame');
+        if (formCartaExame) {
+            formCartaExame.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(formCartaExame);
+                fetch(formCartaExame.action, {
+                    method: 'POST',
+                    body: formData
+                }).then(function(response) {
+                    reloadWithSuccess('Carta de Exame enviada com sucesso!');
+                });
+            });
+        }
+
+        // Carta de Oficialização
+        const formCartaOficializacao = document.getElementById('formCartaOficializacao');
+        if (formCartaOficializacao) {
+            formCartaOficializacao.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(formCartaOficializacao);
+                fetch(formCartaOficializacao.action, {
+                    method: 'POST',
+                    body: formData
+                }).then(function(response) {
+                    reloadWithSuccess('Carta de Oficialização enviada com sucesso!');
+                });
+            });
+        }
+    });
+    </script>
+    
+
+    <!-- Modal de Edição de Aluno -->
+    <div class="modal fade" id="editarAlunoModal" tabindex="-1" aria-labelledby="editarAlunoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editarAlunoModalLabel">Editar Aluno</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="formEditarAluno" method="POST" action="{{ url_for('alunos.editar_aluno', id=aluno.id) }}">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="modal-body">
+                        <div class="form-group mb-3">
+                            <label for="nome">Nome</label>
+                            <input type="text" class="form-control" id="nome" name="nome" value="{{ aluno.nome }}" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="localidade">Comum Congregação</label>
+                            <input type="text" class="form-control" id="localidade" name="localidade" value="{{ aluno.localidade }}" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="ministerio">Ministério</label>
+                            <input type="text" class="form-control" id="ministerio" name="ministerio" value="{{ aluno.ministerio }}" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="instrumento">Instrumento</label>
+                            <input type="text" class="form-control" id="instrumento" name="instrumento" value="{{ aluno.instrumento }}" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="nivel">Nível</label>
+                            <select class="form-control" id="nivel" name="nivel" required>
+                                <option value="CANDIDATO (A)" {% if aluno.nivel == 'CANDIDATO (A)' %}selected{% endif %}>CANDIDATO (A)</option>
+                                <option value="ENSAIO" {% if aluno.nivel == 'ENSAIO' %}selected{% endif %}>ENSAIO</option>
+                                <option value="CULTO OFICIAL" {% if aluno.nivel == 'CULTO OFICIAL' %}selected{% endif %}>CULTO OFICIAL</option>
+                                <option value="OFICIALIZADO (A)" {% if aluno.nivel == 'OFICIALIZADO (A)' %}selected{% endif %}>OFICIALIZADO (A)</option>
+                                <option value="MEIA-HORA" {% if aluno.nivel == 'MEIA-HORA' %}selected{% endif %}>MEIA-HORA</option>
+                                <option value="RJM / MEIA-HORA" {% if aluno.nivel == 'RJM / MEIA-HORA' %}selected{% endif %}>RJM / MEIA-HORA</option>
+                                <option value="RJM" {% if aluno.nivel == 'RJM' %}selected{% endif %}>RJM</option>
+                                <option value="RJM / ENSAIO" {% if aluno.nivel == 'RJM / ENSAIO' %}selected{% endif %}>RJM / ENSAIO</option>
+                                <option value="RJM / CULTO OFICIAL" {% if aluno.nivel == 'RJM / CULTO OFICIAL' %}selected{% endif %}>RJM / CULTO OFICIAL</option>
+                                <option value="RJM / OFICIALIZADO (A)" {% if aluno.nivel == 'RJM / OFICIALIZADO (A)' %}selected{% endif %}>RJM / OFICIALIZADO (A)</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="status">Status</label>
+                            <select class="form-control" id="status" name="status" required>
+                                <option value="Ativo" {% if aluno.status == 'Ativo' %}selected{% endif %}>Ativo</option>
+                                <option value="Inativo" {% if aluno.status == 'Inativo' %}selected{% endif %}>Inativo</option>
+                                <option value="Suspenso" {% if aluno.status == 'Suspenso' %}selected{% endif %}>Suspenso</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

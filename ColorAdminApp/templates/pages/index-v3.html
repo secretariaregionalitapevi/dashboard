@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}Dashboard v3{% endblock %}
+{% block title %}Dashboard - Regional Itapevi{% endblock %}
 
 {% block css %}
 	<link href="{% static 'plugins/jvectormap-next/jquery-jvectormap.css' %}" rel="stylesheet" />
@@ -26,11 +26,11 @@
 	<ol class="breadcrumb float-xl-end">
 		<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
 		<li class="breadcrumb-item"><a href="javascript:;">Dashboard</a></li>
-		<li class="breadcrumb-item active">Dashboard v3</li>
+		<li class="breadcrumb-item active">Regional Itapevi</li>
 	</ol>
 	<!-- END breadcrumb -->
 	<!-- BEGIN page-header -->
-	<h1 class="page-header mb-3">Dashboard v3</h1>
+	<h1 class="page-header mb-3">Regional Itapevi - Sistema de Gestão Musical</h1>
 	<!-- END page-header -->
 	<!-- BEGIN daterange-filter -->
 	<div class="d-sm-flex align-items-center mb-3">
@@ -39,22 +39,22 @@
 			<span>1 Jun 2025 - 7 Jun 2025</span>
 			<b class="caret ms-1 opacity-5"></b>
 		</a>
-		<div class="text-gray-600 fw-bold mt-2 mt-sm-0">comparado com <span id="daterange-prev-date">24 Mar-30 Abr 2025</span></div>
+		<div class="text-gray-600 fw-bold mt-2 mt-sm-0">comparado <span id="daterange-prev-date">24 Mar-30 Abr 2025</span></div>
 	</div>
 	<!-- END daterange-filter -->
-	 <!-- BEGIN row -->
+	<!-- BEGIN row -->
 	<div class="row">
 		<!-- BEGIN col-3 -->
 		<div class="col-xl-3 col-md-6">
 			<div class="widget widget-stats bg-teal">
-				<div class="stats-icon stats-icon-lg"><i class="fa fa-user-tie"></i></div>
+				<div class="stats-icon stats-icon-lg"><i class="fa fa-music fa-fw"></i></div>
 				<div class="stats-content">
-					<div class="stats-title">TODAY'S VISITS</div>
-					<div class="stats-number">7,842,900</div>
+					<div class="stats-title">MÚSICOS ATIVOS</div>
+					<div class="stats-number">247</div>
 					<div class="stats-progress progress">
-						<div class="progress-bar" style="width: 70.1%;"></div>
+						<div class="progress-bar" style="width: 85.2%;"></div>
 					</div>
-					<div class="stats-desc">Better than last week (70.1%)</div>
+					<div class="stats-desc">Melhor que semana passada (85.2%)</div>
 				</div>
 			</div>
 		</div>
@@ -62,14 +62,14 @@
 		<!-- BEGIN col-3 -->
 		<div class="col-xl-3 col-md-6">
 			<div class="widget widget-stats bg-blue">
-				<div class="stats-icon stats-icon-lg"><i class="fa fa-dollar-sign fa-fw"></i></div>
+				<div class="stats-icon stats-icon-lg"><i class="fa fa-microphone fa-fw"></i></div>
 				<div class="stats-content">
-					<div class="stats-title">TODAY'S PROFIT</div>
-					<div class="stats-number">180,200</div>
+					<div class="stats-title">ENSAIOS REALIZADOS</div>
+					<div class="stats-number">89</div>
 					<div class="stats-progress progress">
-						<div class="progress-bar" style="width: 40.5%;"></div>
+						<div class="progress-bar" style="width: 92.3%;"></div>
 					</div>
-					<div class="stats-desc">Better than last week (40.5%)</div>
+					<div class="stats-desc">Melhor que semana passada (92.3%)</div>
 				</div>
 			</div>
 		</div>
@@ -77,14 +77,14 @@
 		<!-- BEGIN col-3 -->
 		<div class="col-xl-3 col-md-6">
 			<div class="widget widget-stats bg-indigo">
-				<div class="stats-icon stats-icon-lg"><i class="fa fa-archive fa-fw"></i></div>
+				<div class="stats-icon stats-icon-lg"><i class="fa fa-calendar-alt fa-fw"></i></div>
 				<div class="stats-content">
-					<div class="stats-title">NEW ORDERS</div>
-					<div class="stats-number">38,900</div>
+					<div class="stats-title">EVENTOS AGENDADOS</div>
+					<div class="stats-number">23</div>
 					<div class="stats-progress progress">
 						<div class="progress-bar" style="width: 76.3%;"></div>
 					</div>
-					<div class="stats-desc">Better than last week (76.3%)</div>
+					<div class="stats-desc">Melhor que semana passada (76.3%)</div>
 				</div>
 			</div>
 		</div>
@@ -92,20 +92,20 @@
 		<!-- BEGIN col-3 -->
 		<div class="col-xl-3 col-md-6">
 			<div class="widget widget-stats bg-gray-900">
-				<div class="stats-icon stats-icon-lg"><i class="fa fa-comment-alt fa-fw"></i></div>
+				<div class="stats-icon stats-icon-lg"><i class="fa fa-guitar fa-fw"></i></div>
 				<div class="stats-content">
-					<div class="stats-title">NEW COMMENTS</div>
-					<div class="stats-number">3,988</div>
+					<div class="stats-title">INSTRUMENTOS CADASTRADOS</div>
+					<div class="stats-number">156</div>
 					<div class="stats-progress progress">
 						<div class="progress-bar" style="width: 54.9%;"></div>
 					</div>
-					<div class="stats-desc">Better than last week (54.9%)</div>
+					<div class="stats-desc">Melhor que semana passada (54.9%)</div>
 				</div>
 			</div>
 		</div>
 		<!-- END col-3 -->
 	</div>
-	<!-- END row -->
+	<!-- END row --> 
 	<!-- BEGIN row -->
 	<div class="row">
 		<!-- BEGIN col-6 -->
@@ -120,21 +120,21 @@
 						<div class="col-xl-7 col-lg-8">
 							<!-- BEGIN title -->
 							<div class="mb-3 text-gray-500">
-								<b>TOTAL MÚSICOS CADASTRADOS</b>
+								<b>ATIVIDADE MUSICAL</b>
 								<span class="ms-2">
-									<i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Total de Músicos" data-bs-placement="top" data-bs-content="Número total de músicos cadastrados no sistema, incluindo ativos e inativos."></i>
+									<i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Atividade Musical" data-bs-placement="top" data-bs-content="Total de atividades musicais realizadas pela Regional Itapevi, incluindo ensaios, apresentações e eventos."></i>
 								</span>
 							</div>
 							<!-- END title -->
-							<!-- BEGIN total-musicians -->
+							<!-- BEGIN total-sales -->
 							<div class="d-flex mb-1">
-								<h2 class="mb-0"><span data-animation="number" data-value="1568">0</span></h2>
-								<div class="ms-auto mt-n1 mb-n1"><div id="total-musicians-sparkline"></div></div>
+								<h2 class="mb-0"><span data-animation="number" data-value="1247">0</span> atividades</h2>
+								<div class="ms-auto mt-n1 mb-n1"><div id="total-sales-sparkline"></div></div>
 							</div>
-							<!-- END total-musicians -->
+							<!-- END total-sales -->
 							<!-- BEGIN percentage -->
 							<div class="mb-3 text-gray-500">
-								<i class="fa fa-caret-up"></i> <span data-animation="number" data-value="33.21">0.00</span>% comparado à semana passada
+								<i class="fa fa-caret-up"></i> <span data-animation="number" data-value="18.5">0.00</span>% comparado à semana passada
 							</div>
 							<!-- END percentage -->
 							<hr class="bg-white bg-opacity-50" />
@@ -142,19 +142,19 @@
 							<div class="row text-truncate">
 								<!-- BEGIN col-6 -->
 								<div class="col-6">
-									<div class=" text-gray-500">Músicos Ativos</div>
-									<div class="fs-18px mb-5px fw-bold" data-animation="number" data-value="1245">0</div>
+									<div class=" text-gray-500">Ensaio por semana</div>
+									<div class="fs-18px mb-5px fw-bold" data-animation="number" data-value="12">0</div>
 									<div class="progress h-5px rounded-3 bg-gray-900 mb-5px">
-										<div class="progress-bar progress-bar-striped rounded-right bg-teal" data-animation="width" data-value="79%" style="width: 0%"></div>
+										<div class="progress-bar progress-bar-striped rounded-right bg-teal" data-animation="width" data-value="80%" style="width: 0%"></div>
 									</div>
 								</div>
 								<!-- END col-6 -->
 								<!-- BEGIN col-6 -->
 								<div class="col-6">
-									<div class=" text-gray-500">Novos Cadastros</div>
-									<div class="fs-18px mb-5px fw-bold"><span data-animation="number" data-value="89">0</span></div>
+									<div class=" text-gray-500">Músicos por ensaio</div>
+									<div class="fs-18px mb-5px fw-bold"><span data-animation="number" data-value="18">0</span> músicos</div>
 									<div class="progress h-5px rounded-3 bg-gray-900 mb-5px">
-										<div class="progress-bar progress-bar-striped rounded-right" data-animation="width" data-value="89%" style="width: 0%"></div>
+										<div class="progress-bar progress-bar-striped rounded-right" data-animation="width" data-value="75%" style="width: 0%"></div>
 									</div>
 								</div>
 								<!-- END col-6 -->
@@ -187,18 +187,18 @@
 						<div class="card-body">
 							<!-- BEGIN title -->
 							<div class="mb-3 text-gray-500">
-								<b class="mb-3">PERFORMANCE MUSICAL</b> 
-								<span class="ms-2"><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Performance Musical" data-bs-placement="top" data-bs-content="Métricas de performance e engajamento dos músicos no sistema." data-original-title="" title=""></i></span>
+								<b class="mb-3">PARTICIPAÇÃO MÉDIA</b> 
+								<span class="ms-2"><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Participação Média" data-bs-placement="top" data-bs-content="Percentual médio de participação dos músicos nos ensaios e eventos." data-original-title="" title=""></i></span>
 							</div>
 							<!-- END title -->
-							<!-- BEGIN performance-rate -->
+							<!-- BEGIN conversion-rate -->
 							<div class="d-flex align-items-center mb-1">
 								<h2 class="text-white mb-0"><span data-animation="number" data-value="87.5">0.00</span>%</h2>
 								<div class="ms-auto">
-									<div id="performance-rate-sparkline"></div>
+									<div id="conversion-rate-sparkline"></div>
 								</div>
 							</div>
-							<!-- END performance-rate -->
+							<!-- END conversion-rate -->
 							<!-- BEGIN percentage -->
 							<div class="mb-4 text-gray-500 ">
 								<i class="fa fa-caret-up"></i> <span data-animation="number" data-value="5.2">0.00</span>% comparado à semana passada
@@ -208,11 +208,11 @@
 							<div class="d-flex mb-2">
 								<div class="d-flex align-items-center">
 									<i class="fa fa-circle text-red fs-8px me-2"></i>
-									Músicos Ativos
+									Ensaio regular
 								</div>
 								<div class="d-flex align-items-center ms-auto">
-									<div class="text-gray-500 small"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="1245">0</span></div>
-									<div class="w-50px text-end ps-2 fw-bold"><span data-animation="number" data-value="79.3">0.00</span>%</div>
+									<div class="text-gray-500 small"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="12">0</span>%</div>
+									<div class="w-50px text-end ps-2 fw-bold"><span data-animation="number" data-value="92.5">0.00</span>%</div>
 								</div>
 							</div>
 							<!-- END info-row -->
@@ -220,11 +220,11 @@
 							<div class="d-flex mb-2">
 								<div class="d-flex align-items-center">
 									<i class="fa fa-circle text-warning fs-8px me-2"></i>
-									Participando Eventos
+									Evento especial
 								</div>
 								<div class="d-flex align-items-center ms-auto">
-									<div class="text-gray-500 small"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="89">0</span>%</div>
-									<div class="w-50px text-end ps-2 fw-bold"><span data-animation="number" data-value="15.2">0.00</span>%</div>
+									<div class="text-gray-500 small"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="8">0</span>%</div>
+									<div class="w-50px text-end ps-2 fw-bold"><span data-animation="number" data-value="78.3">0.00</span>%</div>
 								</div>
 							</div>
 							<!-- END info-row -->
@@ -232,11 +232,11 @@
 							<div class="d-flex">
 								<div class="d-flex align-items-center">
 									<i class="fa fa-circle text-lime fs-8px me-2"></i>
-									Performance Alta
+									Apresentação
 								</div>
 								<div class="d-flex align-items-center ms-auto">
-									<div class="text-gray-500 small"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="456">0</span></div>
-									<div class="w-50px text-end ps-2 fw-bold"><span data-animation="number" data-value="29.1">0.00</span>%</div>
+									<div class="text-gray-500 small"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="15">0</span>%</div>
+									<div class="w-50px text-end ps-2 fw-bold"><span data-animation="number" data-value="95.8">0.00</span>%</div>
 								</div>
 							</div>
 							<!-- END info-row -->
@@ -254,18 +254,18 @@
 						<div class="card-body">
 							<!-- BEGIN title -->
 							<div class="mb-3 text-gray-500">
-								<b class="mb-3">SESSÕES DE PRÁTICA</b> 
-								<span class="ms-2"><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Sessões de Prática" data-bs-placement="top" data-bs-content="Número de sessões de prática registradas pelos músicos no sistema." data-original-title="" title=""></i></span>
+								<b class="mb-3">HORAS DE ENSAIO</b> 
+								<span class="ms-2"><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Horas de Ensaio" data-bs-placement="top" data-bs-content="Total de horas dedicadas aos ensaios musicais da Regional Itapevi." data-original-title="" title=""></i></span>
 							</div>
 							<!-- END title -->
-							<!-- BEGIN practice-session -->
+							<!-- BEGIN store-session -->
 							<div class="d-flex align-items-center mb-1">
-								<h2 class="text-white mb-0"><span data-animation="number" data-value="2847">0</span></h2>
+								<h2 class="text-white mb-0"><span data-animation="number" data-value="1247">0</span>h</h2>
 								<div class="ms-auto">
-									<div id="practice-session-sparkline"></div>
+									<div id="store-session-sparkline"></div>
 								</div>
 							</div>
-							<!-- END practice-session -->
+							<!-- END store-session -->
 							<!-- BEGIN percentage -->
 							<div class="mb-4 text-gray-500 ">
 								<i class="fa fa-caret-up"></i> <span data-animation="number" data-value="12.3">0.00</span>% comparado à semana passada
@@ -275,11 +275,11 @@
 							<div class="d-flex mb-2">
 								<div class="d-flex align-items-center">
 									<i class="fa fa-circle text-teal fs-8px me-2"></i>
-									Iniciantes
+									Ensaio semanal
 								</div>
 								<div class="d-flex align-items-center ms-auto">
-									<div class="text-gray-500 small"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="18.5">0.00</span>%</div>
-									<div class="w-50px text-end ps-2 fw-bold"><span data-animation="number" data-value="1247">0</span></div>
+									<div class="text-gray-500 small"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="8.5">0.00</span>%</div>
+									<div class="w-50px text-end ps-2 fw-bold"><span data-animation="number" data-value="720">0</span>h</div>
 								</div>
 							</div>
 							<!-- END info-row -->
@@ -287,11 +287,11 @@
 							<div class="d-flex mb-2">
 								<div class="d-flex align-items-center">
 									<i class="fa fa-circle text-blue fs-8px me-2"></i>
-									Intermediários
+									Ensaio especial
 								</div>
 								<div class="d-flex align-items-center ms-auto">
-									<div class="text-gray-500 small"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="14.2">0.00</span>%</div>
-									<div class="w-50px text-end ps-2 fw-bold"><span data-animation="number" data-value="987">0</span></div>
+									<div class="text-gray-500 small"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="15.2">0.00</span>%</div>
+									<div class="w-50px text-end ps-2 fw-bold"><span data-animation="number" data-value="380">0</span>h</div>
 								</div>
 							</div>
 							<!-- END info-row -->
@@ -299,11 +299,11 @@
 							<div class="d-flex">
 								<div class="d-flex align-items-center">
 									<i class="fa fa-circle text-cyan fs-8px me-2"></i>
-									Avançados
+									Preparação
 								</div>
 								<div class="d-flex align-items-center ms-auto">
-									<div class="text-gray-500 small"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="8.7">0.00</span>%</div>
-									<div class="w-50px text-end ps-2 fw-bold"><span data-animation="number" data-value="613">0</span></div>
+									<div class="text-gray-500 small"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="22.1">0.00</span>%</div>
+									<div class="w-50px text-end ps-2 fw-bold"><span data-animation="number" data-value="147">0</span>h</div>
 								</div>
 							</div>
 							<!-- END info-row -->
@@ -326,22 +326,22 @@
 			<!-- BEGIN card -->
 			<div class="card border-0 mb-3 bg-gray-800 text-white">
 				<div class="card-body">
-					<div class="mb-3 text-gray-500 "><b>ANÁLISE DE VISITANTES</b> <span class="ms-2"><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Análise de Visitantes" data-bs-placement="top" data-bs-content="Estatísticas de visitantes e engajamento no sistema de músicos." data-original-title="" title=""></i></span></div>
+					<div class="mb-3 text-gray-500 "><b>ANÁLISE DE ENSAIOS</b> <span class="ms-2"><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Análise de Ensaios" data-bs-placement="top" data-bs-content="Estatísticas detalhadas dos ensaios musicais realizados pela Regional Itapevi." data-original-title="" title=""></i></span></div>
 					<div class="row">
 						<div class="col-xl-3 col-4">
-							<h3 class="mb-1"><span data-animation="number" data-value="127">0</span></h3>
-							<div>Novos Músicos</div>
-							<div class="text-gray-500 small text-truncate"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="25.5">0.00</span>% dos últimos 7 dias</div>
+							<h3 class="mb-1"><span data-animation="number" data-value="47">0</span></h3>
+							<div>Ensaio Esta Semana</div>
+							<div class="text-gray-500 small text-truncate"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="12.5">0.00</span>% dos últimos 7 dias</div>
 						</div>
 						<div class="col-xl-3 col-4">
-							<h3 class="mb-1"><span data-animation="number" data-value="179">0</span></h3>
-							<div>Músicos Ativos</div>
-							<div class="text-gray-500 small text-truncate"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="5.33">0.00</span>% dos últimos 7 dias</div>
+							<h3 class="mb-1"><span data-animation="number" data-value="89">0</span></h3>
+							<div>Ensaio Mês Passado</div>
+							<div class="text-gray-500 small text-truncate"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="8.3">0.00</span>% dos últimos 7 dias</div>
 						</div>
 						<div class="col-xl-3 col-4">
-							<h3 class="mb-1"><span data-animation="number" data-value="766">0</span></h3>
-							<div>Total de Acessos</div>
-							<div class="text-gray-500 small text-truncate"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="0.323">0.00</span>% dos últimos 7 dias</div>
+							<h3 class="mb-1"><span data-animation="number" data-value="156">0</span></h3>
+							<div>Total de Ensaios</div>
+							<div class="text-gray-500 small text-truncate"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="15.2">0.00</span>% dos últimos 7 dias</div>
 						</div>
 					</div>
 				</div>
@@ -360,44 +360,54 @@
 			<div class="card border-0 mb-3 bg-gray-800 text-white">
 				<div class="card-body">
 					<div class="mb-2 text-gray-500">
-						<b>SESSÕES POR LOCALIZAÇÃO</b>
-						<span class="ms-2"><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Sessões por Localização" data-bs-placement="top" data-bs-content="Distribuição geográfica dos músicos cadastrados no sistema."></i></span>
+						<b>MÚSICOS POR REGIÃO</b>
+						<span class="ms-2"><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Músicos por Região" data-bs-placement="top" data-bs-content="Distribuição dos músicos da Regional Itapevi por diferentes regiões e cidades."></i></span>
 					</div>
 					<div id="visitors-map" class="mb-2" style="height: 200px" ></div>
 					<div>
 						<div class="d-flex align-items-center text-white mb-2">
-							<div class="widget-img widget-img-xs rounded bg-dark me-2 w-40px" style="background-image: url({% static 'img/flag/us.jpg' %})"></div>
+							<div class="widget-img widget-img-xs rounded bg-dark me-2 w-40px d-flex align-items-center justify-content-center">
+								<i class="fa fa-music text-teal"></i>
+							</div>
 							<div class="d-flex w-100">
-								<div>United States</div>
-								<div class="ms-auto text-gray-500"><span data-animation="number" data-value="39.85">0.00</span>%</div>
+								<div>Itapevi Centro</div>
+								<div class="ms-auto text-gray-500"><span data-animation="number" data-value="35.2">0.00</span>%</div>
 							</div>
 						</div>
 						<div class="d-flex align-items-center text-white mb-2">
-							<div class="widget-img widget-img-xs rounded bg-dark me-2 w-40px" style="background-image: url({% static 'img/flag/cn.jpg' %})"></div>
+							<div class="widget-img widget-img-xs rounded bg-dark me-2 w-40px d-flex align-items-center justify-content-center">
+								<i class="fa fa-microphone text-blue"></i>
+							</div>
 							<div class="d-flex w-100">
-								<div>China</div>
-								<div class="ms-auto text-gray-500"><span data-animation="number" data-value="14.23">0.00</span>%</div>
+								<div>Vila Dr. Cardoso</div>
+								<div class="ms-auto text-gray-500"><span data-animation="number" data-value="28.7">0.00</span>%</div>
 							</div>
 						</div>
 						<div class="d-flex align-items-center text-white mb-2">
-							<div class="widget-img widget-img-xs rounded bg-dark me-2 w-40px" style="background-image: url({% static 'img/flag/de.jpg' %})"></div>
+							<div class="widget-img widget-img-xs rounded bg-dark me-2 w-40px d-flex align-items-center justify-content-center">
+								<i class="fa fa-guitar text-indigo"></i>
+							</div>
 							<div class="d-flex w-100">
-								<div>Germany</div>
-								<div class="ms-auto text-gray-500"><span data-animation="number" data-value="12.83">0.00</span>%</div>
+								<div>Jardim Portela</div>
+								<div class="ms-auto text-gray-500"><span data-animation="number" data-value="18.5">0.00</span>%</div>
 							</div>
 						</div>
 						<div class="d-flex align-items-center text-white mb-2">
-							<div class="widget-img widget-img-xs rounded bg-dark me-2 w-40px" style="background-image: url({% static 'img/flag/fr.jpg' %})"></div>
+							<div class="widget-img widget-img-xs rounded bg-dark me-2 w-40px d-flex align-items-center justify-content-center">
+								<i class="fa fa-drum text-warning"></i>
+							</div>
 							<div class="d-flex w-100">
-								<div>France</div>
-								<div class="ms-auto text-gray-500"><span data-animation="number" data-value="11.14">0.00</span>%</div>
+								<div>Vila Santa Rita</div>
+								<div class="ms-auto text-gray-500"><span data-animation="number" data-value="12.3">0.00</span>%</div>
 							</div>
 						</div>
 						<div class="d-flex align-items-center text-white mb-0">
-							<div class="widget-img widget-img-xs rounded bg-dark me-2 w-40px" style="background-image: url({% static 'img/flag/jp.jpg' %})"></div>
+							<div class="widget-img widget-img-xs rounded bg-dark me-2 w-40px d-flex align-items-center justify-content-center">
+								<i class="fa fa-piano text-success"></i>
+							</div>
 							<div class="d-flex w-100">
-								<div>Japan</div>
-								<div class="ms-auto text-gray-500"><span data-animation="number" data-value="10.75">0.00</span>%</div>
+								<div>Outras Regiões</div>
+								<div class="ms-auto text-gray-500"><span data-animation="number" data-value="5.3">0.00</span>%</div>
 							</div>
 						</div>
 					</div>
@@ -418,15 +428,15 @@
 				<div class="card-body" style="background: no-repeat bottom right; background-image: url({% static 'img/svg/img-4.svg' %}); background-size: auto 60%;">
 					<!-- BEGIN title -->
 					<div class="mb-3 text-gray-500 ">
-						<b>MÚSICOS POR FONTE DE CADASTRO</b>
-						<span class="text-gray-500 ms-2"><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Músicos por Fonte" data-bs-placement="top" data-bs-content="Distribuição dos músicos cadastrados por diferentes fontes de referência."></i></span>
+						<b>INSTRUMENTOS POR CATEGORIA</b>
+						<span class="text-gray-500 ms-2"><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Instrumentos por Categoria" data-bs-placement="top" data-bs-content="Distribuição dos instrumentos musicais cadastrados por categoria na Regional Itapevi."></i></span>
 					</div>
 					<!-- END title -->
-					<!-- BEGIN total-musicians -->
-					<h3 class="mb-10px"><span data-animation="number" data-value="1247">0</span></h3>
-					<!-- END total-musicians -->
+					<!-- BEGIN sales -->
+					<h3 class="mb-10px"><span data-animation="number" data-value="156">0</span> instrumentos</h3>
+					<!-- END sales -->
 					<!-- BEGIN percentage -->
-					<div class="text-gray-500 mb-1px"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="15.76">0.00</span>% de aumento</div>
+					<div class="text-gray-500 mb-1px"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="18.5">0.00</span>% aumentou</div>
 					<!-- END percentage -->
 				</div>
 				<!-- END card-body -->
@@ -435,65 +445,65 @@
 					<!-- BEGIN widget-list-item -->
 					<a href="#" class="widget-list-item rounded-0 pt-3px">
 						<div class="widget-list-media icon">
-							<i class="fas fa-music bg-indigo text-white"></i>
+							<i class="fa fa-guitar bg-indigo text-white"></i>
 						</div>
 						<div class="widget-list-content">
-							<div class="widget-list-title">Indicação Direta</div>
+							<div class="widget-list-title">Cordas</div>
 						</div>
 						<div class="widget-list-action text-nowrap text-gray-500">
-							<span data-animation="number" data-value="456">0</span>
+							<span data-animation="number" data-value="45">0</span>
 						</div>
 					</a>
 					<!-- END widget-list-item -->
 					<!-- BEGIN widget-list-item -->
 					<a href="#" class="widget-list-item">
 						<div class="widget-list-media icon">
-							<i class="fab fa-facebook-f bg-blue text-white"></i>
+							<i class="fa fa-drum bg-blue text-white"></i>
 						</div>
 						<div class="widget-list-content">
-							<div class="widget-list-title">Facebook</div>
+							<div class="widget-list-title">Percussão</div>
 						</div>
 						<div class="widget-list-action text-nowrap text-gray-500">
-							<span data-animation="number" data-value="234">0</span>
+							<span data-animation="number" data-value="32">0</span>
 						</div>
 					</a>
 					<!-- END widget-list-item -->
 					<!-- BEGIN widget-list-item -->
 					<a href="#" class="widget-list-item">
 						<div class="widget-list-media icon">
-							<i class="fab fa-instagram bg-pink text-white"></i>
+							<i class="fa fa-piano bg-info text-white"></i>
 						</div>
 						<div class="widget-list-content">
-							<div class="widget-list-title">Instagram</div>
+							<div class="widget-list-title">Teclas</div>
 						</div>
 						<div class="widget-list-action text-nowrap text-gray-500">
-							<span data-animation="number" data-value="198">0</span>
+							<span data-animation="number" data-value="28">0</span>
 						</div>
 					</a>
 					<!-- END widget-list-item -->
 					<!-- BEGIN widget-list-item -->
 					<a href="#" class="widget-list-item">
 						<div class="widget-list-media icon">
-							<i class="fab fa-google bg-red text-white"></i>
+							<i class="fa fa-microphone bg-red text-white"></i>
 						</div>
 						<div class="widget-list-content">
-							<div class="widget-list-title">Google</div>
+							<div class="widget-list-title">Sopro</div>
 						</div>
 						<div class="widget-list-action text-nowrap text-gray-500">
-							<span data-animation="number" data-value="156">0</span>
+							<span data-animation="number" data-value="25">0</span>
 						</div>
 					</a>
 					<!-- END widget-list-item -->
 					<!-- BEGIN widget-list-item -->
 					<a href="#" class="widget-list-item pb-3px rounded-bottom">
 						<div class="widget-list-media icon">
-							<i class="fas fa-globe bg-teal text-white"></i>
+							<i class="fa fa-music bg-pink text-white"></i>
 						</div>
 						<div class="widget-list-content">
-							<div class="widget-list-title">Site Oficial</div>
+							<div class="widget-list-title">Outros</div>
 						</div>
 						<div class="widget-list-action text-nowrap text-gray-500">
-							<span data-animation="number" data-value="203">0</span>
+							<span data-animation="number" data-value="26">0</span>
 						</div>
 					</a>
 					<!-- END widget-list-item -->
@@ -512,8 +522,8 @@
 				<div class="card-body">
 					<!-- BEGIN title -->
 					<div class="mb-3 text-gray-500">
-						<b>INSTRUMENTOS MAIS POPULARES</b>
-						<span class="ms-2 "><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Instrumentos Populares" data-bs-placement="top" data-bs-content="Instrumentos musicais mais utilizados pelos músicos cadastrados."></i></span>
+						<b>TOP PRODUCTS BY UNITS SOLD</b>
+						<span class="ms-2 "><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Top products with units sold" data-bs-placement="top" data-bs-content="Products with the most individual units sold. Includes orders from all sales channels."></i></span>
 					</div>
 					<!-- END title -->
 					<!-- BEGIN product -->
@@ -522,12 +532,12 @@
 							<div class="h-100 w-100" style="background: url({% static 'img/product/product-8.jpg' %}) center no-repeat; background-size: auto 100%;"></div>
 						</div>
 						<div class="text-truncate">
-							<div >Violão Clássico</div>
-							<div class="text-gray-500">Instrumento de Cordas</div>
+							<div >Apple iPhone XR (2025)</div>
+							<div class="text-gray-500">$799.00</div>
 						</div>
 						<div class="ms-auto text-center">
 							<div class="fs-13px"><span data-animation="number" data-value="195">0</span></div>
-							<div class="text-gray-500 fs-10px">músicos</div>
+							<div class="text-gray-500 fs-10px">sold</div>
 						</div>
 					</div>
 					<!-- END product -->
@@ -537,12 +547,12 @@
 							<div class="h-100 w-100" style="background: url({% static 'img/product/product-9.jpg' %}) center no-repeat; background-size: auto 100%;"></div>
 						</div>
 						<div class="text-truncate">
-							<div >Piano Digital</div>
-							<div class="text-gray-500">Instrumento de Teclas</div>
+							<div >Apple iPhone XS (2025)</div>
+							<div class="text-gray-500">$1,199.00</div>
 						</div>
 						<div class="ms-auto text-center">
 							<div class="fs-13px"><span data-animation="number" data-value="185">0</span></div>
-							<div class="text-gray-500 fs-10px">músicos</div>
+							<div class="text-gray-500 fs-10px">sold</div>
 						</div>
 					</div>
 					<!-- END product -->
@@ -552,12 +562,12 @@
 							<div class="h-100 w-100" style="background: url({% static 'img/product/product-10.jpg' %}) center no-repeat; background-size: auto 100%;"></div>
 						</div>
 						<div class="text-truncate">
-							<div >Bateria Acústica</div>
-							<div class="text-gray-500">Instrumento de Percussão</div>
+							<div >Apple iPhone XS Max (2025)</div>
+							<div class="text-gray-500">$3,399</div>
 						</div>
 						<div class="ms-auto text-center">
 							<div class="fs-13px"><span data-animation="number" data-value="129">0</span></div>
-							<div class="text-gray-500 fs-10px">músicos</div>
+							<div class="text-gray-500 fs-10px">sold</div>
 						</div>
 					</div>
 					<!-- END product -->
@@ -567,12 +577,12 @@
 							<div class="h-100 w-100" style="background: url({% static 'img/product/product-11.jpg' %}) center no-repeat; background-size: auto 100%;"></div>
 						</div>
 						<div class="text-truncate">
-							<div >Saxofone Alto</div>
-							<div class="text-gray-500">Instrumento de Sopro</div>
+							<div >Huawei Y5 (2025)</div>
+							<div class="text-gray-500">$99.00</div>
 						</div>
 						<div class="ms-auto text-center">
 							<div class="fs-13px"><span data-animation="number" data-value="96">0</span></div>
-							<div class="text-gray-500 fs-10px">músicos</div>
+							<div class="text-gray-500 fs-10px">sold</div>
 						</div>
 					</div>
 					<!-- END product -->
@@ -582,12 +592,12 @@
 							<div class="h-100 w-100" style="background: url({% static 'img/product/product-12.jpg' %}) center no-repeat; background-size: auto 100%;"></div>
 						</div>
 						<div class="text-truncate">
-							<div >Flauta Transversal</div>
-							<div class="text-gray-500">Instrumento de Sopro</div>
+							<div >Huawei Nova 4 (2025)</div>
+							<div class="text-gray-500">$499.00</div>
 						</div>
 						<div class="ms-auto text-center">
 							<div class="fs-13px"><span data-animation="number" data-value="55">0</span></div>
-							<div class="text-gray-500 fs-10px">músicos</div>
+							<div class="text-gray-500 fs-10px">sold</div>
 						</div>
 					</div>
 					<!-- END product -->
@@ -605,8 +615,8 @@
 				<div class="card-body">
 					<!-- BEGIN title -->
 					<div class="mb-3 text-gray-500 ">
-						<b>CAMPANHAS DE ENGAGAMENTO</b>
-						<span class="ms-2"><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Campanhas de Engajamento" data-bs-placement="top" data-bs-content="Campanhas para aumentar o engajamento e participação dos músicos."></i></span>
+						<b>MARKETING CAMPAIGN</b>
+						<span class="ms-2"><i class="fa fa-info-circle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Marketing Campaign" data-bs-placement="top" data-bs-content="Campaign that run for getting more returning customers."></i></span>
 					</div>
 					<!-- END title -->
 					<!-- BEGIN row -->
@@ -620,8 +630,8 @@
 						<!-- END col-4 -->
 						<!-- BEGIN col-8 -->
 						<div class="col-8">
-							<div class="mb-2px text-truncate">Campanha de Email para Músicos</div>
-							<div class="mb-2px  text-gray-500  small">Seg 12/6 - Dom 18/6</div>
+							<div class="mb-2px text-truncate">Email Marketing Campaign</div>
+							<div class="mb-2px  text-gray-500  small">Mon 12/6 - Sun 18/6</div>
 							<div class="d-flex align-items-center mb-2px">
 								<div class="flex-grow-1">
 									<div class="progress h-5px rounded-pill bg-white bg-opacity-10">
@@ -631,9 +641,9 @@
 								<div class="ms-2 small w-30px text-center"><span data-animation="number" data-value="80">0</span>%</div>
 							</div>
 							<div class="text-gray-500 small mb-15px text-truncate">
-								57.5% dos músicos clicaram no email
+								57.5% people click the email
 							</div>
-							<a href="#" class="btn btn-xs btn-indigo fs-10px ps-2 pe-2">Ver campanha</a>
+							<a href="#" class="btn btn-xs btn-indigo fs-10px ps-2 pe-2">View campaign</a>
 						</div>
 						<!-- END col-8 -->
 					</div>
@@ -650,8 +660,8 @@
 						<!-- END col-4 -->
 						<!-- BEGIN col-8 -->
 						<div class="col-8">
-							<div class="mb-2px text-truncate">Campanha no Facebook para Músicos</div>
-							<div class="mb-2px  text-gray-500  small">Sáb 10/6 - Dom 18/6</div>
+							<div class="mb-2px text-truncate">Facebook Marketing Campaign</div>
+							<div class="mb-2px  text-gray-500  small">Sat 10/6 - Sun 18/6</div>
 							<div class="d-flex align-items-center mb-2px">
 								<div class="flex-grow-1">
 									<div class="progress h-5px rounded-pill bg-white bg-opacity-10">
@@ -661,9 +671,9 @@
 								<div class="ms-2 small w-30px text-center"><span data-animation="number" data-value="60">0</span>%</div>
 							</div>
 							<div class="text-gray-500 small mb-15px text-truncate">
-								+124 visitantes do Facebook
+								+124k visitors from facebook
 							</div>
-							<a href="#" class="btn btn-xs btn-warning fs-10px ps-2 pe-2">Ver campanha</a>
+							<a href="#" class="btn btn-xs btn-warning fs-10px ps-2 pe-2">View campaign</a>
 						</div>
 						<!-- END col-8 -->
 					</div>

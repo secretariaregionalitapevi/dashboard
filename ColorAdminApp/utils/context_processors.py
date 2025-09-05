@@ -18,28 +18,24 @@ def sidebar_menu(request):
 		'is_header': 'true'
 	},
 	{ 
-		'url': '/dashboard', 'icon': 'fa fa-sitemap', 'title': 'Dashboard',
+		'url': '/dashboard/v3', 'icon': 'fa fa-sitemap', 'title': 'Dashboard',
+		
+	},
+	{ 'url': '/ai', 'icon': 'fa fa-child', 'title': 'Musicalização',
 		'children': [
-			{ 'url': '/dashboard/v1', 'title': 'Dashboard v1', 'name': 'dashboardv1' },
-			{ 'url': '/dashboard/v2', 'title': 'Dashboard v2', 'name': 'dashboardv2' },
-			{ 'url': '/dashboard/v3', 'title': 'Dashboard v3', 'name': 'dashboardv3' }
+			{ 'url': '/ai/chat', 'title': 'Crianças', 'name': 'criancas' },
+			{ 'url': '/ai/image-generator', 'title': 'Polos', 'name': 'polos' }
 		]
 	},
-	{ 'url': '/ai', 'icon': 'fa fa-microchip', 'title': 'AI Studio', 'label': 'NEW',
+	{ 'url': '/email', 'icon': 'fa fa-medkit', 'title': 'D.A.R.P.E', 'label': 'NOVO',
 		'children': [
-			{ 'url': '/ai/chat', 'title': 'AI Chat', 'name': 'aiChat' },
-			{ 'url': '/ai/image-generator', 'title': 'AI Image Generator', 'name': 'aiImageGenerator' }
+			{ 'url': '/email/inbox', 'title': 'Músicos', 'name': 'musicos' },
+			{ 'url': '/email/compose', 'title': 'Clínica', 'name': 'clinica' },
+			{ 'url': '/email/detail', 'title': 'Batismos', 'name': 'batismos' }
 		]
 	},
-	{ 'url': '/email', 'icon': 'fa fa-hdd', 'title': 'Email', 'badge': '10',
-		'children': [
-			{ 'url': '/email/inbox', 'title': 'Inbox', 'name': 'emailInbox' },
-			{ 'url': '/email/compose', 'title': 'Compose', 'name': 'emailCompose' },
-			{ 'url': '/email/detail', 'title': 'Detail', 'name': 'emailDetail' }
-		]
-	},
-	{ 'url': '/widgets', 'icon': 'fab fa-simplybuilt', 'title': 'Widgets', 'label': 'NEW', 'name': 'widgets' },
-	{ 'url': '/ui', 'icon': 'fa fa-gem', 'title': 'UI Elements', 'label': 'NEW',
+	{ 'url': '/widgets', 'icon': 'fab fa-simplybuilt', 'title': 'Widgets', 'label': 'NOVO', 'name': 'widgets' },
+	{ 'url': '/ui', 'icon': 'fa fa-gem', 'title': 'UI Elements', 'label': 'NOVO',
 		'children': [
 			{ 'url': '/ui/general', 'title': 'General', 'highlight': 'true', 'name': 'uiGeneral' },
 			{ 'url': '/ui/typography', 'title': 'Typograhy', 'name': 'uiTypography' },
@@ -61,8 +57,8 @@ def sidebar_menu(request):
 			{ 'url': '/ui/offcanvas-toasts', 'title': 'Offcanvas & Toasts', 'name': 'uiOffcanvasToasts' }
 		]
 	},
-	{ 'url': '/bootstrap-5', 'img': '/img/logo/logo-bs5.png', 'title': 'Bootstrap 5', 'label': 'NEW', 'name': 'bootstrap5' },
-	{ 'url': '/form', 'icon': 'fa fa-list-ol', 'title': 'Form Stuff', 'label': 'NEW',
+	{ 'url': '/bootstrap-5', 'img': '/img/logo/logo-bs5.png', 'title': 'Bootstrap 5', 'label': 'NOVO', 'name': 'bootstrap5' },
+	{ 'url': '/form', 'icon': 'fa fa-list-ol', 'title': 'Form Stuff', 'label': 'NOVO',
 		'children': [
 			{ 'url': '/form/elements', 'title': 'Form Elements', 'highlight': 'true', 'name': 'formElements' },
 			{ 'url': '/form/plugins', 'title': 'Form Plugins', 'highlight': 'true', 'name': 'formPlugins' },
@@ -96,7 +92,7 @@ def sidebar_menu(request):
 			}
 		]
 	},
-	{ 'url': '/pos', 'icon': 'fa fa-cash-register', 'title': 'POS System', 'label': 'NEW',
+	{ 'url': '/pos', 'icon': 'fa fa-cash-register', 'title': 'POS System', 'label': 'NOVO',
 		'children': [
 			{ 'url': '/pos/customer-order', 'title': 'Customer Order', 'name': 'posCustomerOrder' },
 			{ 'url': '/pos/counter-checkout', 'title': 'Counter Checkout', 'name': 'posCounterCheckout' },
@@ -105,7 +101,7 @@ def sidebar_menu(request):
 			{ 'url': '/pos/menu-stock', 'title': 'Menu Stock', 'name': 'posMenuStock' }
 		]
 	},
-	{ 'url': '/chart', 'icon': 'fa fa-chart-pie', 'title': 'Chart', 'label': 'NEW',
+	{ 'url': '/chart', 'icon': 'fa fa-chart-pie', 'title': 'Chart', 'label': 'NOVO',
 		'children': [
 			{ 'url': '/chart/flot', 'title': 'Flot Chart', 'name': 'chartFlot' },
 			{ 'url': '/chart/js', 'title': 'Chart JS', 'name': 'chartJs' },
@@ -113,7 +109,7 @@ def sidebar_menu(request):
 			{ 'url': '/chart/apex', 'title': 'Apex Chart', 'name': 'chartApex' }
 		]
 	},
-	{ 'url': '/landing', 'icon': 'fa fa-crown', 'title': 'Landing Page', 'name': 'landing', 'label': 'NEW' },
+	{ 'url': '/landing', 'icon': 'fa fa-crown', 'title': 'Landing Page', 'name': 'landing', 'label': 'NOVO' },
 	{ 'url': '/calendar', 'icon': 'fa fa-calendar', 'title': 'Calendar', 'name': 'calendar' },
 	{ 'url': '/map', 'icon': 'fa fa-map', 'title': 'Map',
 		'children': [
@@ -127,7 +123,7 @@ def sidebar_menu(request):
 			{ 'url': '/gallery/v2', 'title': 'Gallery v2', 'name': 'galleryV2' }
 		]
 	},
-	{ 'url': '/page-option', 'icon': 'fa fa-cogs', 'title': 'Page Options', 'label': 'NEW',
+	{ 'url': '/page-option', 'icon': 'fa fa-cogs', 'title': 'Page Options', 'label': 'NOVO',
 		'children': [
 			{ 'url': '/page-option/blank', 'title': 'Blank Page', 'name': 'pageOptionBlank' },
 			{ 'url': '/page-option/with-footer', 'title': 'Page with Footer', 'name': 'pageOptionWithFooter' },
@@ -149,7 +145,7 @@ def sidebar_menu(request):
 			{ 'url': '/page-option/with-hover-sidebar', 'title': 'Page with Hover Sidebar', 'highlight': 'true', 'name': 'pageOptionWithHoverSidebar' },
 		]
 	},
-	{ 'url': '/extra', 'icon': 'fa fa-gift', 'title': 'Extra', 'label': 'NEW',
+	{ 'url': '/extra', 'icon': 'fa fa-gift', 'title': 'Extra', 'label': 'NOVO',
 		'children': [
 			{ 'url': '/extra/timeline', 'title': 'Timeline', 'name': 'extraTimeline' },
 			{ 'url': '/extra/coming-soon', 'title': 'Coming Soon Page', 'name': 'extraComingSoon' },

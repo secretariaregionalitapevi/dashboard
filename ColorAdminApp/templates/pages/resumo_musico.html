@@ -1,0 +1,808 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Resumo do Aluno - Sistema Musical{% endblock %}
+
+{% block content %}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Resumo do Aluno</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{% url 'ColorAdminApp:dashboardv3' %}">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>G.E.M</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#">Alunos</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Resumo</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInUp" style="margin-top: 20px;">
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="ibox" style="background-color: white;">
+                <div class="ibox-content" style="background-color: white;">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mb-3 d-flex justify-content-between align-items-center">
+                                <h3 class="fs-18 mb-0">Acompanhamento dos Estudos MSA</h3>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editarMusicoModal">
+                                        <i class="fa fa-edit"></i>&nbsp;&nbsp;Editar
+                                    </button>                                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <dl class="row mb-0">
+                                <div class="col-sm-4 text-sm-end"><dt>Status:</dt></div>
+                                <div class="col-sm-8 text-sm-start">
+                                    <dd class="mb-1">
+                                        <span class="badge bg-success">
+                                            {{ musico.status }}
+                                        </span>
+                                    </dd>
+                                </div>
+                            </dl>
+                            <dl class="row mb-0">
+                                <div class="col-sm-4 text-sm-end"><dt>Lançado por:</dt></div>
+                                <div class="col-sm-8 text-sm-start">
+                                    <dd class="mb-1">
+                                        {% if estudos_msa %}
+                                            {{ estudos_msa.0.instrutor|upper }}
+                                        {% else %}
+                                            Nenhuma atividade registrada
+                                        {% endif %}
+                                    </dd>
+                                </div>
+                            </dl>
+                            <dl class="row mb-0">
+                                <div class="col-sm-4 text-sm-end"><dt>Mensagens:</dt></div>
+                                <div class="col-sm-8 text-sm-start"><dd class="mb-1">{{ total_participacoes }}</dd></div>
+                            </dl>
+                            <dl class="row mb-0">
+                                <div class="col-sm-4 text-sm-end"><dt>Aluno:</dt></div>
+                                <div class="col-sm-8 text-sm-start"><dd class="mb-1"><a href="#" class="text-success fw-bold">{{ musico.nome }}</a></dd></div>
+                            </dl>
+                            <dl class="row mb-0">
+                                <div class="col-sm-4 text-sm-end"><dt>Registro MSA:</dt></div>
+                                <div class="col-sm-8 text-sm-start">
+                                    <dd class="mb-1">
+                                        {% if estudos_msa %}
+                                            Fase {{ estudos_msa.0.fase }}
+                                        {% else %}
+                                            Nenhuma fase registrada
+                                        {% endif %}
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+                        <div class="col-lg-6" id="cluster_info">
+                            <dl class="row mb-0">
+                                <div class="col-sm-4 text-sm-end"><dt>Comum:</dt></div>
+                                <div class="col-sm-8 text-sm-start"><dd class="mb-1">{{ nome_congregacao }}</dd></div>
+                            </dl>
+                            <dl class="row mb-0">
+                                <div class="col-sm-4 text-sm-end"><dt>Cargo/Ministério:</dt></div>
+                                <div class="col-sm-8 text-sm-start"><dd class="mb-1">{{ musico.ministerio }}</dd></div>
+                            </dl>
+                            <dl class="row mb-0">
+                                <div class="col-sm-4 text-sm-end"><dt>Nível:</dt></div>
+                                <div class="col-sm-8 text-sm-start"><dd class="mb-1">{{ musico.nivel }}</dd></div>
+                            </dl>
+                            <dl class="row mb-0">
+                                <div class="col-sm-4 text-sm-end"><dt>Instrumento:</dt></div>
+                                <div class="col-sm-8 text-sm-start"><dd class="mb-1">{{ musico.instrumento }}</dd></div>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <dl class="row mb-0">
+                                <div class="col-sm-2 text-sm-end">
+                                    <dt>Progama Mínimo:</dt>
+                                </div>
+                                <div class="col-sm-10 text-sm-start">
+                                    <dd>
+                                        <div class="progress mb-1">
+                                            <div style="width: {{ progresso }}%;" class="progress-bar progress-bar-striped progress-bar-animated bg-success"></div>
+                                        </div>
+                                        <small>{{ mensagem_progresso }}</small>
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-lg-12">
+                            <div class="panel blank-panel">
+                                <div class="panel-heading">
+                                    <div class="panel-options">
+                                        <ul class="nav nav-tabs">
+                                            <li><a class="nav-link active fw-bold" href="#tab-1" data-bs-toggle="tab" aria-selected="true" role="tab" style="border-bottom: 3px solid #28a745; color: #28a745;">MSA</a></li>
+                                            <li><a class="nav-link" href="#tab-2" data-bs-toggle="tab">Provas</a></li>
+                                            <li><a class="nav-link" href="#tab-3" data-bs-toggle="tab">Método</a></li>
+                                            <li><a class="nav-link" href="#tab-4" data-bs-toggle="tab">Hinário</a></li>
+                                            <li><a class="nav-link" href="#tab-5" data-bs-toggle="tab">Escalas</a></li>
+                                            <li><a class="nav-link" href="#tab-6" data-bs-toggle="tab">Últimas Atividades</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+        
+                                <div class="panel-body">       
+                                    <div class="tab-content">
+                                        <!-- Tab Estudos MSA -->
+                                        <div class="tab-pane active" id="tab-1">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead class="ff-secondary">
+                                                        <tr>
+                                                            <th>Data</th>
+                                                            <th>Fase</th>
+                                                            <th>Páginas</th>
+                                                            <th>Lições</th>
+                                                            <th>Claves</th>
+                                                            <th>Observações</th>
+                                                            <th>Autorizado por</th>
+                                                            <th>Ações</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="msaTableBody">
+                                                        {% for m in estudos_msa %}
+                                                            <tr>
+                                                                <td>{{ m.data_aula }}</td>
+                                                                <td>Fase {{ m.fase }}</td>
+                                                                <td>{{ m.pagina_inicial }} - {{ m.pagina_final }}</td>
+                                                                <td>{% if m.licoes %}{{ m.licoes }}{% else %}-{% endif %}</td>
+                                                                <td>{{ m.clave }}</td>
+                                                                <td>{{ m.observacoes }}</td>
+                                                                <td>{{ m.instrutor|upper }}</td>
+                                                                <td>
+                                                                    <button type="button" class="btn btn-danger btn-sm delete-aula" data-id="{{ m.id }}">
+                                                                        <i class="fa fa-trash"></i> Apagar
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <button class="btn btn-sm btn-primary float-end" data-bs-toggle="modal" data-bs-target="#lancamentoMsaModal">
+                                                <i class="fa fa-plus"></i> Nova Lição
+                                            </button>
+                                        </div>
+                                        
+                                        <!-- Tab Avaliações -->
+                                        <div class="tab-pane" id="tab-2">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead class="ff-secondary">
+                                                        <tr>
+                                                            <th>Data</th>
+                                                            <th>Módulo</th>
+                                                            <th>Nota</th>
+                                                            <th>Autorizado por</th>
+                                                            <th>Observações</th>
+                                                            <th>Ações</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="avaliacoesTableBody">
+                                                        {% for a in avaliacoes %}
+                                                        <tr>
+                                                            <td>{% if a.data_avaliacao %}{{ a.data_avaliacao }}{% endif %}</td>
+                                                            <td>{{ a.modulo }}</td>
+                                                            <td>{{ a.nota }}</td>
+                                                            <td>{{ a.avaliador|upper }}</td>
+                                                            <td>{{ a.observacoes }}</td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-danger btn-sm delete-avaliacao" data-id="{{ a.id }}">
+                                                                    <i class="fa fa-trash"></i> Remover
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>                                                            
+                                                </table>
+                                            </div>
+                                            <button class="btn btn-sm btn-primary float-end" data-bs-toggle="modal" data-bs-target="#lancamentoAvaliacoesModal">
+                                                <i class="fa fa-plus"></i> Nova Prova
+                                            </button>
+                                        </div>
+
+                                        <!-- Tab Métodos -->
+                                        <div class="tab-pane" id="tab-3">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead class="ff-secondary">
+                                                        <tr>
+                                                            <th>Data</th>
+                                                            <th>Método</th>
+                                                            <th>Lição</th>
+                                                            <th>Páginas</th>
+                                                            <th>Instrutor</th>
+                                                            <th>Observações</th>
+                                                            <th>Ações</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="metodoTableBody">
+                                                        {% for m in metodos %}
+                                                        <tr>
+                                                            <td>{% if m.data_inicio %}{{ m.data_inicio }}{% endif %}</td>
+                                                            <td>{{ m.metodo }}</td>
+                                                            <td>{{ m.licoes }}</td>
+                                                            <td>{{ m.pagina_inicial }}{% if m.pagina_final %} - {{ m.pagina_final }}{% endif %}</td>
+                                                            <td>{{ m.instrutor|upper }}</td>
+                                                            <td>{{ m.observacoes }}</td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-danger btn-sm delete-metodo" data-id="{{ m.id }}">
+                                                                    <i class="fa fa-trash"></i> Remover
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <button class="btn btn-sm btn-primary float-end" data-bs-toggle="modal" data-bs-target="#lancamentoMetodoModal">
+                                                <i class="fa fa-plus"></i> Nova Lição Método
+                                            </button>
+                                        </div>
+
+                                        <!-- Tab Hinário -->
+                                        <div class="tab-pane" id="tab-4">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead class="ff-secondary">
+                                                        <tr>
+                                                            <th>Data</th>
+                                                            <th>Hino</th>
+                                                            <th>Voz</th>
+                                                            <th>Instrutor</th>
+                                                            <th>Observações</th>
+                                                            <th>Ações</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="hinarioTableBody">
+                                                        {% for h in hinario %}
+                                                        <tr>
+                                                            <td>{% if h.data %}{{ h.data }}{% endif %}</td>
+                                                            <td>{{ h.hino }}</td>
+                                                            <td>{{ h.voz }}</td>
+                                                            <td>{{ h.instrutor|upper }}</td>
+                                                            <td>{{ h.observacoes }}</td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-danger btn-sm delete-hinario" data-id="{{ h.id }}">
+                                                                    <i class="fa fa-trash"></i> Remover
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <button class="btn btn-sm btn-primary float-end" data-bs-toggle="modal" data-bs-target="#lancamentoHinarioModal">
+                                                <i class="fa fa-plus"></i> Novo Hino
+                                            </button>
+                                        </div>
+                                        
+                                        <!-- Tab Escalas -->
+                                        <div class="tab-pane" id="tab-5">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead class="ff-secondary">
+                                                        <tr>
+                                                            <th>Data</th>
+                                                            <th>Escala</th>
+                                                            <th>Instrutor</th>
+                                                            <th>Observações</th>
+                                                            <th>Ações</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="escalasTableBody">
+                                                        {% for e in escalas %}
+                                                        <tr>
+                                                            <td>{% if e.data %}{{ e.data }}{% endif %}</td>
+                                                            <td>
+                                                                {% if e.escala is string %}
+                                                                    {{ e.escala }}
+                                                                {% else %}
+                                                                    {% if e.escala %}{{ e.escala|join:', ' }}{% endif %}
+                                                                {% endif %}
+                                                            </td>
+                                                            <td>{{ e.instrutor|upper }}</td>
+                                                            <td>{{ e.observacoes }}</td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-danger btn-sm delete-escala" data-id="{{ e.id }}">
+                                                                    <i class="fa fa-trash"></i> Remover
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <button class="btn btn-sm btn-primary float-end" data-bs-toggle="modal" data-bs-target="#lancamentoEscalasModal">
+                                                <i class="fa fa-plus"></i> Nova Escala
+                                            </button>
+                                        </div>
+
+                                        <!-- Tab Últimas Atividades -->
+                                        <div class="tab-pane" id="tab-6">
+                                            <!-- Timeline dos marcos musicais -->
+                                            <div id="vertical-timeline" class="vertical-container dark-timeline center-orientation">
+                                                <!-- Início -->
+                                                <div class="vertical-timeline-block">
+                                                    <div class="vertical-timeline-icon text-bg-success">
+                                                        <i class="fa fa-music"></i>
+                                                    </div>
+                                                    <div class="vertical-timeline-content">
+                                                        <h2>Início Musical</h2>
+                                                        <p>Músico ingressou na Regional Itapevi com o objetivo de estudar {% if musico.instrumento %}{{ musico.instrumento|lower }}{% else %}instrumento{% endif %}.</p>
+                                                        <span class="vertical-date">
+                                                            {% if musico.criado_em %}
+                                                                {{ musico.criado_em }}<br/>
+                                                                <small>{{ musico.criado_em }}</small>
+                                                            {% else %}
+                                                                <span class="text-muted">-</span><br/>
+                                                                <small>-</small>
+                                                            {% endif %}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Ficha de Inscrição -->
+                                                <div class="vertical-timeline-block">
+                                                    <div class="vertical-timeline-icon text-bg-info">
+                                                        <i class="fa fa-file"></i>
+                                                    </div>
+                                                    <div class="vertical-timeline-content">
+                                                        <h2>Ficha de Inscrição</h2>
+                                                        <p>Ficha de Inscrição enviada pelo músico</p>
+                                                        <div class="mt-2">
+                                                            <form id="formFichaInscricao" method="POST" action="#" enctype="multipart/form-data">
+                                                                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                                                                <input type="hidden" name="musico_id" value="{{ musico.id }}">
+                                                                <input type="file" class="form-control mb-2" name="ficha_inscricao" accept=".pdf,.doc,.docx" required>
+                                                                <button type="submit" class="btn btn-primary btn-sm">Enviar Ficha de Inscrição</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Ingresso no Ensaio -->
+                                                <div class="vertical-timeline-block">
+                                                    <div class="vertical-timeline-icon text-bg-warning">
+                                                        <i class="fa fa-users"></i>
+                                                    </div>
+                                                    <div class="vertical-timeline-content">
+                                                        <h2>Ingresso no Ensaio</h2>
+                                                        <p>O músico evoluiu muito bem nos estudos e atingiu o nível necessário do Programa Mínimo</p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Ingresso RJM -->
+                                                <div class="vertical-timeline-block">
+                                                    <div class="vertical-timeline-icon text-bg-info">
+                                                        <i class="fa fa-child"></i>
+                                                    </div>
+                                                    <div class="vertical-timeline-content">
+                                                        <h2>Ingresso RJM</h2>
+                                                        <p>Com a continuidade dos estudos, foi possível avançar o músico para o nível de Reunião de Jovens e Menores.</p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Ingresso no Culto Oficial -->
+                                                <div class="vertical-timeline-block">
+                                                    <div class="vertical-timeline-icon text-bg-success">
+                                                        <i class="fa fa-church"></i>
+                                                    </div>
+                                                    <div class="vertical-timeline-content">
+                                                        <h2>Ingresso no Culto Oficial</h2>
+                                                        <p>Com o avanço dos estudos e atingindo o requisito necessário pedido no Programa Mínimo, foi possível avançar o músico para o nível de tocar nos Cultos Oficiais.</p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Oficialização -->
+                                                <div class="vertical-timeline-block">
+                                                    <div class="vertical-timeline-icon text-bg-primary">
+                                                        <i class="fa fa-graduation-cap"></i>
+                                                    </div>
+                                                    <div class="vertical-timeline-content">
+                                                        <h2>Oficialização</h2>
+                                                        <p>Para finalizar o Programa Mínimo, o músico cumpriu todas as etapas e foi aprovado na Oficialização.</p>
+                                                    </div>
+                                                </div>
+                                            </div>                                                                      
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="col-lg-3">
+            <div class="wrapper wrapper-content project-manager">
+                <h4>Arquivos de Aulas</h4>
+                <img width="150" height="150" src="{% static 'img/logo/logo-ccb-light.png' %}" class="img-fluid">
+                <p class="media-body"><br />
+                    Espaço dedicado para upload das aulas do aluno. Aqui você pode fazer upload de arquivos, como vídeos, áudios e documentos relacionados às aulas.
+                </p>
+                <p class="small font-bold">
+                    <span><i class="fa fa-circle text-warning"></i> Alta Prioridade</span>
+                </p>
+                <div class="d-flex flex-column gap-2">
+                    <div>
+                        <h5>Tags dos Arquivos</h5>
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <a href="" class="btn btn-outline-secondary btn-sm"><i class="fa fa-circle text-muted me-1"></i> MSA</a>
+                            <a href="" class="btn btn-outline-secondary btn-sm"><i class="fa fa-circle text-muted me-1"></i> Provas</a>
+                            <a href="" class="btn btn-outline-secondary btn-sm"><i class="fa fa-circle text-muted me-1"></i> Métodos</a>
+                            <a href="" class="btn btn-outline-secondary btn-sm"><i class="fa fa-circle text-muted me-1"></i> Hinário</a>
+                        </div>
+                    </div>
+
+                    <h5>Arquivos</h5>
+                    <ul class="list-unstyled project-files">
+                        <li><a href=""><i class="fa fa-video-camera text-danger"></i> LiçãoFase4.mp4</a></li>
+                        <li><a href=""><i class="fa fa-file-image-o text-info"></i> Página45.jpg</a></li>
+                        <li><a href=""><i class="fa fa-file-audio-o text-warning"></i> GravaçãoHino_2.mp3</a></li>
+                        <li><a href=""><i class="fa fa-file-text-o text-primary"></i> Contract_20_11_2014.docx</a></li>
+                    </ul>
+                    <div class="text-center m-t-md">
+                        <a href="#" class="btn btn-success btn-sm">Adicionar arquivos</a>
+                        <a href="#" class="btn btn-success btn-sm">Imprimir</a>
+                        <a href="#" target="_blank" class="btn btn-success btn-sm">Relatório</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>               
+</div>
+
+<!-- Modal de Lançamento MSA -->
+<div class="modal fade" id="lancamentoMsaModal" tabindex="-1" aria-labelledby="lancamentoMsaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="lancamentoMsaModalLabel">{{ musico.nome }} / {{ musico.instrumento }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="formAulaMSA" method="POST" action="#">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                <div class="modal-body">
+                    <!-- Abas do Modal -->
+                    <ul class="nav nav-tabs modal-tabs" id="msaModalTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="dados-tab" data-bs-toggle="tab" data-bs-target="#dados" type="button" role="tab">Dados Básicos</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="fases-tab" data-bs-toggle="tab" data-bs-target="#fases" type="button" role="tab">Fases e Páginas</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="observacoes-tab" data-bs-toggle="tab" data-bs-target="#observacoes" type="button" role="tab">Observações</button>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content" id="msaModalTabContent">
+                        <!-- Aba Dados Básicos -->
+                        <div class="tab-pane fade show active" id="dados" role="tabpanel">
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="data_aula" class="form-label fw-bold">Data *</label>
+                                        <input type="date" class="form-control" id="data_aula" name="data_aula" required>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="instrutor" class="form-label fw-bold">Instrutor *</label>
+                                        <input type="text" class="form-control" id="instrutor" name="instrutor" placeholder="Nome do instrutor responsável" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Aba Fases e Páginas -->
+                        <div class="tab-pane fade" id="fases" role="tabpanel">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="fase_de" class="form-label fw-bold">Fase de *</label>
+                                        <select class="form-select" id="fase_de" name="fase_de" required>
+                                            <option value="">Selecione a fase inicial</option>
+                                            <option value="1">1 - Iniciante</option>
+                                            <option value="2">2 - Básico</option>
+                                            <option value="3">3 - Intermediário</option>
+                                            <option value="4">4 - Avançado</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="fase_ate" class="form-label fw-bold">Fase até *</label>
+                                        <select class="form-select" id="fase_ate" name="fase_ate" required>
+                                            <option value="">Selecione a fase final</option>
+                                            <option value="1">1 - Iniciante</option>
+                                            <option value="2">2 - Básico</option>
+                                            <option value="3">3 - Intermediário</option>
+                                            <option value="4">4 - Avançado</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="pagina_inicial" class="form-label fw-bold">Página inicial</label>
+                                        <input type="number" class="form-control" id="pagina_inicial" name="pagina_inicial" placeholder="Página inicial" required min="1">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="pagina_final" class="form-label fw-bold">Página final</label>
+                                        <input type="number" class="form-control" id="pagina_final" name="pagina_final" placeholder="Página final" required min="1">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="licao_inicial" class="form-label fw-bold">Lições</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="licao_inicial" name="licao_inicial" placeholder="De" min="1">
+                                            <span class="input-group-text">até</span>
+                                            <input type="number" class="form-control" id="licao_final" name="licao_final" placeholder="Até" min="1">
+                                        </div>
+                                        <small class="text-muted">Deixe em branco se não aplicável</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="clave" class="form-label fw-bold">Clave *</label>
+                                        <select class="form-select" id="clave" name="clave" required>
+                                            <option value="">Selecione</option>
+                                            <option value="Sol">Clave de Sol</option>
+                                            <option value="Fá">Clave de Fá</option>
+                                            <option value="Dó">Clave de Dó</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Aba Observações -->
+                        <div class="tab-pane fade" id="observacoes" role="tabpanel">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="observacoes" class="form-label fw-bold">Observações</label>
+                                        <textarea class="form-control" id="observacoes" name="observacoes" rows="5" placeholder="Descreva a atividade realizada na aula"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Salvar Lançamento</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Edição de Músico -->
+<div class="modal fade" id="editarMusicoModal" tabindex="-1" aria-labelledby="editarMusicoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editarMusicoModalLabel">Editar Músico</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="formEditarMusico" method="POST" action="#">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                <div class="modal-body">
+                    <div class="form-group mb-3">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control" id="nome" name="nome" value="{{ musico.nome }}" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="congregacao">Congregação</label>
+                        <input type="text" class="form-control" id="congregacao" name="congregacao" value="{{ musico.congregacao }}" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="ministerio">Ministério</label>
+                        <input type="text" class="form-control" id="ministerio" name="ministerio" value="{{ musico.ministerio }}" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="instrumento">Instrumento</label>
+                        <input type="text" class="form-control" id="instrumento" name="instrumento" value="{{ musico.instrumento }}" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="nivel">Nível</label>
+                        <select class="form-control" id="nivel" name="nivel" required>
+                            <option value="CANDIDATO" {% if musico.nivel == 'CANDIDATO' %}selected{% endif %}>CANDIDATO</option>
+                            <option value="ENSAIO" {% if musico.nivel == 'ENSAIO' %}selected{% endif %}>ENSAIO</option>
+                            <option value="CULTO OFICIAL" {% if musico.nivel == 'CULTO OFICIAL' %}selected{% endif %}>CULTO OFICIAL</option>
+                            <option value="OFICIALIZADO" {% if musico.nivel == 'OFICIALIZADO' %}selected{% endif %}>OFICIALIZADO</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="status">Status</label>
+                        <select class="form-control" id="status" name="status" required>
+                            <option value="Ativo" {% if musico.status == 'Ativo' %}selected{% endif %}>Ativo</option>
+                            <option value="Inativo" {% if musico.status == 'Inativo' %}selected{% endif %}>Inativo</option>
+                            <option value="Suspenso" {% if musico.status == 'Suspenso' %}selected{% endif %}>Suspenso</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% block css %}
+<style>
+/* Melhorar fontes e estilos */
+.ibox {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ibox-content {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h3, h4, h5 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+}
+
+dt, dd {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.table th, .table td {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.nav-tabs .nav-link {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+}
+
+/* Modais com abas */
+.modal-tabs {
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 20px;
+}
+
+.modal-tabs .nav-link {
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: #6c757d;
+    font-weight: 500;
+    padding: 10px 15px;
+}
+
+.modal-tabs .nav-link.active {
+    color: #0d6efd;
+    border-bottom-color: #0d6efd;
+    background: none;
+}
+
+.modal-tabs .nav-link:hover {
+    border-bottom-color: #0d6efd;
+    color: #0d6efd;
+}
+
+/* Tags em linha */
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Melhorar espaçamento geral */
+.mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+.fs-18 {
+    font-size: 1.125rem !important;
+}
+</style>
+{% endblock %}
+
+{% block js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Função para ativar uma aba específica
+    function activateTab(tabId) {
+        // Remove active class de todas as abas e conteúdos
+        document.querySelectorAll('.nav-link').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(content => content.classList.remove('active'));
+        
+        // Ativa a aba e o conteúdo desejado
+        const tab = document.querySelector(`.nav-link[href="${tabId}"]`);
+        const content = document.querySelector(tabId);
+        
+        if (tab && content) {
+            tab.classList.add('active');
+            content.classList.add('active');
+        }
+    }
+
+    // Salvar aba ativa quando uma aba é clicada
+    document.querySelectorAll('.nav-link[data-bs-toggle="tab"]').forEach(function(tab) {
+        tab.addEventListener('click', function(e) {
+            localStorage.setItem('abaAtivaResumoMusico', e.target.getAttribute('href'));
+        });
+    });
+
+    // Restaurar aba ativa ao carregar a página
+    const abaAtiva = localStorage.getItem('abaAtivaResumoMusico');
+    if (abaAtiva) {
+        activateTab(abaAtiva);
+    }
+
+    // Função genérica para lidar com o envio de formulários
+    function handleFormSubmit(formId, successMessage) {
+        const form = document.getElementById(formId);
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRFToken': formData.get('csrf_token')
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Salva a aba ativa antes de recarregar
+                        const activeTab = document.querySelector('.nav-link.active');
+                        if (activeTab) {
+                            localStorage.setItem('abaAtivaResumoMusico', activeTab.getAttribute('href'));
+                        }
+                        
+                        alert(successMessage);
+                        window.location.reload();
+                    } else {
+                        alert('Erro: ' + (data.message || 'Ocorreu um erro ao processar sua solicitação.'));
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    alert('Ocorreu um erro ao processar sua solicitação.');
+                });
+            });
+        }
+    }
+
+    // Inicializar handlers para todos os formulários
+    handleFormSubmit('formAulaMSA', 'Aula MSA registrada com sucesso!');
+    handleFormSubmit('formEditarMusico', 'Músico atualizado com sucesso!');
+});
+</script>
+{% endblock %}
+
+{% endblock %}

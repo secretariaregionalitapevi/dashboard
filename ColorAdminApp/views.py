@@ -500,5 +500,107 @@ def error404(request):
 	}
 	return render(request, "pages/extra-error.html", context)
 
+def resumoMusico(request):
+	"""View para a página de resumo do músico"""
+	# Dados de exemplo para demonstração
+	context = {
+		"musico": {
+			"nome": "ABÍLIO DOS SANTOS VIEIRA",
+			"congregacao": "PAISAGEM CASA GRANDE",
+			"ministerio": "MÚSICO",
+			"instrumento": "TUBA",
+			"nivel": "RJM",
+			"status": "Ativo",
+			"criado_em": "2024-01-15"
+		},
+		"nome_congregacao": "PAISAGEM CASA GRANDE",
+		"total_participacoes": 12,
+		"progresso": 70,
+		"mensagem_progresso": "O aluno completou 70% do Programa Mínimo. Já pode pedir carta de Culto Oficial.",
+		"estudos_msa": [
+			{
+				"id": 1,
+				"data_aula": "17/05/2025",
+				"fase": "8.2 - 11.2",
+				"pagina_inicial": 53,
+				"pagina_final": 57,
+				"licoes": "53-57",
+				"clave": "Sol",
+				"observacoes": "",
+				"instrutor": "RICARDO C. GRANGEIRO"
+			},
+			{
+				"id": 2,
+				"data_aula": "16/05/2025",
+				"fase": "7.4 - 8.1",
+				"pagina_inicial": 48,
+				"pagina_final": 52,
+				"licoes": "48-52",
+				"clave": "Sol",
+				"observacoes": "",
+				"instrutor": "RICARDO C. GRANGEIRO"
+			},
+			{
+				"id": 3,
+				"data_aula": "15/05/2025",
+				"fase": "7.1 - 7.3",
+				"pagina_inicial": 45,
+				"pagina_final": 47,
+				"licoes": "45-47",
+				"clave": "Sol",
+				"observacoes": "",
+				"instrutor": "RICARDO C. GRANGEIRO"
+			},
+			{
+				"id": 4,
+				"data_aula": "14/05/2025",
+				"fase": "6.3 - 7.0",
+				"pagina_inicial": 42,
+				"pagina_final": 44,
+				"licoes": "42-44",
+				"clave": "Sol",
+				"observacoes": "",
+				"instrutor": "RICARDO C. GRANGEIRO"
+			},
+			{
+				"id": 5,
+				"data_aula": "13/05/2025",
+				"fase": "6.1 - 6.2",
+				"pagina_inicial": 40,
+				"pagina_final": 41,
+				"licoes": "40-41",
+				"clave": "Sol",
+				"observacoes": "",
+				"instrutor": "RICARDO C. GRANGEIRO"
+			},
+			{
+				"id": 6,
+				"data_aula": "12/05/2025",
+				"fase": "5.4 - 6.0",
+				"pagina_inicial": 38,
+				"pagina_final": 39,
+				"licoes": "38-39",
+				"clave": "Sol",
+				"observacoes": "",
+				"instrutor": "RICARDO C. GRANGEIRO"
+			}
+		],
+		"avaliacoes": [
+			{
+				"id": 1,
+				"data_avaliacao": "2024-01-25",
+				"modulo": "Fase 1",
+				"nota": 8.5,
+				"avaliador": "Pedro Costa",
+				"observacoes": "Excelente desempenho"
+			}
+		],
+		"metodos": [],
+		"hinario": [],
+		"escalas": [],
+		"atividades": []
+	}
+	return render(request, "pages/resumo_musico.html", context)
+
 def handler404(request, exception = None):
 	return redirect('/404/')

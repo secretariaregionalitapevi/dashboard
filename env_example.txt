@@ -1,0 +1,55 @@
+# =====================================================
+# CONFIGURAÇÕES DO SISTEMA REG-IT
+# =====================================================
+
+# Django Settings
+SECRET_KEY=your-secret-key-here
+DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1
+
+# Database (SQLite para desenvolvimento)
+DATABASE_URL=sqlite:///db.sqlite3
+
+# =====================================================
+# CONFIGURAÇÕES DO SUPABASE
+# =====================================================
+
+# URL do seu projeto Supabase
+SUPABASE_URL=https://your-project-id.supabase.co
+
+# Chave anônima (pública) do Supabase
+SUPABASE_ANON_KEY=your-anon-key-here
+
+# Chave de serviço (privada) do Supabase - NUNCA compartilhe!
+SUPABASE_SERVICE_KEY=your-service-key-here
+
+# =====================================================
+# CONFIGURAÇÕES DE EMAIL (opcional)
+# =====================================================
+
+# Para envio de emails de verificação
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+EMAIL_HOST_USER=your-email@gmail.com
+EMAIL_HOST_PASSWORD=your-app-password
+
+# =====================================================
+# CONFIGURAÇÕES DE LOGGING
+# =====================================================
+
+# Nível de log (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+LOG_LEVEL=INFO
+
+# =====================================================
+# CONFIGURAÇÕES DE SEGURANÇA
+# =====================================================
+
+# Tempo de expiração da sessão (em horas)
+SESSION_EXPIRE_HOURS=24
+
+# Máximo de tentativas de login
+MAX_LOGIN_ATTEMPTS=5
+
+# Tempo de bloqueio após tentativas falhadas (em minutos)
+LOGIN_LOCKOUT_MINUTES=30

@@ -1,6 +1,7 @@
 from django.urls import path
 
 from . import views
+from . import auth_views
 
 app_name = 'ColorAdminApp'
 urlpatterns = [
@@ -110,5 +111,18 @@ urlpatterns = [
     path('user/login-v2', views.userLoginV2, name='userLoginV2'),
     path('user/login-v3', views.userLoginV3, name='userLoginV3'),
     path('user/register-v3', views.userRegisterV3, name='userRegisterV3'),
-    path('helper/css', views.helperCss, name='helperCss')
+    path('resumo-musico/', views.resumoMusico, name='resumoMusico'),
+    path('helper/css', views.helperCss, name='helperCss'),
+    
+    # URLs de autenticação
+    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('user/login/', auth_views.LoginView.as_view(), name='user_login'),  # Alias
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('profile/', auth_views.profile_view, name='profile'),
+    path('change-password/', auth_views.change_password_view, name='change_password'),
+    
+    # APIs de autenticação
+    path('api/auth/login/', auth_views.api_login, name='api_login'),
+    path('api/auth/logout/', auth_views.api_logout, name='api_logout'),
+    path('api/auth/user-info/', auth_views.api_user_info, name='api_user_info'),
 ]

@@ -468,17 +468,14 @@ var handleVisitorsMap = function() {
 		series: {
 			regions: [{
 				values: {
-					IN: app.color.teal,
-					US: app.color.teal,
-					MN: app.color.teal,
-					RU: app.color.teal
+					BR: app.color.teal
 				}
 			}]
 		},
 		focusOn: {
-			x: 0.7,
-			y: 0.5,
-			scale: 1
+			x: 0.3,
+			y: 0.6,
+			scale: 2
 		},
 		backgroundColor: 'transparent'
 	};

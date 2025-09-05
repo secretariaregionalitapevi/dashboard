@@ -10,7 +10,7 @@
 				<span class="icon-bar"></span>
 			</button>
 		{% endif %}
-		<a href="/" class="navbar-brand"><span class="navbar-logo"></span> <b class="me-3px">Color</b> Admin</a>
+		<a href="/" class="navbar-brand"><span class="navbar-logo"></span> <b class="me-3px">Regional</b> Itapevi</a>
 		{% if appHeaderMegaMenu %}
 			<button type="button" class="navbar-mobile-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#top-navbar" aria-expanded="false">
 				<span class="fa-stack fa-lg">
@@ -36,7 +36,7 @@
 		<div class="navbar-item navbar-form">
 			<form action="" method="POST" name="search">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Enter keyword" />
+					<input type="text" class="form-control" placeholder="Pesquisar" />
 					<button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
 				</div>
 			</form>
@@ -47,7 +47,7 @@
 				<span class="badge">5</span>
 			</a>
 			<div class="dropdown-menu media-list dropdown-menu-end">
-				<div class="dropdown-header">NOTIFICATIONS (5)</div>
+				<div class="dropdown-header">NOTIFICAÇÕES (5)</div>
 				<a href="javascript:;" class="dropdown-item media">
 					<div class="media-left">
 						<i class="fa fa-bug media-object bg-gray-500"></i>
@@ -99,7 +99,7 @@
 					</div>
 				</a>
 				<div class="dropdown-footer text-center">
-					<a href="javascript:;" class="text-decoration-none">View more</a>
+					<a href="javascript:;" class="text-decoration-none">Ver mais</a>
 				</div>
 			</div>
 		</div>
@@ -115,28 +115,28 @@
 					<a href="javascript:;" class="dropdown-item"><span class="fi fi-jp me-2" title="jp"></span> Japanese</a>
 					<a href="javascript:;" class="dropdown-item"><span class="fi fi-be me-2" title="be"></span> Belgium</a>
 					<div class="dropdown-divider"></div>
-					<a href="javascript:;" class="dropdown-item text-center">more options</a>
+					<a href="javascript:;" class="dropdown-item text-center">mais opções</a>
 				</div>
 			</div>
 		{% endif %}
 		<div class="navbar-item navbar-user dropdown">
 			<a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
-				<img src="{% static '/img/user/user-13.jpg' %}" alt="" /> 
+				<img src="{% static '/img/user/Ricardo.png' %}" alt="" /> 
 				<span>
-					<span class="d-none d-md-inline fw-bold">Adam Schwartz</span>
+					<span class="d-none d-md-inline fw-bold">Ricardo C. Grangeiro</span>
 					<b class="caret"></b>
 				</span>
 			</a>
 			<div class="dropdown-menu dropdown-menu-end me-1">
-				<a href="/extra/profile" class="dropdown-item">Edit Profile</a>
+				<a href="/extra/profile" class="dropdown-item">Editar Perfil</a>
 				<a href="/email/inbox" class="dropdown-item d-flex align-items-center">
-					Inbox
+					Caixa de Entrada
 					<span class="badge bg-danger rounded-pill ms-auto pb-4px">2</span> 
 				</a>
-				<a href="/calendar" class="dropdown-item">Calendar</a>
-				<a href="/extra/setting" class="dropdown-item">Settings</a>
+				<a href="/calendar" class="dropdown-item">Calendário</a>
+				<a href="/extra/setting" class="dropdown-item">Configurações</a>
 				<div class="dropdown-divider"></div>
-				<a href="/user/login" class="dropdown-item">Log Out</a>
+				<a href="/logout/" class="dropdown-item">Log Out</a>
 			</div>
 		</div>
 		{% if appSidebarTwo %}

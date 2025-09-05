@@ -2,7 +2,9 @@
 
 {% load static %}
 
-{% block title %}Login v1{% endblock %}
+{% block title %}Login - Sistema Musical{% endblock %}
+
+{% block htmlAttr %}class="login-page"{% endblock %}
 
 {% block outter_content %}
 	<!-- BEGIN login -->
@@ -11,14 +13,14 @@
 		<div class="login-container">
 			<!-- BEGIN login-header -->
 			<div class="login-header">
-				<div class="brand">
-					<div class="d-flex align-items-center">
-						<span class="logo"></span> <b class="me-1">Color</b> Admin
+				<!-- Logo CCB -->
+				<div class="text-center mb-3">
+					<div class="ccb-logo mb-2">
+						<img src="{% static 'img/logo/logo-ccb-light.png' %}" alt="Congregação Cristã no Brasil" class="ccb-logo-img">
 					</div>
-					<small>Bootstrap 5 Responsive Admin Template</small>
-				</div>
-				<div class="icon">
-					<i class="fa fa-lock"></i>
+					<h2 class="fw-bold text-dark mb-3">Bem-vindos ao SGM</h2>
+					<p class="text-muted mb-3">Sistema de Gestão Musical criado para facilitar a administração musical da <strong>Regional Itapevi</strong>.</p>
+					<p class="text-muted small">Faça o login para acessar o Sistema</p>
 				</div>
 			</div>
 			<!-- END login-header -->
@@ -27,25 +29,68 @@
 			<div class="login-body">
 				<!-- BEGIN login-content -->
 				<div class="login-content fs-13px">
-					<form action="/" method="GET">
+					<!-- Mensagens de erro/sucesso -->
+					{% if messages %}
+						{% for message in messages %}
+							<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+								{{ message }}
+								<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+							</div>
+						{% endfor %}
+					{% endif %}
+					
+					<form method="POST" id="loginForm">
+						{% csrf_token %}
 						<div class="form-floating mb-20px">
-							<input type="email" class="form-control fs-13px h-45px" id="emailAddress" placeholder="Email Address" />
-							<label for="emailAddress" class="d-flex align-items-center">Email Address</label>
+							<input type="email" 
+								   class="form-control fs-13px h-45px" 
+								   id="email" 
+								   name="email"
+								   placeholder="Email" 
+								   required 
+								   autocomplete="email" />
+							<label for="email" class="d-flex align-items-center">
+								<i class="fa fa-envelope me-2"></i>Email
+							</label>
 						</div>
-						<div class="form-floating mb-20px">
-							<input type="password" class="form-control fs-13px h-45px" id="password" placeholder="Password" />
-							<label for="password" class="d-flex align-items-center">Password</label>
+						<div class="form-floating mb-20px position-relative">
+							<input type="password" 
+								   class="form-control fs-13px h-45px pe-5" 
+								   id="password" 
+								   name="password"
+								   placeholder="Senha" 
+								   required 
+								   autocomplete="current-password" />
+							<label for="password" class="d-flex align-items-center">
+								<i class="fa fa-lock me-2"></i>Senha
+							</label>
+							<button type="button" 
+									class="btn btn-link position-absolute top-50 end-0 translate-middle-y me-3 p-0" 
+									id="togglePassword"
+									style="border: none; background: none; color: #6c757d; z-index: 10;">
+								<i class="fa fa-eye" id="togglePasswordIcon"></i>
+							</button>
 						</div>
 						<div class="form-check mb-20px">
-							<input class="form-check-input" type="checkbox" value="" id="rememberMe" />
+							<input class="form-check-input" type="checkbox" value="1" id="rememberMe" name="remember_me" />
 							<label class="form-check-label" for="rememberMe">
-								Remember Me
+								Lembrar senha
 							</label>
 						</div>
 						<div class="login-buttons">
-							<button type="submit" class="btn btn-theme h-45px d-block w-100 btn-lg">Sign me in</button>
+							<button type="submit" class="btn btn-theme h-45px d-block w-100 btn-lg" id="loginBtn">
+								<span class="spinner-border spinner-border-sm me-2 d-none" id="loginSpinner"></span>
+								Entrar
+							</button>
 						</div>
 					</form>
+					
+					<!-- Links adicionais -->
+					<div class="text-center mt-3">
+						<a href="#" class="text-decoration-none" onclick="showForgotPassword()">
+							Esqueceu sua senha?
+						</a>
+					</div>
 				</div>
 				<!-- END login-content -->
 			</div>
@@ -54,4 +99,151 @@
 		<!-- END login-container -->
 	</div>
 	<!-- END login -->
+	
+	<!-- Modal para esqueci minha senha -->
+	<div class="modal fade" id="forgotPasswordModal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Recuperar Senha</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+				<div class="modal-body">
+					<p>Entre em contato com o administrador do sistema para recuperar sua senha.</p>
+					<div class="alert alert-info">
+						<strong>Email de suporte:</strong> suporte@sistema.com
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block css %}
+<style>
+/* Logo CCB */
+.ccb-logo-img {
+    max-width: 250px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.ccb-logo {
+    margin-top: -10px;
+    margin-bottom: 25px !important;
+}
+
+/* Estilos para os textos de boas-vindas */
+.login-header h2 {
+    font-size: 1.5rem;
+}
+
+.login-header p {
+    font-size: 1rem;
+}
+
+.login-header .text-muted {
+    font-size: 1rem;
+}
+
+.login-header .small {
+    font-size: 0.95rem;
+}
+
+/* Estilo para o botão de visualizar senha */
+#togglePassword {
+    transition: color 0.3s ease;
+}
+
+#togglePassword:hover {
+    color: #007bff !important;
+}
+
+#togglePassword:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Melhorar o posicionamento do ícone */
+.form-floating .position-absolute {
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Ajustar padding do input quando tem o botão */
+.form-floating input.pe-5 {
+    padding-right: 3rem;
+}
+
+/* Ajustar espaçamento do header */
+.login-header {
+    padding: 20px 0;
+}
+</style>
+{% endblock %}
+
+{% block js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const loginForm = document.getElementById('loginForm');
+    const loginBtn = document.getElementById('loginBtn');
+    const loginSpinner = document.getElementById('loginSpinner');
+    const passwordField = document.getElementById('password');
+    const togglePasswordBtn = document.getElementById('togglePassword');
+    const togglePasswordIcon = document.getElementById('togglePasswordIcon');
+    
+    // Funcionalidade de visualizar senha
+    togglePasswordBtn.addEventListener('click', function() {
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            togglePasswordIcon.classList.remove('fa-eye');
+            togglePasswordIcon.classList.add('fa-eye-slash');
+        } else {
+            passwordField.type = 'password';
+            togglePasswordIcon.classList.remove('fa-eye-slash');
+            togglePasswordIcon.classList.add('fa-eye');
+        }
+    });
+    
+    loginForm.addEventListener('submit', function(e) {
+        // Mostrar spinner
+        loginSpinner.classList.remove('d-none');
+        loginBtn.disabled = true;
+        loginBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Entrando...';
+    });
+    
+    // Auto-focus no campo email
+    document.getElementById('email').focus();
+    
+    // Limpar mensagens de erro após 5 segundos
+    setTimeout(function() {
+        const alerts = document.querySelectorAll('.alert');
+        alerts.forEach(function(alert) {
+            const bsAlert = new bootstrap.Alert(alert);
+            bsAlert.close();
+        });
+    }, 5000);
+});
+
+function showForgotPassword() {
+    const modal = new bootstrap.Modal(document.getElementById('forgotPasswordModal'));
+    modal.show();
+}
+
+// Prevenir múltiplos envios
+let isSubmitting = false;
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    if (isSubmitting) {
+        e.preventDefault();
+        return false;
+    }
+    isSubmitting = true;
+});
+</script>
 {% endblock %}
