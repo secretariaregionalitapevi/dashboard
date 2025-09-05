@@ -3,9 +3,13 @@
 
 echo "🚀 Iniciando build do Sistema REG-IT..."
 
+# Atualizar pip
+echo "📦 Atualizando pip..."
+pip install --upgrade pip
+
 # Instalar dependências
 echo "📦 Instalando dependências Python..."
-pip install -r requirements.txt
+pip install -r requirements-render.txt
 
 # Coletar arquivos estáticos
 echo "📁 Coletando arquivos estáticos..."
