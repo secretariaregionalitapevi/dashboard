@@ -15,3 +15,6 @@ django.setup()
 
 # Aplicação WSGI
 application = get_wsgi_application()
+
+# Alias para compatibilidade com Render
+app = application
