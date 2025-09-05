@@ -31,6 +31,9 @@ def sidebar_menu(request):
 		'children': [
 			{ 'url': '/email/inbox', 'title': 'Músicos', 'name': 'musicos' },
 			{ 'url': '/email/compose', 'title': 'Clínica', 'name': 'clinica' },
+			{ 'url': '/ai/chat', 'title': 'Ministério', 'name': 'ministerio' },
+			{ 'url': '/ai/chat', 'title': 'Atendimentos', 'name': 'atendimentos' },
+			{ 'url': '/ai/chat', 'title': 'Membros', 'name': 'membros' },
 			{ 'url': '/email/detail', 'title': 'Batismos', 'name': 'batismos' }
 		]
 	},
